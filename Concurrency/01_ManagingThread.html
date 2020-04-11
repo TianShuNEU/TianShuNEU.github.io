@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-04-11 Sat 22:59 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Managing Thread</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Tian Tongtong" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="css/worg.min.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="sitemap.html"> UP </a>
+ |
+ <a accesskey="H" href="../index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">Managing Thread</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd1cad79">Basic thread management</a>
+<ul>
+<li><a href="#orgbf82a18">Launching a thread</a></li>
+<li><a href="#org1c37776">Waiting for a thread to complete</a></li>
+<li><a href="#orgf528906">Running thread in the background</a></li>
+</ul>
+</li>
+<li><a href="#orga1060ba">Passing args to a thread function</a>
+<ul>
+<li><a href="#org83a4f49">Pass by value</a></li>
+<li><a href="#org6281253">Pass by reference</a></li>
+<li><a href="#org6ba1010">Pass a member function</a></li>
+<li><a href="#orgf3621f1">Args can't be copied,but only moved</a></li>
+</ul>
+</li>
+<li><a href="#org3874af1">Transferring ownership of a thread</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd1cad79" class="outline-2">
+<h2 id="orgd1cad79">Basic thread management</h2>
+<div class="outline-text-2" id="text-orgd1cad79">
+</div>
+<div id="outline-container-orgbf82a18" class="outline-3">
+<h3 id="orgbf82a18">Launching a thread</h3>
+<div class="outline-text-3" id="text-orgbf82a18">
+<p>
+Starting a new thread using the <b>c++ Thread Library</b> always boils down to constructing a <code>std::thread</code> object,and specify a <i>task</i> to run on that thread.
+</p>
+
+<p>
+A task is a callable type,including function,functor,and lambda expression.
+</p>
+<ol class="org-ol">
+<li><p>
+Function
+</p>
+<pre class="example">
+void do_sth();
+std::thread my_thread(do_sth);
+</pre></li>
+<li><p>
+Functor:
+A functor is a class that has overrided <i>function call operator</i>.
+</p>
+<div class="org-src-container">
+<pre class="src src-C++"><span class="linenr"> 1: </span>   <span class="org-keyword">class</span> <span class="org-type">do_sth</span>
+<span class="linenr"> 2: </span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="linenr"> 3: </span><span class="org-keyword">public</span>:
+<span class="linenr"> 4: </span>    <span class="org-type">void</span> <span class="org-keyword">operator</span> <span class="org-function-name"><span class="org-rainbow-delimiters-depth-2">()</span></span><span class="org-rainbow-delimiters-depth-2">()</span>
+<span class="linenr"> 5: </span>    <span class="org-rainbow-delimiters-depth-2">{</span>
+<span class="linenr"> 6: </span>        do_sth_func<span class="org-rainbow-delimiters-depth-3">()</span>;
+<span class="linenr"> 7: </span>        do_sth_func_else<span class="org-rainbow-delimiters-depth-3">()</span>;
+<span class="linenr"> 8: </span>    <span class="org-rainbow-delimiters-depth-2">}</span>
+<span class="linenr"> 9: </span><span class="org-rainbow-delimiters-depth-1">}</span>;
+<span class="linenr">10: </span><span class="org-type">do_sth</span> <span class="org-variable-name">ds</span>;
+<span class="linenr">11: </span><span class="org-constant">std</span>::<span class="org-type">thread</span> <span class="org-function-name">my_thread</span><span class="org-rainbow-delimiters-depth-1">(</span>ds<span class="org-rainbow-delimiters-depth-1">)</span>;
+</pre>
+</div>
+
+<p>
+In this case,the supplied functor is <b>copied</b> into the storage belonging to the newly created thread of execution and invoked from there.when pass a temporary rather than a named variable,you must avoid "c++'s most vexing parse":if you write code like this
+</p>
+<pre class="example">
+std::thread my_thread(do_sth());
+</pre>
+
+<p>
+compiler will interpret it as a function declaration,you should write this instead:
+</p>
+<pre class="example">
+std::thread my_thread((do_sth()));
+std::thread my_thread{do_sth()};
+</pre></li>
+<li><p>
+Lambda expression
+This is a new feature from c++11,allowing you to write local function.
+</p>
+<pre class="example">
+std::thread my_thread([](){do_sth();do_sth_else();});
+</pre></li>
+</ol>
+
+<p>
+<span class="underline">The <i>task</i> is invoked since it is specified to the thread object</span>,after that,you need to explicitly decide whether to wait for it to finish(by joing with it),or leave it run on its own(by detaching it).If you don't <b>decide before the object is destroyed</b>,then <code>std::thread</code> destructor calls <code>std::terminate()</code>,and your program is terminated.
+</p>
+</div>
+</div>
+<div id="outline-container-org1c37776" class="outline-3">
+<h3 id="org1c37776">Waiting for a thread to complete</h3>
+<div class="outline-text-3" id="text-org1c37776">
+<p>
+Just call <code>join()</code> function is sufficient, it is simple and brute force,if you need more fine-grained control over waiting for a thread,such as to check whether a thread is finished or to wait a certain period of time,you will need condition variables and futures.
+</p>
+
+<p>
+If you start a thread within a function,and has access to the local variables in that function(although it is a bad idea),you should guarantee the thread to finish before the function exits by calling <code>join()</code>.
+</p>
+
+<p>
+<b>Waiting in exceptional circumstances</b>
+</p>
+
+<p>
+If you need to wait for the thread to finish,you should pick carefully the place in the code where you call <code>join()</code>,this means that the call <code>join()</code> is liable to be skipped if an exception is thrown after the thread has been started but before the call to <code>jion()</code>.
+</p>
+
+<p>
+One way to ensure <code>join()</code> is called before the thread object is destroyed is to use the standard Resource Acauisition Is Initialization(RAII)idiom and provides a class that does the <code>join</code> in its destructor:
+</p>
+<div class="org-src-container">
+<pre class="src src-C++"><span class="linenr"> 1: </span><span class="org-keyword">class</span> <span class="org-type">ThreadGuard</span>
+<span class="linenr"> 2: </span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="linenr"> 3: </span><span class="org-keyword">public</span>:
+<span class="linenr"> 4: </span>    <span class="org-function-name">ThreadGuard</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">const</span> <span class="org-constant">std</span>::<span class="org-type">thread</span>&amp; <span class="org-variable-name">_t</span><span class="org-rainbow-delimiters-depth-2">)</span>:t<span class="org-rainbow-delimiters-depth-2">{</span>_t<span class="org-rainbow-delimiters-depth-2">}{}</span>;
+<span class="linenr"> 5: </span>    ~<span class="org-function-name">ThreadGuard</span><span class="org-rainbow-delimiters-depth-2">(){</span>
+<span class="linenr"> 6: </span>        <span class="org-keyword">if</span><span class="org-rainbow-delimiters-depth-3">(</span>t.joinable<span class="org-rainbow-delimiters-depth-4">()</span><span class="org-rainbow-delimiters-depth-3">)</span>
+<span class="linenr"> 7: </span>            <span class="org-rainbow-delimiters-depth-3">{</span>
+<span class="linenr"> 8: </span>                t.join<span class="org-rainbow-delimiters-depth-4">()</span>;
+<span class="linenr"> 9: </span>            <span class="org-rainbow-delimiters-depth-3">}</span>
+<span class="linenr">10: </span>    <span class="org-rainbow-delimiters-depth-2">}</span>;
+<span class="linenr">11: </span>    <span class="org-function-name">ThreadGuard</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">const</span> <span class="org-type">ThreadGuard</span>&amp;<span class="org-variable-name">other</span><span class="org-rainbow-delimiters-depth-2">)</span>=<span class="org-keyword">delete</span> ;
+<span class="linenr">12: </span>    <span class="org-type">ThreadGuard</span>&amp; <span class="org-keyword">operator</span><span class="org-function-name">=</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">const</span> <span class="org-type">ThreadGuard</span>&amp;<span class="org-variable-name">right</span><span class="org-rainbow-delimiters-depth-2">)</span>=<span class="org-keyword">delete</span>;
+<span class="linenr">13: </span><span class="org-keyword">private</span>:
+<span class="linenr">14: </span>    <span class="org-constant">std</span>::<span class="org-type">thread</span>&amp;<span class="org-variable-name">t</span>;
+<span class="linenr">15: </span><span class="org-rainbow-delimiters-depth-1">}</span>;
+<span class="linenr">16: </span>
+<span class="linenr">17: </span><span class="org-keyword">struct</span> <span class="org-type">func</span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="linenr">18: </span>    <span class="org-type">int</span>&amp;<span class="org-function-name">i</span>
+<span class="linenr">19: </span>    func<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-type">int</span> &amp;<span class="org-variable-name">i_</span><span class="org-rainbow-delimiters-depth-2">)</span>:i<span class="org-rainbow-delimiters-depth-2">{</span>i_<span class="org-rainbow-delimiters-depth-2">}{}</span>
+<span class="linenr">20: </span>    <span class="org-type">void</span> <span class="org-keyword">operator</span><span class="org-function-name"><span class="org-rainbow-delimiters-depth-2">()</span></span><span class="org-rainbow-delimiters-depth-2">()</span>
+<span class="linenr">21: </span>    <span class="org-rainbow-delimiters-depth-2">{</span>
+<span class="linenr">22: </span>        <span class="org-keyword">for</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-type">unsigned</span> <span class="org-variable-name">j</span><span class="org-rainbow-delimiters-depth-4">{</span>0<span class="org-rainbow-delimiters-depth-4">}</span>;j&lt;20;++j<span class="org-rainbow-delimiters-depth-3">)</span>
+<span class="linenr">23: </span>            <span class="org-rainbow-delimiters-depth-3">{</span>
+<span class="linenr">24: </span>                do_sth<span class="org-rainbow-delimiters-depth-4">(</span>i<span class="org-rainbow-delimiters-depth-4">)</span>;
+<span class="linenr">25: </span>            <span class="org-rainbow-delimiters-depth-3">}</span>
+<span class="linenr">26: </span>    <span class="org-rainbow-delimiters-depth-2">}</span>
+<span class="linenr">27: </span><span class="org-rainbow-delimiters-depth-1">}</span>;
+<span class="linenr">28: </span>
+<span class="linenr">29: </span><span class="org-type">void</span> <span class="org-variable-name">f</span>
+<span class="linenr">30: </span>    <span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="linenr">31: </span>     <span class="org-type">int</span> some_local_state<span class="org-rainbow-delimiters-depth-2">{</span>0<span class="org-rainbow-delimiters-depth-2">}</span>;
+<span class="linenr">32: </span>     <span class="org-type">func</span> <span class="org-variable-name">my_func</span><span class="org-rainbow-delimiters-depth-2">(</span>some_local_state<span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="linenr">33: </span>     <span class="org-constant">std</span>::<span class="org-type">thread</span> <span class="org-variable-name">t</span><span class="org-rainbow-delimiters-depth-2">(</span>my_func<span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="linenr">34: </span>     <span class="org-type">ThreadGuard</span> <span class="org-variable-name">g</span><span class="org-rainbow-delimiters-depth-2">(</span>t<span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="linenr">35: </span>
+<span class="linenr">36: </span>     do_some_thing_in_current_thread<span class="org-rainbow-delimiters-depth-2">()</span>;
+<span class="linenr">37: </span>    <span class="org-rainbow-delimiters-depth-1">}</span>
+</pre>
+</div>
+
+<p>
+when the execution of the current thread reaches the end of <code>f()</code>,the local objects are destroyed in reverse order of construction.Consequently,the <code>ThreadGuard</code> g is destroyed first,and <code>join()</code> is called even if <code>do_some_thing_in_current_thread()</code> throws an exception.
+</p>
+
+<p>
+If you don't need to wait for a thread to finish,you can avoid this exception-safety issue by detaching it.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf528906" class="outline-3">
+<h3 id="orgf528906">Running thread in the background</h3>
+<div class="outline-text-3" id="text-orgf528906">
+<p>
+If you are detaching a thread,you can usually call <code>detach()</code> immediately after the thread has been started.After the call <code>detach</code> completes,this breaks the association of the thread with the <code>std::thread</code> object and ensures that <code>std::terminate()</code> won't be called when the <code>std::thread</code> object is destroyed,even though the thread is still running in the background.
+</p>
+
+<p>
+Detached thread are often called <i>daemon thread</i> that runs in the background without explicit user interface,such threads are  typically long-running,
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga1060ba" class="outline-2">
+<h2 id="orga1060ba">Passing args to a thread function</h2>
+<div class="outline-text-2" id="text-orga1060ba">
+<p>
+Although other mechanisms could be used to pass args to a thread function(function object,args can be it's data member),the Thread Library provides you with an easy way of doing it.
+</p>
+</div>
+<div id="outline-container-org83a4f49" class="outline-3">
+<h3 id="org83a4f49">Pass by value</h3>
+<div class="outline-text-3" id="text-org83a4f49">
+<p>
+Passing args to the callable object or function is foundamentally as simple as passing additional args to <code>std::thread</code> constructor, but <code>std::thread</code> constructor does't know the what kind of arguments the function needs,whether by value or by reference,but bear in mind that by default the args are <i>copied</i> into internal storage(by value).
+</p>
+<div class="org-src-container">
+<pre class="src src-C++"><span class="linenr"> 1: </span><span class="org-preprocessor">#include</span> <span class="org-string"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-string">iostream</span><span class="org-string"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span>
+<span class="linenr"> 2: </span><span class="org-preprocessor">#include</span> <span class="org-string"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-string">string</span><span class="org-string"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span>
+<span class="linenr"> 3: </span><span class="org-preprocessor">#include</span> <span class="org-string"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-string">thread</span><span class="org-string"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span>
+<span class="linenr"> 4: </span><span class="org-type">void</span> <span class="org-function-name">fun</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">int</span> <span class="org-variable-name">i</span>, <span class="org-constant">std</span>::<span class="org-type">string</span> <span class="org-variable-name">str</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="linenr"> 5: </span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="linenr"> 6: </span>    str+=<span class="org-string">" world"</span>;
+<span class="linenr"> 7: </span>    ++i;
+<span class="linenr"> 8: </span><span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span class="org-type">int</span> <span class="org-function-name">main</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">int</span> <span class="org-variable-name">argc</span>, <span class="org-type">char</span> *<span class="org-variable-name">argv</span><span class="org-rainbow-delimiters-depth-2">[]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="linenr">11: </span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="linenr">12: </span>    <span class="org-type">int</span> <span class="org-variable-name">i</span><span class="org-rainbow-delimiters-depth-2">{</span>9<span class="org-rainbow-delimiters-depth-2">}</span>;
+<span class="linenr">13: </span>    <span class="org-constant">std</span>::<span class="org-type">string</span> <span class="org-variable-name">str</span><span class="org-rainbow-delimiters-depth-2">{</span><span class="org-string">"Hello"</span><span class="org-rainbow-delimiters-depth-2">}</span>;
+<span class="linenr">14: </span>    <span class="org-constant">std</span>::cout&lt;&lt;<span class="org-string">"Before thread,i:"</span>&lt;&lt;i&lt;&lt;<span class="org-string">" str:"</span>&lt;&lt;str&lt;&lt;<span class="org-constant">std</span>::endl;
+<span class="linenr">15: </span>    <span class="org-constant">std</span>::<span class="org-type">thread</span> <span class="org-variable-name">t</span><span class="org-rainbow-delimiters-depth-2">(</span>fun,i,str<span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="linenr">16: </span>    t.join<span class="org-rainbow-delimiters-depth-2">()</span>;
+<span class="linenr">17: </span>    <span class="org-constant">std</span>::cout&lt;&lt;<span class="org-string">"After thread,i:"</span>&lt;&lt;i&lt;&lt;<span class="org-string">" str:"</span>&lt;&lt;str&lt;&lt;<span class="org-constant">std</span>::endl;
+<span class="linenr">18: </span>
+<span class="linenr">19: </span>    <span class="org-keyword">return</span> 0;
+<span class="linenr">20: </span><span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="linenr">21: </span>
+</pre>
+</div>
+<pre class="example">
+Before thread,i:9 str:Hello
+After thread,i:9 str:Hello
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org6281253" class="outline-3">
+<h3 id="org6281253">Pass by reference</h3>
+<div class="outline-text-3" id="text-org6281253">
+<p>
+If the function in the thread passes arguments by reference,you should use <code>std::ref</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-C++"><span class="linenr"> 1: </span><span class="org-preprocessor">#include</span> <span class="org-string"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-string">iostream</span><span class="org-string"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span>
+<span class="linenr"> 2: </span><span class="org-preprocessor">#include</span> <span class="org-string"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-string">string</span><span class="org-string"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span>
+<span class="linenr"> 3: </span><span class="org-preprocessor">#include</span> <span class="org-string"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-string">thread</span><span class="org-string"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span>
+<span class="linenr"> 4: </span><span class="org-preprocessor">#include</span> <span class="org-string"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-string">functional</span><span class="org-string"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span> <span class="org-comment-delimiter">//</span><span class="org-comment">std::ref</span>
+<span class="linenr"> 5: </span><span class="org-type">void</span> <span class="org-function-name">fun</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">int</span>  &amp;<span class="org-variable-name">i</span>, <span class="org-constant">std</span>::<span class="org-type">string</span>&amp;<span class="org-variable-name">str</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="linenr"> 6: </span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="linenr"> 7: </span>    str+=<span class="org-string">" world"</span>;
+<span class="linenr"> 8: </span>    ++i;
+<span class="linenr"> 9: </span><span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span class="org-type">int</span> <span class="org-function-name">main</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">int</span> <span class="org-variable-name">argc</span>, <span class="org-type">char</span> *<span class="org-variable-name">argv</span><span class="org-rainbow-delimiters-depth-2">[]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="linenr">12: </span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="linenr">13: </span>    <span class="org-type">int</span> <span class="org-variable-name">i</span><span class="org-rainbow-delimiters-depth-2">{</span>9<span class="org-rainbow-delimiters-depth-2">}</span>;
+<span class="linenr">14: </span>    <span class="org-constant">std</span>::<span class="org-type">string</span> <span class="org-variable-name">str</span><span class="org-rainbow-delimiters-depth-2">{</span><span class="org-string">"Hello"</span><span class="org-rainbow-delimiters-depth-2">}</span>;
+<span class="linenr">15: </span>    <span class="org-constant">std</span>::cout&lt;&lt;<span class="org-string">"Before thread,i:"</span>&lt;&lt;i&lt;&lt;<span class="org-string">" str:"</span>&lt;&lt;str&lt;&lt;<span class="org-constant">std</span>::endl;
+<span class="linenr">16: </span>    <span class="org-constant">std</span>::<span class="org-type">thread</span> <span class="org-variable-name">t</span><span class="org-rainbow-delimiters-depth-2">(</span>fun,<span class="org-constant">std</span>::ref<span class="org-rainbow-delimiters-depth-3">(</span>i<span class="org-rainbow-delimiters-depth-3">)</span>,<span class="org-constant">std</span>::ref<span class="org-rainbow-delimiters-depth-3">(</span>str<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="linenr">17: </span>    t.join<span class="org-rainbow-delimiters-depth-2">()</span>;
+<span class="linenr">18: </span>    <span class="org-constant">std</span>::cout&lt;&lt;<span class="org-string">"After thread,i:"</span>&lt;&lt;i&lt;&lt;<span class="org-string">" str:"</span>&lt;&lt;str&lt;&lt;<span class="org-constant">std</span>::endl;
+<span class="linenr">19: </span>
+<span class="linenr">20: </span>    <span class="org-keyword">return</span> 0;
+<span class="linenr">21: </span><span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="linenr">22: </span>
+</pre>
+</div>
+
+<pre class="example">
+Before thread,i:9 str:Hello
+After thread,i:10 str:Hello world
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org6ba1010" class="outline-3">
+<h3 id="org6ba1010">Pass a member function</h3>
+<div class="outline-text-3" id="text-org6ba1010">
+<p>
+You can also pass a member function pointer as the function,provided you supply a suitable object pointer as the first arguments.
+</p>
+<div class="org-src-container">
+<pre class="src src-C++"><span class="linenr"> 1: </span><span class="org-preprocessor">#include</span> <span class="org-string"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-string">iostream</span><span class="org-string"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span>
+<span class="linenr"> 2: </span><span class="org-preprocessor">#include</span> <span class="org-string"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-string">thread</span><span class="org-string"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span>
+<span class="linenr"> 3: </span><span class="org-preprocessor">#include</span> <span class="org-string"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-string">functional</span><span class="org-string"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span>
+<span class="linenr"> 4: </span><span class="org-preprocessor">#include</span> <span class="org-string"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-string">string</span><span class="org-string"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span>
+<span class="linenr"> 5: </span><span class="org-keyword">class</span> <span class="org-type">X</span>
+<span class="linenr"> 6: </span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="linenr"> 7: </span><span class="org-keyword">public</span>:
+<span class="linenr"> 8: </span>    <span class="org-type">void</span> <span class="org-function-name">test_func</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-type">int</span> <span class="org-variable-name">i</span>,<span class="org-constant">std</span>::<span class="org-type">string</span>&amp; <span class="org-variable-name">str</span><span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="linenr"> 9: </span>        <span class="org-rainbow-delimiters-depth-2">{</span>
+<span class="linenr">10: </span>            ++i;
+<span class="linenr">11: </span>            str+=<span class="org-string">" word"</span>;
+<span class="linenr">12: </span>        <span class="org-rainbow-delimiters-depth-2">}</span>
+<span class="linenr">13: </span><span class="org-rainbow-delimiters-depth-1">}</span>;
+<span class="linenr">14: </span><span class="org-type">int</span> <span class="org-function-name">main</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">int</span> <span class="org-variable-name">argc</span>, <span class="org-type">char</span> *<span class="org-variable-name">argv</span><span class="org-rainbow-delimiters-depth-2">[]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="linenr">15: </span><span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="linenr">16: </span>    <span class="org-type">X</span> <span class="org-variable-name">x</span>;
+<span class="linenr">17: </span>    <span class="org-type">int</span> <span class="org-variable-name">i</span><span class="org-rainbow-delimiters-depth-2">{</span>9<span class="org-rainbow-delimiters-depth-2">}</span>;
+<span class="linenr">18: </span>    <span class="org-constant">std</span>::<span class="org-type">string</span> <span class="org-variable-name">str</span><span class="org-rainbow-delimiters-depth-2">{</span><span class="org-string">"Hello"</span><span class="org-rainbow-delimiters-depth-2">}</span>;
+<span class="linenr">19: </span>    <span class="org-constant">std</span>::<span class="org-type">thread</span> <span class="org-variable-name">t</span><span class="org-rainbow-delimiters-depth-2">(</span>&amp;<span class="org-constant">X</span>::test_func,&amp;x,i,<span class="org-constant">std</span>::ref<span class="org-rainbow-delimiters-depth-3">(</span>str<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="linenr">20: </span>    t.join<span class="org-rainbow-delimiters-depth-2">()</span>;
+<span class="linenr">21: </span>    <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-string">"After thread,i = "</span> &lt;&lt;i&lt;&lt;<span class="org-string">" str = "</span> &lt;&lt;str&lt;&lt;<span class="org-string">"\n"</span>;
+<span class="linenr">22: </span>    <span class="org-keyword">return</span> 0;
+<span class="linenr">23: </span><span class="org-rainbow-delimiters-depth-1">}</span>
+<span class="linenr">24: </span>
+</pre>
+</div>
+
+<pre class="example">
+After thread,i = 9 str = Hello word
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf3621f1" class="outline-3">
+<h3 id="orgf3621f1">Args can't be copied,but only moved</h3>
+<div class="outline-text-3" id="text-orgf3621f1">
+<p>
+Some type in c++ can't be copied,such as <code>std::unique_ptr</code>,Only one such pointer can point to a given object at a time,and when the pointer is destroyed,the pointed-to object is deleted.A <code>std::unique_ptr</code> can only be moved: <span class="underline">the data held within the object is transferred over to another,leaving the original object "empty"</span>.
+</p>
+
+<p>
+Where the source object is temporary,the move is automatic,but where the source is source is a named value,the transfer must be required directly by invoking <code>std::move()</code>.
+</p>
+<pre class="example">
+void process_big_objcet(std::unique_ptr&lt;big_object&gt; );
+std::unique_ptr&lt;big_object&gt; p{new big_object};
+std::thread t(process_big_object,std::move(p));
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3874af1" class="outline-2">
+<h2 id="org3874af1">Transferring ownership of a thread</h2>
+<div class="outline-text-2" id="text-org3874af1">
+<p>
+A <code>std::thread</code> object is responsible for managing a thread of execution,instances of <code>std::thread</code> are <i>movable</i> not <i>copyable</i>.This ensures that only one object is associate with a particular thread of execution at any one time.
+</p>
+
+<ul class="org-ul">
+<li><a href="02_Sharing_data_between_threads_ch.html">线程间共享数据</a></li>
+<li><a href="01_ManagingThread_Ch.html">C++ 线程的基础知识</a></li>
+<li><a href="01_ManagingThread.html">Managing Thread</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Tian Tongtong</p>
+<p class="date">Created: 2020-04-11 Sat 22:59</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
