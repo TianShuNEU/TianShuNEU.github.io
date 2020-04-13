@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-11 Sat 23:06 -->
+<!-- 2020-04-13 Mon 16:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Class</title>
@@ -247,97 +247,6 @@ for the JavaScript code in this tag.
  <a accesskey="H" href="../index.html"> HOME </a>
 </div><div id="content">
 <h1 class="title">Class</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org57a9de4">面向对象程序设计</a></li>
-<li><a href="#org149e3aa">数据封装</a>
-<ul>
-<li><a href="#org5735637">引入this指针</a></li>
-<li><a href="#org5804c8b">类的作用域与名字查找 </a>
-<ul>
-<li><a href="#orgf497806">类的作用域</a></li>
-<li><a href="#org01286ed">名字查找 (name lookup)</a></li>
-</ul>
-</li>
-<li><a href="#org3e10ca5">数据成员的初始化</a>
-<ul>
-<li><a href="#org21ae33d">构造函数(Constructor)</a></li>
-<li><a href="#org66c3efc">赋值</a></li>
-<li><a href="#org3819537">销毁</a></li>
-</ul>
-</li>
-<li><a href="#org8f763aa">字面值常量类</a></li>
-<li><a href="#orgb0eb643">静态成员</a>
-<ul>
-<li><a href="#org595fe4e">使用类的静态成员</a></li>
-<li><a href="#org148a33f">定义静态成员</a></li>
-<li><a href="#org0bf7a48">静态成员与普通成员的比较</a></li>
-</ul>
-</li>
-<li><a href="#orgd79462b">拷贝</a></li>
-<li><a href="#orgc583f57">拷贝初始化</a>
-<ul>
-<li><a href="#org6b1652d">合成拷贝构造函数</a></li>
-</ul>
-</li>
-<li><a href="#org5e89023">拷贝赋值运算符</a></li>
-<li><a href="#orga8d0bfa">析构函数</a>
-<ul>
-<li><a href="#org9f3dd4d">合成析构函数</a></li>
-</ul>
-</li>
-<li><a href="#org64d2a81">三/五法则</a></li>
-<li><a href="#orgc6c8fc5">使用 =default</a></li>
-<li><a href="#orge100a92">阻止拷贝</a></li>
-<li><a href="#orge18f48e">拷贝控制和资源管理</a></li>
-<li><a href="#org80fa908"><span class="todo TODO">TODO</span> 交换操作</a></li>
-<li><a href="#org25603e7">动态内存管理</a></li>
-</ul>
-</li>
-<li><a href="#org6448775">继承</a>
-<ul>
-<li><a href="#org93b059f">定义派生类</a></li>
-<li><a href="#orgf331930">类型转换与继承</a>
-<ul>
-<li><a href="#orgf7d8c7d">静态类型与动态类型</a></li>
-<li><a href="#orgba4ff46">up-casting &amp; down-casting</a></li>
-</ul>
-</li>
-<li><a href="#org0f25c2a">继承中的类作用域</a></li>
-<li><a href="#org3b16e82">成员函数与继承</a></li>
-<li><a href="#orgfd7be40">访问控制与继承</a></li>
-</ul>
-</li>
-<li><a href="#orgcf6e832">动态绑定 </a></li>
-<li><a href="#org6683b9c">C++ model</a></li>
-<li><a href="#org7ba9de4">C++对象模型的内存布局介绍 </a></li>
-<li><a href="#org1e976aa">指针的类型</a></li>
-<li><a href="#org8d719cd">Data Member</a>
-<ul>
-<li><a href="#orgd7b526d">布局</a></li>
-<li><a href="#orge8aebd8">继承与布局</a>
-<ul>
-<li><a href="#org7564822">普通单一继承</a></li>
-<li><a href="#org7581bb1">多重继承</a></li>
-<li><a href="#org8de86ae">虚拟继承</a></li>
-</ul>
-</li>
-<li><a href="#org11d3595">初始化</a></li>
-<li><a href="#org63f60d4">销毁</a></li>
-</ul>
-</li>
-<li><a href="#org7b9ab03">Member Function</a>
-<ul>
-<li><a href="#org4522c0f">Non-static member function</a></li>
-<li><a href="#org56fcba3">static member function</a></li>
-<li><a href="#orgaa4d09a">virtual member function</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 <div class="org-center">
 <p>
 <b>C++ Primer</b>
@@ -674,9 +583,9 @@ m_units_sold: 0
 </p>
 </div>
 </div>
-<div id="outline-container-org3819537" class="outline-4">
-<h4 id="org3819537">销毁</h4>
-<div class="outline-text-4" id="text-org3819537">
+<div id="outline-container-orgb2bdf50" class="outline-4">
+<h4 id="orgb2bdf50">销毁</h4>
+<div class="outline-text-4" id="text-orgb2bdf50">
 <p>
 该函数控制销毁对象时发生的行为
 </p>
@@ -1236,9 +1145,9 @@ access section 之间的排列顺序是不定的；</li>
 </div>
 </div>
 
-<div id="outline-container-org63f60d4" class="outline-3">
-<h3 id="org63f60d4">销毁</h3>
-<div class="outline-text-3" id="text-org63f60d4">
+<div id="outline-container-org7bfeaa6" class="outline-3">
+<h3 id="org7bfeaa6">销毁</h3>
+<div class="outline-text-3" id="text-org7bfeaa6">
 <p>
 如果类支持 virtual 特性，析构函数会抹销 vptr,析构函数的调用次序与构造函数正好相反：从派生类开始一直到最上层的基类。
 </p>
@@ -1310,7 +1219,7 @@ nonmember function 函数指针。
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2018-11-22</p>
-<p class="date">Created: 2020-04-11 Sat 23:06</p>
+<p class="date">Created: 2020-04-13 Mon 16:27</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

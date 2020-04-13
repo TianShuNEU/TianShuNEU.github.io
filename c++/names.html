@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-11 Sat 23:07 -->
+<!-- 2020-04-13 Mon 16:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Names And Memory Layout</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Tian Tongtong" />
+<meta name="author" content="Vincent Zhang" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -248,71 +248,6 @@ for the JavaScript code in this tag.
  <a accesskey="H" href="../index.html"> HOME </a>
 </div><div id="content">
 <h1 class="title">Names And Memory Layout</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgcada2ea">概述</a></li>
-<li><a href="#orgf062d07">变量和基本类型</a>
-<ul>
-<li><a href="#orgcf5132e">基本类型</a></li>
-<li><a href="#org86a9d29">变量</a>
-<ul>
-<li><a href="#org291bf40">声明与定义</a></li>
-<li><a href="#org2ed540d">变量初始化与赋值</a></li>
-</ul>
-</li>
-<li><a href="#org6ff13f0">复合类型</a>
-<ul>
-<li><a href="#org77b98bd">引用 (reference)</a></li>
-<li><a href="#orga4ee287">指针</a></li>
-</ul>
-</li>
-<li><a href="#org9187d76">const 限定符</a>
-<ul>
-<li><a href="#org9daa08c">compile time VS runtime</a></li>
-<li><a href="#org1ad9178">const VS constexpr</a></li>
-<li><a href="#org8500cf2">top-level const VS low-level const</a></li>
-<li><a href="#org8bd4d83">constexpr 与 指针</a></li>
-</ul>
-</li>
-<li><a href="#org6d76535">处理类型</a>
-<ul>
-<li><a href="#org6294b5e">类型别名</a></li>
-<li><a href="#org1a4fb87">auto 类型说明符</a></li>
-<li><a href="#org7a72612">decltype类型指示符</a></li>
-</ul>
-</li>
-<li><a href="#org6326de2">内置数组</a>
-<ul>
-<li><a href="#org9e36925">数组的定义和初始化</a></li>
-<li><a href="#orgf4e9ff3">理解复杂的数组声明</a></li>
-<li><a href="#orgcba3034">访问数组元素</a></li>
-<li><a href="#orgde5dbc3">数组与指针</a></li>
-<li><a href="#org1795da5">动态数组</a></li>
-<li><a href="#org3d520da">多维数组</a></li>
-</ul>
-</li>
-<li><a href="#org90cb3d3">枚举类型</a>
-<ul>
-<li><a href="#org20dd519">枚举成员</a></li>
-<li><a href="#org661778d">前置声明</a></li>
-<li><a href="#org0bc58a1">形参匹配</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org6d2671b">名字的作用域、生存期、链接性</a></li>
-<li><a href="#org532d774">命名空间</a>
-<ul>
-<li><a href="#orgf006788">内联命名空间</a></li>
-<li><a href="#org0a05bec">未命名的命名空间</a></li>
-<li><a href="#org5d81146">命名空间别名</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 <p>
 本系列是我学习C++的一个记录，主要参考《Primer C++(5th)》和《深入理解计算机系统
 （3th）》，目标是不仅要知道C++的语法规则，并且尽量探究在這些规则背后的原理。做到
@@ -825,7 +760,7 @@ C++除了固定大小的数组，还有动态数组，与固定大小的内置�
 
 <pre class="example">
 Enter a positive integer:
-I just allocate an array of length:22082
+I just allocate an array of length:22070
 </pre>
 </div>
 
@@ -1361,8 +1296,8 @@ C++11引入了一种新的命名空间叫做内联命名空间(inline namespace)
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Tian Tongtong</p>
-<p class="date">Created: 2020-04-11 Sat 23:07</p>
+<p class="author">Author: Vincent Zhang</p>
+<p class="date">Created: 2020-04-13 Mon 16:27</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

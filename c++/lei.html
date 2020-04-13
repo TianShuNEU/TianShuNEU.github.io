@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-11 Sat 23:06 -->
+<!-- 2020-04-13 Mon 16:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Class Usage</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Tian Tongtong" />
+<meta name="author" content="Vincent Zhang" />
 <meta name="description" content="本文主要是记录在学习《C++ Primer 5th》这本书的心得，帮助记忆。"
  />
 <style type="text/css">
@@ -251,77 +251,6 @@ for the JavaScript code in this tag.
  <a accesskey="H" href="../index.html"> HOME </a>
 </div><div id="content">
 <h1 class="title">Class Usage</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org9c3371c">数据抽象和封装</a></li>
-<li><a href="#org8882b9c">定义抽象数据类型</a>
-<ul>
-<li><a href="#orgef74c24">类的数据成员</a></li>
-<li><a href="#orgac33d39">类的成员函数</a>
-<ul>
-<li><a href="#org8ec5ff0">this 指针</a></li>
-<li><a href="#orgc7f5be7">静态成员函数</a></li>
-</ul>
-</li>
-<li><a href="#org6994d6c">类成员指针(.*和 -&gt;*)</a>
-<ul>
-<li><a href="#org457c911">指向数据成员的指针</a></li>
-<li><a href="#org68c0662">指向函数成员的指针</a></li>
-</ul>
-</li>
-<li><a href="#org988b143">类的友元</a>
-<ul>
-<li><a href="#org83c10f3">友元类</a></li>
-<li><a href="#org1496684">友元函数</a></li>
-</ul>
-</li>
-<li><a href="#orga372864">名字查找和类的作用域</a></li>
-<li><a href="#org6a9f974">构造函数</a>
-<ul>
-<li><a href="#orgb724d51">默认构造函数</a></li>
-<li><a href="#orgbcfe861">=default&#xa0;&#xa0;&#xa0;<span class="tag"><span class="CPP11">CPP11</span></span></a></li>
-<li><a href="#orgade0312">初始值列表</a></li>
-<li><a href="#org6c05644">默认实参与构造函数</a></li>
-<li><a href="#org314b559">隐式的类类型转换</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org259ef52">拷贝和移动控制</a>
-<ul>
-<li><a href="#org45546aa">拷贝构造函数</a>
-<ul>
-<li><a href="#orged9bb0f">合成拷贝构造函数</a></li>
-<li><a href="#org4d7ce83">拷贝初始化和直接初始化</a></li>
-</ul>
-</li>
-<li><a href="#org996a904">拷贝赋值运算符</a></li>
-<li><a href="#orgde38d05">析构函数</a></li>
-<li><a href="#orgdccb9f5">三五法则</a></li>
-<li><a href="#orgd56b9fc">使用＝default</a></li>
-<li><a href="#orgceeb0da">阻止拷贝</a>
-<ul>
-<li><a href="#org5cd467c">定义删除的函数</a></li>
-<li><a href="#org574c1b3">private 拷贝控制</a></li>
-</ul>
-</li>
-<li><a href="#org8a181e0">拷贝控制和资源管理</a></li>
-</ul>
-</li>
-<li><a href="#org9b7e881">运算符重载</a>
-<ul>
-<li><a href="#orgb4fce3b">重载、类型转换与运算符</a>
-<ul>
-<li><a href="#orgb90e2f0">类型转换运算符</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 <p>
 本文主要介绍单个的C++类的特性，包括数据抽象和封装，几大重要函数，运算符重载以及
 一些C++11新特性。
@@ -775,13 +704,13 @@ a.fun()  --&gt;  fun(&amp;a)
 </div>
 
 <pre class="example">
-In default constructor 0x7ffc6f6c0b78 0x55dbeea0ae70
-In default copy constructor 0x7ffc6f6c0b88 0x55dbeea0ae70
-In destructor 0x55dbeea0ae70
+In default constructor 0x7ffdf35a1708 0x562da68bfe70
+In default copy constructor 0x7ffdf35a1718 0x562da68bfe70
+In destructor 0x562da68bfe70
 -----
 0 0 92 93 94 95 96 97 98 99
 -----
-In destructor 0x55dbeea0ae70
+In destructor 0x562da68bfe70
 </pre>
 
 <p>
@@ -879,16 +808,16 @@ In destructor 0x55dbeea0ae70
 </div>
 
 <pre class="example">
-In default constructor 0x7ffc3e6b0998 0x55ee5c97be70 m_num = 1
-In copy constructor 0x7ffc3e6b09b8 0x55ee5c97be70 m_num = 2
+In default constructor 0x7fff83a01288 0x55b588396e70 m_num = 1
+In copy constructor 0x7fff83a012a8 0x55b588396e70 m_num = 2
 -----
 20 21 22 23 24 25 26 27 28 29
 -----
-In destructor 0x55ee5c97be70  m_num = : 1
+In destructor 0x55b588396e70  m_num = : 1
 -----
 20 21 22 23 24 25 26 27 28 29
 -----
-In destructor 0x55ee5c97be70  m_num = : 0
+In destructor 0x55b588396e70  m_num = : 0
 </pre>
 
 <p>
@@ -991,16 +920,16 @@ In destructor 0x55ee5c97be70  m_num = : 0
 </div>
 
 <pre class="example">
-In default constructor 0x7fff919ccb28 0x557122d40e70
-In copy constructor 0x7fff919ccb38 0x557122d41eb0
+In default constructor 0x7fffda43d998 0x5641b3d26e70
+In copy constructor 0x7fffda43d9a8 0x5641b3d27eb0
 -----
 20 21 22 23 24 25 26 27 28 29
 -----
-In destructor 0x557122d41eb0
+In destructor 0x5641b3d27eb0
 -----
 90 0 0 20 0 0 0 0 0 0
 -----
-In destructor 0x557122d40e70
+In destructor 0x5641b3d26e70
 </pre>
 </div>
 </div>
@@ -1224,8 +1153,8 @@ data1.operator+(data2);
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Tian Tongtong</p>
-<p class="date">Created: 2020-04-11 Sat 23:06</p>
+<p class="author">Author: Vincent Zhang</p>
+<p class="date">Created: 2020-04-13 Mon 16:27</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

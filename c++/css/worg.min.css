@@ -348,9 +348,9 @@
   Set the width of HTML export to 50% and center it
   http://stackoverflow.com/a/14476955/1219634
 */
-@media screen and (min-width: 1200px) {
-    body {
-        max-width:50%;
-        margin: auto;
-    }
-}
+/* @media screen and (min-width: 1200px) { */
+/*     body { */
+/*         max-width:50%; */
+/*         margin: auto; */
+/*     } */
+/* } */
