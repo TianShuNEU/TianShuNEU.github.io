@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-13 Mon 16:27 -->
+<!-- 2020-04-13 Mon 23:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C++ Standard Libarary</title>
@@ -252,42 +252,42 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga2a5c6e">1. 顺序容器</a>
+<li><a href="#org4598c79">1. 顺序容器</a>
 <ul>
-<li><a href="#org6c131e3">1.1. 容器库概览</a>
+<li><a href="#orgdc7f025">1.1. 容器库概览</a>
 <ul>
-<li><a href="#orge3c5e2b">1.1.1. 容器定义和初始化</a></li>
-<li><a href="#orgee04b76">1.1.2. 迭代器</a></li>
-<li><a href="#orga7abd75">1.1.3. 赋值和swap</a></li>
+<li><a href="#org7be9db4">1.1.1. 容器定义和初始化</a></li>
+<li><a href="#org20263a6">1.1.2. 迭代器</a></li>
+<li><a href="#orgee1820e">1.1.3. 赋值和swap</a></li>
 </ul>
 </li>
-<li><a href="#orgf351977">1.2. 顺序容器操作</a>
+<li><a href="#org560ed09">1.2. 顺序容器操作</a>
 <ul>
-<li><a href="#orgdbb3d4a">1.2.1. 添加元素</a></li>
-<li><a href="#org77525af">1.2.2. 访问元素</a></li>
-<li><a href="#org5ee09e6">1.2.3. 删除元素</a></li>
-<li><a href="#orgc593f53">1.2.4. 改变容器大小</a></li>
-<li><a href="#org7054278">1.2.5. 迭代器失效问题</a></li>
+<li><a href="#org226a54b">1.2.1. 添加元素</a></li>
+<li><a href="#org0ab11f1">1.2.2. 访问元素</a></li>
+<li><a href="#org291a655">1.2.3. 删除元素</a></li>
+<li><a href="#org5f03f20">1.2.4. 改变容器大小</a></li>
+<li><a href="#org25b9f10">1.2.5. 迭代器失效问题</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org2c142d4">2. 关联容器</a></li>
-<li><a href="#org76f76d0">3. 泛型算法</a></li>
-<li><a href="#org03486b4">4. 动态内存</a></li>
+<li><a href="#org8676ca4">2. 关联容器</a></li>
+<li><a href="#orgc82e681">3. 泛型算法</a></li>
+<li><a href="#org5c76d02">4. 动态内存</a></li>
 </ul>
 </div>
 </div>
 <p>
 本文重点是C++标准库，分为顺序容器、泛型算法、关联容器、动态内存四个大部分。
 </p>
-<div id="outline-container-orga2a5c6e" class="outline-2">
-<h2 id="orga2a5c6e"><span class="section-number-2">1</span> 顺序容器</h2>
+<div id="outline-container-org4598c79" class="outline-2">
+<h2 id="org4598c79"><span class="section-number-2">1</span> 顺序容器</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 顺序容器是指元素在容器中的位置与其加入容器的顺序相对应的容器。
 </p>
-<table id="orgf3ce4e3" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgadfc546" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> 顺序容器类型</caption>
 
 <colgroup>
@@ -338,8 +338,8 @@ for the JavaScript code in this tag.
 </tbody>
 </table>
 </div>
-<div id="outline-container-org6c131e3" class="outline-3">
-<h3 id="org6c131e3"><span class="section-number-3">1.1</span> 容器库概览</h3>
+<div id="outline-container-orgdc7f025" class="outline-3">
+<h3 id="orgdc7f025"><span class="section-number-3">1.1</span> 容器库概览</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 容器类型上的操作形成了一种层次：
@@ -353,8 +353,8 @@ for the JavaScript code in this tag.
 本小结主要介绍都所有容器都适用的操作，下一小节介绍顺序容器的操作，关联容器的操作将在下一节介绍。
 </p>
 </div>
-<div id="outline-container-orge3c5e2b" class="outline-4">
-<h4 id="orge3c5e2b"><span class="section-number-4">1.1.1</span> 容器定义和初始化</h4>
+<div id="outline-container-org7be9db4" class="outline-4">
+<h4 id="org7be9db4"><span class="section-number-4">1.1.1</span> 容器定义和初始化</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 容器是模板，需要在尖括号中填入元素的类型，对于 <code>array</code> 还要提供大小信息。
@@ -376,16 +376,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgee04b76" class="outline-4">
-<h4 id="orgee04b76"><span class="section-number-4">1.1.2</span> 迭代器</h4>
+<div id="outline-container-org20263a6" class="outline-4">
+<h4 id="org20263a6"><span class="section-number-4">1.1.2</span> 迭代器</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 迭代器可以认为是指针，可以对它解引用获取容器的元素值。当 <code>auto</code> 与 <code>begin</code> 或 <code>end</code> 结合使用时，获得的迭代器类型（是否const)依赖于容器类型，但 <code>cbegin</code> 和 <code>cend</code> 可以获得常量迭代器，而不管容器是什么类型。
 </p>
 </div>
 </div>
-<div id="outline-container-orga7abd75" class="outline-4">
-<h4 id="orga7abd75"><span class="section-number-4">1.1.3</span> 赋值和swap</h4>
+<div id="outline-container-orgee1820e" class="outline-4">
+<h4 id="orgee1820e"><span class="section-number-4">1.1.3</span> 赋值和swap</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <ol class="org-ol">
 <li><p>
@@ -450,22 +450,22 @@ swap 操作交换两个相同类型容器的内容，除array外，该操作元�
 
 <pre class="example">
 England	China
-Before swap: 1	6	1	6	0x7ffed01ed490	0x7ffed01ed4b0	0x7ffed01ed4d0	0x7ffed01ed4f0
-After swap: 1	6	6	1	0x7ffed01ed490	0x7ffed01ed4b0	0x7ffed01ed4d0	0x7ffed01ed4f0
-After swap: 6	1	6	1	0x7ffed01ed490	0x7ffed01ed4b0	0x7ffed01ed4d0	0x7ffed01ed4f0
+Before swap: 1	6	1	6	0x7ffdd0c8aab0	0x7ffdd0c8aad0	0x7ffdd0c8aaf0	0x7ffdd0c8ab10
+After swap: 1	6	6	1	0x7ffdd0c8aab0	0x7ffdd0c8aad0	0x7ffdd0c8aaf0	0x7ffdd0c8ab10
+After swap: 6	1	6	1	0x7ffdd0c8aab0	0x7ffdd0c8aad0	0x7ffdd0c8aaf0	0x7ffdd0c8ab10
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf351977" class="outline-3">
-<h3 id="orgf351977"><span class="section-number-3">1.2</span> 顺序容器操作</h3>
+<div id="outline-container-org560ed09" class="outline-3">
+<h3 id="org560ed09"><span class="section-number-3">1.2</span> 顺序容器操作</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 添加和删除元素会改变容器的大小，因此array 不支持添加和删除元素的操作。forward_list 有自己特殊的添加元素的函数，因此，先介绍比较通用的添加元素的方法，最后单独介绍forwar_list.
 </p>
 </div>
-<div id="outline-container-orgdbb3d4a" class="outline-4">
-<h4 id="orgdbb3d4a"><span class="section-number-4">1.2.1</span> 添加元素</h4>
+<div id="outline-container-org226a54b" class="outline-4">
+<h4 id="org226a54b"><span class="section-number-4">1.2.1</span> 添加元素</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Add Element</caption>
@@ -548,16 +548,16 @@ insert*函数都会返回新添加的（第一个）元素的迭代器，插入�
 </p>
 </div>
 </div>
-<div id="outline-container-org77525af" class="outline-4">
-<h4 id="org77525af"><span class="section-number-4">1.2.2</span> 访问元素</h4>
+<div id="outline-container-org0ab11f1" class="outline-4">
+<h4 id="org0ab11f1"><span class="section-number-4">1.2.2</span> 访问元素</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 由于vector 和 array 的元素是连续存放的，因此支持快速随机访问；list 是双向链表，只支持双向顺序访问；forward_list 是单向链表，只支持单向顺序访问，deque 双端队列，也支持快速随机访问。
 </p>
 </div>
 </div>
-<div id="outline-container-org5ee09e6" class="outline-4">
-<h4 id="org5ee09e6"><span class="section-number-4">1.2.3</span> 删除元素</h4>
+<div id="outline-container-org291a655" class="outline-4">
+<h4 id="org291a655"><span class="section-number-4">1.2.3</span> 删除元素</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -622,16 +622,16 @@ erase 函数返回最后一个被删元素之后元素的迭代器
 </p>
 </div>
 </div>
-<div id="outline-container-orgc593f53" class="outline-4">
-<h4 id="orgc593f53"><span class="section-number-4">1.2.4</span> 改变容器大小</h4>
+<div id="outline-container-org5f03f20" class="outline-4">
+<h4 id="org5f03f20"><span class="section-number-4">1.2.4</span> 改变容器大小</h4>
 <div class="outline-text-4" id="text-1-2-4">
 <p>
 resize 函数可以改变容器的大小，可以放大或缩小容器，放大时可以指定增加的元素的值： resize(n,t),缩小时多余的元素会被删掉。
 </p>
 </div>
 </div>
-<div id="outline-container-org7054278" class="outline-4">
-<h4 id="org7054278"><span class="section-number-4">1.2.5</span> 迭代器失效问题</h4>
+<div id="outline-container-org25b9f10" class="outline-4">
+<h4 id="org25b9f10"><span class="section-number-4">1.2.5</span> 迭代器失效问题</h4>
 <div class="outline-text-4" id="text-1-2-5">
 <p>
 当对除list 和 forward_list 以外的容器添加/删除元素后，其原有的迭代器很可能会失效，因此在这些操作后要及时更新迭代器，可以使用 insert() 和 erase()函数返回的迭代器进行更新。还有特别要注意的是，不要保存end()返回的迭代器，因为在添加/删除元素后，它很可能已经失效了。
@@ -640,14 +640,14 @@ resize 函数可以改变容器的大小，可以放大或缩小容器，放大�
 </div>
 </div>
 </div>
-<div id="outline-container-org2c142d4" class="outline-2">
-<h2 id="org2c142d4"><span class="section-number-2">2</span> 关联容器</h2>
+<div id="outline-container-org8676ca4" class="outline-2">
+<h2 id="org8676ca4"><span class="section-number-2">2</span> 关联容器</h2>
 </div>
-<div id="outline-container-org76f76d0" class="outline-2">
-<h2 id="org76f76d0"><span class="section-number-2">3</span> 泛型算法</h2>
+<div id="outline-container-orgc82e681" class="outline-2">
+<h2 id="orgc82e681"><span class="section-number-2">3</span> 泛型算法</h2>
 </div>
-<div id="outline-container-org03486b4" class="outline-2">
-<h2 id="org03486b4"><span class="section-number-2">4</span> 动态内存</h2>
+<div id="outline-container-org5c76d02" class="outline-2">
+<h2 id="org5c76d02"><span class="section-number-2">4</span> 动态内存</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li><a href="stl.html">C++ Standard Libarary</a></li>
@@ -667,7 +667,7 @@ resize 函数可以改变容器的大小，可以放大或缩小容器，放大�
 <div id="postamble" class="status">
 <p class="date">Date: 2018-12-13</p>
 <p class="author">Author: Vincent Zhang</p>
-<p class="date">Created: 2020-04-13 Mon 16:27</p>
+<p class="date">Created: 2020-04-13 Mon 23:52</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

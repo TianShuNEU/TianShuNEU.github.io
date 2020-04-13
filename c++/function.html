@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-13 Mon 16:27 -->
+<!-- 2020-04-13 Mon 23:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Function</title>
@@ -251,33 +251,33 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org821cf98">1. 函数基础</a></li>
-<li><a href="#orgd4ef2e8">2. 参数传递</a>
+<li><a href="#org5a1ef22">1. 函数基础</a></li>
+<li><a href="#org4e77d10">2. 参数传递</a>
 <ul>
-<li><a href="#org4565181">2.1. Passing arguments by value</a></li>
-<li><a href="#orgbaaca7c">2.2. Passing arguments by reference</a></li>
-<li><a href="#org060122f">2.3. Passing arguments by address</a></li>
-<li><a href="#org7010c74">2.4. Examples</a></li>
+<li><a href="#org98766c1">2.1. Passing arguments by value</a></li>
+<li><a href="#org1f73971">2.2. Passing arguments by reference</a></li>
+<li><a href="#orgf8d308e">2.3. Passing arguments by address</a></li>
+<li><a href="#org9f673c2">2.4. Examples</a></li>
 </ul>
 </li>
-<li><a href="#org1d6d311">3. 结果返回</a>
+<li><a href="#org2c8e66e">3. 结果返回</a>
 <ul>
-<li><a href="#org84a2a09">3.1. return by value</a></li>
-<li><a href="#org94a9a2c">3.2. return by address</a></li>
-<li><a href="#orge85317e">3.3. return by reference</a></li>
-<li><a href="#orgbda66be">3.4. Examples</a></li>
+<li><a href="#orgb488d4b">3.1. return by value</a></li>
+<li><a href="#orgebedf62">3.2. return by address</a></li>
+<li><a href="#orgd6956ab">3.3. return by reference</a></li>
+<li><a href="#org6c9da32">3.4. Examples</a></li>
 </ul>
 </li>
-<li><a href="#org377ac1d">4. 函数重载</a>
+<li><a href="#org3b741f4">4. 函数重载</a>
 <ul>
-<li><a href="#org71c5706">4.1. 判断两个形参的类型是否相异</a></li>
-<li><a href="#orga4ab9b6">4.2. 内联函数</a></li>
+<li><a href="#org5e0d419">4.1. 判断两个形参的类型是否相异</a></li>
+<li><a href="#org998e60d">4.2. 内联函数</a></li>
 </ul>
 </li>
-<li><a href="#orgdb79b81">5. 函数指针</a>
+<li><a href="#org1744188">5. 函数指针</a>
 <ul>
-<li><a href="#orgd60b9e4">5.1. 函数指针形参</a></li>
-<li><a href="#org6322ace">5.2. 返回指向函数的指针</a></li>
+<li><a href="#org75f9fc9">5.1. 函数指针形参</a></li>
+<li><a href="#orgea9be3c">5.2. 返回指向函数的指针</a></li>
 </ul>
 </li>
 </ul>
@@ -285,8 +285,8 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="outline-container-org821cf98" class="outline-2">
-<h2 id="org821cf98"><span class="section-number-2">1</span> 函数基础</h2>
+<div id="outline-container-org5a1ef22" class="outline-2">
+<h2 id="org5a1ef22"><span class="section-number-2">1</span> 函数基础</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 函数是一个具名的代码块，我们通过调用函数来执行相应的代码，一个典型的函数包括以下
@@ -305,16 +305,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd4ef2e8" class="outline-2">
-<h2 id="orgd4ef2e8"><span class="section-number-2">2</span> 参数传递</h2>
+<div id="outline-container-org4e77d10" class="outline-2">
+<h2 id="org4e77d10"><span class="section-number-2">2</span> 参数传递</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 每次调用函数时都会重新创建它的形参，并用引入的实参(arguments)对形参(parameters)
 进行初始化。形参初始化机理与变量初始化一样。概括的说，一共有3种方式传递参数。
 </p>
 </div>
-<div id="outline-container-org4565181" class="outline-3">
-<h3 id="org4565181"><span class="section-number-3">2.1</span> Passing arguments by value</h3>
+<div id="outline-container-org98766c1" class="outline-3">
+<h3 id="org98766c1"><span class="section-number-3">2.1</span> Passing arguments by value</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 使用这种方式传值时，形参会拷贝实参的值(如果是类类型，则调用复制构造函数),形参与
@@ -370,8 +370,8 @@ flexible and safe, and in the case of fundamental types, efficient.
 </p>
 </div>
 </div>
-<div id="outline-container-orgbaaca7c" class="outline-3">
-<h3 id="orgbaaca7c"><span class="section-number-3">2.2</span> Passing arguments by reference</h3>
+<div id="outline-container-org1f73971" class="outline-3">
+<h3 id="org1f73971"><span class="section-number-3">2.2</span> Passing arguments by reference</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 以这种方式传递实参可以避免拷贝，形参只是形参的别名，在函数中对形参的操作实际是对
@@ -443,8 +443,8 @@ When not to use pass by reference:
 </div>
 </div>
 
-<div id="outline-container-org060122f" class="outline-3">
-<h3 id="org060122f"><span class="section-number-3">2.3</span> Passing arguments by address</h3>
+<div id="outline-container-orgf8d308e" class="outline-3">
+<h3 id="orgf8d308e"><span class="section-number-3">2.3</span> Passing arguments by address</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 这种传值方式兼具以上两种的特点：形参拷贝实参的值(地址),形参会改变实参指向的对象。
@@ -525,8 +525,8 @@ pass by address, pass by reference should be preferred in most cases.
 </div>
 </div>
 
-<div id="outline-container-org7010c74" class="outline-3">
-<h3 id="org7010c74"><span class="section-number-3">2.4</span> Examples</h3>
+<div id="outline-container-org9f673c2" class="outline-3">
+<h3 id="org9f673c2"><span class="section-number-3">2.4</span> Examples</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 当数组作为形参时是需要特别强调的，因为数组不允许拷贝所以不能使用传值传递，因为数
@@ -622,8 +622,8 @@ pass by address, pass by reference should be preferred in most cases.
 </div>
 </div>
 
-<div id="outline-container-org1d6d311" class="outline-2">
-<h2 id="org1d6d311"><span class="section-number-2">3</span> 结果返回</h2>
+<div id="outline-container-org2c8e66e" class="outline-2">
+<h2 id="org2c8e66e"><span class="section-number-2">3</span> 结果返回</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 当函数返回调用者处的时候需要调用 <code>return</code> 语句(隐式或显式),无返回值函数在函数最
@@ -640,8 +640,8 @@ function returns, we need to consider the effect of this on each return type.
 </p>
 </div>
 
-<div id="outline-container-org84a2a09" class="outline-3">
-<h3 id="org84a2a09"><span class="section-number-3">3.1</span> return by value</h3>
+<div id="outline-container-orgb488d4b" class="outline-3">
+<h3 id="orgb488d4b"><span class="section-number-3">3.1</span> return by value</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 When a value is returned by value, a copy of that value is returned to the
@@ -668,8 +668,8 @@ When not to use return by value:
 </div>
 </div>
 
-<div id="outline-container-org94a9a2c" class="outline-3">
-<h3 id="org94a9a2c"><span class="section-number-3">3.2</span> return by address</h3>
+<div id="outline-container-orgebedf62" class="outline-3">
+<h3 id="orgebedf62"><span class="section-number-3">3.2</span> return by address</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 不可以返回局部变量的地址，因为局部变量在函数返回后就销毁了，因此它原来的地址变成
@@ -698,8 +698,8 @@ When not to use return by address:
 </div>
 </div>
 
-<div id="outline-container-orge85317e" class="outline-3">
-<h3 id="orge85317e"><span class="section-number-3">3.3</span> return by reference</h3>
+<div id="outline-container-orgd6956ab" class="outline-3">
+<h3 id="orgd6956ab"><span class="section-number-3">3.3</span> return by reference</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 ng oSimilar to pass by address, values returned by reference must be variables (you
@@ -748,8 +748,8 @@ When not to use return by reference:
 </div>
 </div>
 
-<div id="outline-container-orgbda66be" class="outline-3">
-<h3 id="orgbda66be"><span class="section-number-3">3.4</span> Examples</h3>
+<div id="outline-container-org6c9da32" class="outline-3">
+<h3 id="org6c9da32"><span class="section-number-3">3.4</span> Examples</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 返回数组指针
@@ -829,8 +829,8 @@ return type),但是用在返回类型复杂的函数上最有效。使用方法�
 </div>
 </div>
 
-<div id="outline-container-org377ac1d" class="outline-2">
-<h2 id="org377ac1d"><span class="section-number-2">4</span> 函数重载</h2>
+<div id="outline-container-org3b741f4" class="outline-2">
+<h2 id="org3b741f4"><span class="section-number-2">4</span> 函数重载</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 函数重载是C++的一个特性，这个特性使得我们可以使用一个函数名创建多个函数，只要它
@@ -841,8 +841,8 @@ syntactic way to tell which version of a function was being called）
 </p>
 </div>
 
-<div id="outline-container-org71c5706" class="outline-3">
-<h3 id="org71c5706"><span class="section-number-3">4.1</span> 判断两个形参的类型是否相异</h3>
+<div id="outline-container-org5e0d419" class="outline-3">
+<h3 id="org5e0d419"><span class="section-number-3">4.1</span> 判断两个形参的类型是否相异</h3>
 <div class="outline-text-3" id="text-4-1">
 <dl class="org-dl">
 <dt>类型别名</dt><dd>别名不能引入一个新的类型，因此别名不能作为重载函数</dd>
@@ -853,8 +853,8 @@ syntactic way to tell which version of a function was being called）
 </div>
 </div>
 
-<div id="outline-container-orga4ab9b6" class="outline-3">
-<h3 id="orga4ab9b6"><span class="section-number-3">4.2</span> 内联函数</h3>
+<div id="outline-container-org998e60d" class="outline-3">
+<h3 id="org998e60d"><span class="section-number-3">4.2</span> 内联函数</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 我们可以将一些代码较小的函数声明尾内联函数，只要在函数最前面加上 <code>inline</code> 即可，
@@ -871,8 +871,8 @@ files together.
 </div>
 </div>
 
-<div id="outline-container-orgdb79b81" class="outline-2">
-<h2 id="orgdb79b81"><span class="section-number-2">5</span> 函数指针</h2>
+<div id="outline-container-org1744188" class="outline-2">
+<h2 id="org1744188"><span class="section-number-2">5</span> 函数指针</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 由于函数在程序内存中也是有地址的，因此我们可以定义函数指针指向函数。 <b>函数的类型由
@@ -944,8 +944,8 @@ This is fpf!
 <dt>std::function</dt><dd>在C++11中还可以使用 <code>std::function</code> 方法来定义和存储函数指针</dd>
 </dl>
 </div>
-<div id="outline-container-orgd60b9e4" class="outline-3">
-<h3 id="orgd60b9e4"><span class="section-number-3">5.1</span> 函数指针形参</h3>
+<div id="outline-container-org75f9fc9" class="outline-3">
+<h3 id="org75f9fc9"><span class="section-number-3">5.1</span> 函数指针形参</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 我们应该在心理有这样一个概念，将函数与对象对应起来：函数类型对应数据类型，函数名
@@ -1079,8 +1079,8 @@ This is fpf!
 </div>
 </div>
 
-<div id="outline-container-org6322ace" class="outline-3">
-<h3 id="org6322ace"><span class="section-number-3">5.2</span> 返回指向函数的指针</h3>
+<div id="outline-container-orgea9be3c" class="outline-3">
+<h3 id="orgea9be3c"><span class="section-number-3">5.2</span> 返回指向函数的指针</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 和数组类似，虽然不能返回一个函数，但是能返回指向函数类型的指针。参照下面的例子：
@@ -1132,7 +1132,7 @@ decltype(demo) *fun(int);
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2018-11-21</p>
-<p class="date">Created: 2020-04-13 Mon 16:27</p>
+<p class="date">Created: 2020-04-13 Mon 23:52</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

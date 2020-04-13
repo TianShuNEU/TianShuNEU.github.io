@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-13 Mon 16:27 -->
+<!-- 2020-04-13 Mon 23:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>IO lib</title>
@@ -249,24 +249,24 @@ for the JavaScript code in this tag.
 </div><div id="content">
 <h1 class="title">IO lib</h1>
 
-<div id="outline-container-org0cf495d" class="outline-2">
-<h2 id="org0cf495d">简介</h2>
-<div class="outline-text-2" id="text-org0cf495d">
+<div id="outline-container-org8fc468a" class="outline-2">
+<h2 id="org8fc468a">简介</h2>
+<div class="outline-text-2" id="text-org8fc468a">
 <p>
 C++的输入输出封装在IO库里，主要通过“流”来实现，通常可以分为三种流：普通流，文件流和string流，他们分别定义在头文件 <code>iostream</code> <code>fstream</code> <code>sstream</code> 中，下一小节主要讲可以用于这三种流的通用特性。
 </p>
 </div>
 </div>
-<div id="outline-container-org8d8752c" class="outline-2">
-<h2 id="org8d8752c">流的特性</h2>
-<div class="outline-text-2" id="text-org8d8752c">
+<div id="outline-container-orgbf67af7" class="outline-2">
+<h2 id="orgbf67af7">流的特性</h2>
+<div class="outline-text-2" id="text-orgbf67af7">
 </div>
-<div id="outline-container-org4628ac9" class="outline-3">
-<h3 id="org4628ac9">流对象不能拷贝或赋值</h3>
+<div id="outline-container-org4cf33bf" class="outline-3">
+<h3 id="org4cf33bf">流对象不能拷贝或赋值</h3>
 </div>
-<div id="outline-container-orgb8b502e" class="outline-3">
-<h3 id="orgb8b502e">流的条件状态</h3>
-<div class="outline-text-3" id="text-orgb8b502e">
+<div id="outline-container-org07ec6ba" class="outline-3">
+<h3 id="org07ec6ba">流的条件状态</h3>
+<div class="outline-text-3" id="text-org07ec6ba">
 <p>
 由 <code>badbit</code> <code>failbit</code> <code>eofbit</code> <code>goodbit</code> 四个状态位给出，只有当一个流处于无错误状态时，才能对它读写， <code>badbit</code> 表示系统级错误，一旦被置位，流就无法使用了， <code>failbit</code> 置位表示可恢复的错误，修正后流还可以使用，如果到达文件结束位置， <code>eofbit</code> 和 <code>failbit</code> 都会置位， <code>goodbit</code> 的值为0,表示流未发生错误。我们可以通过与状态位相对应的四个函数来察看是否被置位，它们分别是 <code>bad()</code> <code>fail()</code> <code>eof()</code> <code>good()</code>,另外当 <code>failbit</code> 被置位时， <code>faile</code> 也会返回 <code>true</code> ,这意味着使用 <code>good()</code> 或 <code>faile()</code> 是确定流总体状态的正确方法，而 <code>eof()</code> 和 <code>bad()</code> 只能表示特定的错误。
 </p>
@@ -276,9 +276,9 @@ C++的输入输出封装在IO库里，主要通过“流”来实现，通常可
 </p>
 </div>
 </div>
-<div id="outline-container-org79d9987" class="outline-3">
-<h3 id="org79d9987">缓冲</h3>
-<div class="outline-text-3" id="text-org79d9987">
+<div id="outline-container-orgab2a476" class="outline-3">
+<h3 id="orgab2a476">缓冲</h3>
+<div class="outline-text-3" id="text-orgab2a476">
 <p>
 缓冲就是输出流首先将内容放在缓存里，而不是直接输出到屏幕、文件等目的地，它的好处是可以将程序的多个输出组合成单一的系统级写操作，由于写操作很费时，所以这会带来很大的性能提升。
 </p>
@@ -309,9 +309,9 @@ C++的输入输出封装在IO库里，主要通过“流”来实现，通常可
 </ol>
 </div>
 </div>
-<div id="outline-container-org8081fc0" class="outline-3">
-<h3 id="org8081fc0">流的格式状态</h3>
-<div class="outline-text-3" id="text-org8081fc0">
+<div id="outline-container-orgb2d25a8" class="outline-3">
+<h3 id="orgb2d25a8">流的格式状态</h3>
+<div class="outline-text-3" id="text-orgb2d25a8">
 <p>
 除了条件状态外，每个流对象还维护一个格式状态来控制IO如何格式化的细节，标准库定义了一组操纵符（manipulator）来修改流的格式状态，一个操纵符是一个函数或者对象，会影响流的状态，并能用作输入输出运算符的运算对象。
 </p>
@@ -363,9 +363,9 @@ pi:-*************3.1416next clo
 </pre>
 </div>
 </div>
-<div id="outline-container-org7124324" class="outline-3">
-<h3 id="org7124324">随机访问</h3>
-<div class="outline-text-3" id="text-org7124324">
+<div id="outline-container-org9641772" class="outline-3">
+<h3 id="org9641772">随机访问</h3>
+<div class="outline-text-3" id="text-org9641772">
 <p>
 我们可以重定位流，通过定位（seek）到流中的给定位置，以及告诉（tell）当前位置。由于 istream 和 ostream 类型通常不支持随机访问，所以本小节内容只适用于 fstream 和 sstream。
 标准库实际上定义了两对 <code>tell</code> 和 <code>seek</code> 函数，分别用于输入流和输出流，输入和输出版本的差别在于后缀是 <code>g</code> 还是 <code>p</code>.
@@ -381,9 +381,9 @@ pi:-*************3.1416next clo
 </div>
 </div>
 
-<div id="outline-container-orgfbf1c97" class="outline-2">
-<h2 id="orgfbf1c97">文件流</h2>
-<div class="outline-text-2" id="text-orgfbf1c97">
+<div id="outline-container-orgc19cc8e" class="outline-2">
+<h2 id="orgc19cc8e">文件流</h2>
+<div class="outline-text-2" id="text-orgc19cc8e">
 <p>
 流对象使用 <code>open()</code> 和 <code>close()</code> 成员函数来打开和关闭一个文件，一个文件打开后该对象一直保持与对应文件的关联，直到调用 <code>close()</code>,对一个已经打开的文件流调用 <code>open()</code> 会失败，并置位 <code>failbit</code>,因此为了将文件流关联到另一个文件上，必须关闭已经关联的文件。
 </p>
@@ -446,9 +446,9 @@ pi:-*************3.1416next clo
 <li>ate 和 binary 模式可以用于任何类型的文件流对象，且可以与其它任何文件模式组合使用。</li>
 </ul>
 </div>
-<div id="outline-container-org043a689" class="outline-3">
-<h3 id="org043a689">读写文本文件</h3>
-<div class="outline-text-3" id="text-org043a689">
+<div id="outline-container-orgf5fb908" class="outline-3">
+<h3 id="orgf5fb908">读写文本文件</h3>
+<div class="outline-text-3" id="text-orgf5fb908">
 <div class="org-src-container">
 <pre class="src src-C++"><span class="linenr"> 1: </span><span class="org-preprocessor">#include</span> <span class="org-string"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-string">fstream</span><span class="org-string"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span>
 <span class="linenr"> 2: </span><span class="org-preprocessor">#include</span> <span class="org-string"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-string">iostream</span><span class="org-string"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span>
@@ -511,13 +511,13 @@ pi:-*************3.1416next clo
 
 
 
-<div id="outline-container-orged6f97b" class="outline-3">
-<h3 id="orged6f97b">读写二进制文件</h3>
+<div id="outline-container-org025d123" class="outline-3">
+<h3 id="org025d123">读写二进制文件</h3>
 </div>
 </div>
-<div id="outline-container-org8b028e6" class="outline-2">
-<h2 id="org8b028e6">string 流</h2>
-<div class="outline-text-2" id="text-org8b028e6">
+<div id="outline-container-org36cf1f5" class="outline-2">
+<h2 id="org36cf1f5">string 流</h2>
+<div class="outline-text-2" id="text-org36cf1f5">
 <ul class="org-ul">
 <li><a href="stl.html">C++ Standard Libarary</a></li>
 <li><a href="names.html">Names And Memory Layout</a></li>
@@ -535,7 +535,7 @@ pi:-*************3.1416next clo
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Vincent Zhang</p>
-<p class="date">Created: 2020-04-13 Mon 16:27</p>
+<p class="date">Created: 2020-04-13 Mon 23:52</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-13 Mon 14:36 -->
+<!-- 2020-04-13 Mon 23:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Managing Thread</title>
@@ -193,6 +193,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link rel="stylesheet" type="text/css" href="css/worg.min.css"/>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -248,13 +249,13 @@ for the JavaScript code in this tag.
 </div><div id="content">
 <h1 class="title">Managing Thread</h1>
 
-<div id="outline-container-orgd1cad79" class="outline-2">
-<h2 id="orgd1cad79">Basic thread management</h2>
-<div class="outline-text-2" id="text-orgd1cad79">
+<div id="outline-container-org4e9ea96" class="outline-2">
+<h2 id="org4e9ea96">Basic thread management</h2>
+<div class="outline-text-2" id="text-org4e9ea96">
 </div>
-<div id="outline-container-orgbf82a18" class="outline-3">
-<h3 id="orgbf82a18">Launching a thread</h3>
-<div class="outline-text-3" id="text-orgbf82a18">
+<div id="outline-container-orgcbbc2c2" class="outline-3">
+<h3 id="orgcbbc2c2">Launching a thread</h3>
+<div class="outline-text-3" id="text-orgcbbc2c2">
 <p>
 Starting a new thread using the <b>c++ Thread Library</b> always boils down to constructing a <code>std::thread</code> object,and specify a <i>task</i> to run on that thread.
 </p>
@@ -317,9 +318,9 @@ std::thread my_thread([](){do_sth();do_sth_else();});
 </p>
 </div>
 </div>
-<div id="outline-container-org1c37776" class="outline-3">
-<h3 id="org1c37776">Waiting for a thread to complete</h3>
-<div class="outline-text-3" id="text-org1c37776">
+<div id="outline-container-org4a70a9a" class="outline-3">
+<h3 id="org4a70a9a">Waiting for a thread to complete</h3>
+<div class="outline-text-3" id="text-org4a70a9a">
 <p>
 Just call <code>join()</code> function is sufficient, it is simple and brute force,if you need more fine-grained control over waiting for a thread,such as to check whether a thread is finished or to wait a certain period of time,you will need condition variables and futures.
 </p>
@@ -389,9 +390,9 @@ If you don't need to wait for a thread to finish,you can avoid this exception-sa
 </p>
 </div>
 </div>
-<div id="outline-container-orgf528906" class="outline-3">
-<h3 id="orgf528906">Running thread in the background</h3>
-<div class="outline-text-3" id="text-orgf528906">
+<div id="outline-container-orgda36f13" class="outline-3">
+<h3 id="orgda36f13">Running thread in the background</h3>
+<div class="outline-text-3" id="text-orgda36f13">
 <p>
 If you are detaching a thread,you can usually call <code>detach()</code> immediately after the thread has been started.After the call <code>detach</code> completes,this breaks the association of the thread with the <code>std::thread</code> object and ensures that <code>std::terminate()</code> won't be called when the <code>std::thread</code> object is destroyed,even though the thread is still running in the background.
 </p>
@@ -402,16 +403,16 @@ Detached thread are often called <i>daemon thread</i> that runs in the backgroun
 </div>
 </div>
 </div>
-<div id="outline-container-orga1060ba" class="outline-2">
-<h2 id="orga1060ba">Passing args to a thread function</h2>
-<div class="outline-text-2" id="text-orga1060ba">
+<div id="outline-container-org20d4f4e" class="outline-2">
+<h2 id="org20d4f4e">Passing args to a thread function</h2>
+<div class="outline-text-2" id="text-org20d4f4e">
 <p>
 Although other mechanisms could be used to pass args to a thread function(function object,args can be it's data member),the Thread Library provides you with an easy way of doing it.
 </p>
 </div>
-<div id="outline-container-org83a4f49" class="outline-3">
-<h3 id="org83a4f49">Pass by value</h3>
-<div class="outline-text-3" id="text-org83a4f49">
+<div id="outline-container-orgaa4cf82" class="outline-3">
+<h3 id="orgaa4cf82">Pass by value</h3>
+<div class="outline-text-3" id="text-orgaa4cf82">
 <p>
 Passing args to the callable object or function is foundamentally as simple as passing additional args to <code>std::thread</code> constructor, but <code>std::thread</code> constructor does't know the what kind of arguments the function needs,whether by value or by reference,but bear in mind that by default the args are <i>copied</i> into internal storage(by value).
 </p>
@@ -446,9 +447,9 @@ After thread,i:9 str:Hello
 </div>
 </div>
 
-<div id="outline-container-org6281253" class="outline-3">
-<h3 id="org6281253">Pass by reference</h3>
-<div class="outline-text-3" id="text-org6281253">
+<div id="outline-container-orgb645867" class="outline-3">
+<h3 id="orgb645867">Pass by reference</h3>
+<div class="outline-text-3" id="text-orgb645867">
 <p>
 If the function in the thread passes arguments by reference,you should use <code>std::ref</code>.
 </p>
@@ -485,9 +486,9 @@ After thread,i:10 str:Hello world
 </div>
 </div>
 
-<div id="outline-container-org6ba1010" class="outline-3">
-<h3 id="org6ba1010">Pass a member function</h3>
-<div class="outline-text-3" id="text-org6ba1010">
+<div id="outline-container-org21dec4b" class="outline-3">
+<h3 id="org21dec4b">Pass a member function</h3>
+<div class="outline-text-3" id="text-org21dec4b">
 <p>
 You can also pass a member function pointer as the function,provided you supply a suitable object pointer as the first arguments.
 </p>
@@ -525,9 +526,9 @@ After thread,i = 9 str = Hello word
 </div>
 </div>
 
-<div id="outline-container-orgf3621f1" class="outline-3">
-<h3 id="orgf3621f1">Args can't be copied,but only moved</h3>
-<div class="outline-text-3" id="text-orgf3621f1">
+<div id="outline-container-org9f773a2" class="outline-3">
+<h3 id="org9f773a2">Args can't be copied,but only moved</h3>
+<div class="outline-text-3" id="text-org9f773a2">
 <p>
 Some type in c++ can't be copied,such as <code>std::unique_ptr</code>,Only one such pointer can point to a given object at a time,and when the pointer is destroyed,the pointed-to object is deleted.A <code>std::unique_ptr</code> can only be moved: <span class="underline">the data held within the object is transferred over to another,leaving the original object "empty"</span>.
 </p>
@@ -544,9 +545,9 @@ std::thread t(process_big_object,std::move(p));
 </div>
 </div>
 
-<div id="outline-container-org3874af1" class="outline-2">
-<h2 id="org3874af1">Transferring ownership of a thread</h2>
-<div class="outline-text-2" id="text-org3874af1">
+<div id="outline-container-org18e37f0" class="outline-2">
+<h2 id="org18e37f0">Transferring ownership of a thread</h2>
+<div class="outline-text-2" id="text-org18e37f0">
 <p>
 A <code>std::thread</code> object is responsible for managing a thread of execution,instances of <code>std::thread</code> are <i>movable</i> not <i>copyable</i>.This ensures that only one object is associate with a particular thread of execution at any one time.
 </p>
@@ -561,7 +562,7 @@ A <code>std::thread</code> object is responsible for managing a thread of execut
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Vincent Zhang</p>
-<p class="date">Created: 2020-04-13 Mon 14:36</p>
+<p class="date">Created: 2020-04-13 Mon 23:58</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
