@@ -349,8 +349,8 @@
   http://stackoverflow.com/a/14476955/1219634
 */
 @media screen and (min-width: 1200px) {
-    /* body { */
-    /*     max-width:50%; */
-    /*     margin: auto; */
-    /* } */
+    body {
+        max-width:50%;
+        margin: auto;
+    }
 }
