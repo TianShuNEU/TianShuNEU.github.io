@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif);
 
-@media all
-{
+/* @media all */
+/* { */
     html {
 	    margin: 0;
 	    font: .9em/1.6em "Droid Serif", Cambria, Georgia, "DejaVu Serif", serif;
@@ -13,8 +13,8 @@
     }
 
     body {
-	    font-size: 14pt;
-	    line-height: 22pt;
+	    font-size: 1.10em;
+	    line-height: 1.6em;
 	    color: black;
 	    margin-top: 0;
 
@@ -30,7 +30,7 @@
 	    position: fixed;
 	    top:0;
 	    display:block;
-	    font-size: 12pt;
+	    font-size: 1.1em;
 	    right:0pt;
 	    text-align: right;
 	    padding: .2em 1em;
@@ -40,7 +40,52 @@
 
     body .title {
 	    margin-left: 0px;
-	    font-size: 22pt;
+	    font-size: 2.5em;
+    }
+    /* Title */
+    h1 {
+	    font-size:2.1em;
+        /* top right down left */
+	    padding:0 0 0.3em 0;
+	    /* margin-top: 10px; */
+	    /* margin-bottom: 10px; */
+	    /* margin-right: 7%; */
+	    /* color: grey; */
+        text-shadow: 0.2ex 0.2ex 0.2ex gray;
+    }
+
+    h2 {
+	    font-size:1.5em;
+        font-weight: bold;
+	    /* line-height:16px; */
+	    padding:0 0 0.25em 0;
+	    /* color: black; */
+	    border-bottom: 2px solid #DDDD;
+    }
+
+    h3 {
+	    font-size:1.3em;
+        padding:0 0 0 0;
+	    color: ;
+	    /* margin-left: 0.6em; */
+    }
+    h4 {
+	    font-size:1.2em;
+        padding:0 0 0 0;
+	    /* margin-left: 1.2em; */
+	    /* color: #A5573E; */
+    }
+
+    h2,h3,h4{
+        font-family:sans-serif;
+    }
+    h2 code, h3 code, h4 code, h5 code, td code {
+        font-family: inherit !important;
+        font-size: inherit !important;
+    }
+
+    td code {
+        font-weight: bold;
     }
 
     #org-div-home-and-up{
@@ -51,24 +96,24 @@
 
     /* TOC inspired by http://jashkenas.github.com/coffee-script */
     #table-of-contents {
-	    margin-top: 20px;
-	    font-size: 10pt;
+	    /* margin-top: 20px; */
+	    font-size: 0.8em;
 	    position: fixed;
 	    right: 0em;
 	    top: 0em;
 	    background: white;
-	    line-height: 12pt;
+	    /* line-height: 12pt; */
 	    text-align: left;
 	    box-shadow: 1 1 4em #777777;
 	    -webkit-box-shadow: 0 0 1em #777777;
 	    -moz-box-shadow: 0 0 1em #777777;
-	    -webkit-border-bottom-left-radius: 5px;
-	    -moz-border-radius-bottomleft: 5px;
+	    /* -webkit-border-bottom-left-radius: 5px; */
+	    /* -moz-border-radius-bottomleft: 5px; */
 	    /* ensure doesn't flow off the screen when expanded */
 	    max-height: 80%;
 	    overflow: auto; }
     #table-of-contents h2 {
-	    font-size: 13pt;
+	    font-size: 0.7em;
 	    max-width: 9em;
 	    border: 0;
 	    font-weight: normal;
@@ -84,64 +129,10 @@
 	    padding: 0.5em;
 	    margin-top: -1.5em; }
 
-    #license {
-        background-color: #eeeeee;
-    }
+    /* #license { */
+    /*     background-color: #eeeeee; */
+    /* } */
 
-    /* Title */
-
-    h1 {
-	    font-size:2.1em;
-	    padding:0 0 30px 0;
-	    margin-top: 10px;
-	    margin-bottom: 10px;
-	    margin-right: 7%;
-	    color: grey;
-        text-shadow: 0.2ex 0.2ex 0.2ex gray;
-
-    }
-
-    h2 {
-	    font-size:1.45em;
-	    line-height:16px;
-	    padding:10px 0 10px 0;
-	    color: black;
-	    border-bottom: 2px solid #DDDD;
-    }
-
-    .outline-text-2 {
-	    margin-left: 0.1em
-    }
-
-    h3 {
-	    font-size:1.3em;
-	    color: grey;
-	    margin-left: 0.6em;
-    }
-
-    .outline-text-3 {
-	    margin-left: 0.9em;
-    }
-
-    h4 {
-	    font-size:1.2em;
-	    margin-left: 1.2em;
-	    color: #A5573E;
-    }
-
-    h2,h3,h4{
-        font-family:sans-serif;
-    }
-    h2 code, h3 code, h4 code, h5 code, td code {
-        font-family: inherit !important;
-        font-size: inherit !important;
-    }
-    td code {
-        font-weight: bold;
-    }
-    .outline-text-4 {
-	    margin-left: 1.45em;
-    }
 
     a {
         text-decoration: none;
@@ -246,17 +237,17 @@
         font-family: "Inconsolata","Source Sans Pro";
         background-color: #EEE;
         color: black;
-        /* background-size: 8px 8px; */
-        /* line-height: 1.2em; */
         border-radius: 10px;
+
     }
     pre.src{
-        padding: 0.4em;
-        position: relative;
-        overflow: visible;
-        padding-top: 0.3em;
-        /* background-image: linear-gradient(135deg, transparent 10%, rgba(0, 0, 0, 0.02) 10%, rgba(0, 0, 0, 0.02) 10%, transparent 10%, transparent 10%, rgba(0, 0, 0, 0.02) 10%, rgba(0, 0, 0, 0.02)); */
+        display: block;
+        word-break: break-all;
+        word-wrap: break-word;
+        white-space: pre-wrap;
 
+        padding-top: 0.3em;
+        font-size: 1.1em;
     }
     pre.src:before{
         background-color: transparent;
@@ -272,234 +263,51 @@
     pre.example{
         background: transparent;
         color: gray;
-        /* background-image: linear-gradient(135deg, transparent 10%, rgba(0, 0, 0, 0.02) 10%, rgba(0, 0, 0, 0.02) 0%, transparent 80%, transparent 80%, rgba(0, 0, 0, 0.02) 80%, rgba(0, 0, 0, 0.02)); */
-
         font-size: 1.0em;
         height: auto;
-
     }
-
-    #preamble{
-        background: none repeat scroll 0 0 #46484B;
-        color: #FFFFFF;
-        font-family: Arial,Helvetica,sans-serif;
-        font-size: 70%;
-        font-weight: bold;
-        height: 224px;
-        padding: 2px 2px 0 6px;
+    /* line number */
+    .linenr{
+        font-size: 1.0em;
     }
-
-    .builtin {
-	    /* font-lock-builtin-face */
-	    color: #f4a460;
-    }
-    .comment {
-	    /* font-lock-comment-face */
-	    color: #737373;
-    }
-    .comment-delimiter {
-	    /* font-lock-comment-delimiter-face */
-	    color: #666666;
-    }
-    .constant {
-	    /* font-lock-constant-face */
-	    color: #db7093;
-    }
-    .doc {
-	    /* font-lock-doc-face */
-	    color: #b3b3b3;
-    }
-
-    .headline {
-	    /* headline-face */
-	    color: #ffffff;
-	    background-color: #000000;
-	    font-weight: bold;
-    }
-    .keyword {
-	    /* font-lock-keyword-face */
-	    color: #4682b4;
-    }
-    .negation-char {
-    }
-    .regexp-grouping-backslash {
-    }
-    .regexp-grouping-construct {
-    }
-    .string {
-	    /* font-lock-string-face */
-	    color: #ccc79a;
-    }
-    .todo-comment {
-	    /* todo-comment-face */
-	    color: #ffffff;
-	    background-color: #000000;
-	    font-weight: bold;
-    }
-    .variable-name {
-	    /* font-lock-variable-name-face */
-	    color: #ff6a6a;
-    }
-    .warning {
-	    /* font-lock-warning-face */
-	    color: #ffffff;
-	    background-color: #cd5c5c;
-	    font-weight: bold;
-    }
-
-    .org-bbdb-company {
-	    /* bbdb-company */
-	    font-style: italic;
-    }
-    .org-bbdb-field-name {
-    }
-    .org-bbdb-field-value {
-    }
-    .org-bbdb-name {
-	    /* bbdb-name */
-	    text-decoration: underline;
-    }
-    .org-bold {
-	    /* bold */
-	    font-weight: bold;
-    }
-    .org-bold-italic {
-	    /* bold-italic */
-	    font-weight: bold;
-	    font-style: italic;
-    }
-    .org-border {
-	    /* border */
-	    background-color: #000000;
-    }
-    .org-buffer-menu-buffer {
-	    /* buffer-menu-buffer */
-	    font-weight: bold;
-    }
-    .org-builtin {
-	    /* font-lock-builtin-face */
-	    color: #da70d6;
-    }
-    .org-button {
-	    /* button */
-	    text-decoration: underline;
-    }
-    .org-c-nonbreakable-space {
-	    /* c-nonbreakable-space-face */
-	    background-color: #ff0000;
-	    font-weight: bold;
-    }
-    .org-calendar-today {
-	    /* calendar-today */
-	    text-decoration: underline;
-    }
-    .org-comment {
-	    /* font-lock-comment-face */
-	    color: gray;
-    }
-    .org-comment-delimiter {
-	    /* font-lock-comment-delimiter-face */
-	    color: gray;
-    }
-    .org-constant {
-	    /* font-lock-constant-face */
-	    color: #5f9ea0;
-    }
-    .org-cursor {
-	    /* cursor */
-	    background-color: #000000;
-    }
-    .org-default {
-	    /* default */
-	    color: #000000;
-	    background-color: #ffffff;
-    }
-    .org-diary {
-	    /* diary */
-	    color: #ff0000;
-    }
-    .org-doc {
-	    /* font-lock-doc-face */
-	    color: #bc8f8f;
-    }
-    .org-escape-glyph {
-	    /* escape-glyph */
-	    color: #a52a2a;
-    }
-    .org-file-name-shadow {
-	    /* file-name-shadow */
-	    color: #7f7f7f;
-    }
-    .org-fixed-pitch {
-    }
-    .org-fringe {
-	    /* fringe */
-	    background-color: #f2f2f2;
-    }
-    .org-function-name {
-	    /* font-lock-function-name-face */
-	    color: peru;
-    }
-    .org-header-line {
-	    /* header-line */
-	    color: #333333;
-	    background-color: #e5e5e5;
-    }
-    .org-help-argument-name {
-	    /* help-argument-name */
-	    font-style: italic;
-    }
-    .org-highlight {
-	    /* highlight */
-	    background-color: #b4eeb4;
-    }
-    .org-holiday {
-	    /* holiday */
-	    background-color: #ffc0cb;
-    }
-
-    .org-keyword {
-	    /* font-lock-keyword-face */
-	    color: #a020f0;
-    }
-
-    .org-preprocessor {
-	    /* font-lock-preprocessor-face */
-	    color: #da70d6;
-    }
-
-    .org-string {
-	    /* font-lock-string-face */
-	    color: #bc8f8f;
-    }
-    .org-type {
-	    /* font-lock-type-face */
-	    color: #228b22;
-    }
-    .org-underline {
-	    /* underline */
-	    text-decoration: underline;
-    }
-    .org-variable-name {
-	    /* font-lock-variable-name-face */
-	    color: blueviolet;
-    }
-    .org-variable-pitch {
-
-    }
-    .org-vertical-border {
-    }
-    .org-warning {
-	    /* font-lock-warning-face */
-	    color: #ff0000;
-	    font-weight: bold;
-    }
-    .rss_box {}
-    .rss_title, rss_title a {}
-    .rss_items {}
-    .rss_item a:link, .rss_item a:visited, .rss_item a:active {}
-    .rss_item a:hover {}
-    .rss_date {}
+    /* Set the colors in <pre> blocks from the Leuven theme */
+    /* pre                                      {background-color:#FFFFFF;} */
+    pre span.org-builtin                     {color:#006FE0;font-weight:bold;}
+    pre span.org-string                      {color:#008000;}
+    pre span.org-doc                         {color:#008000;}
+    pre span.org-keyword                     {color:#0000FF;}
+    pre span.org-variable-name               {color:#BA36A5;}
+    pre span.org-function-name               {color:#006699;}
+    pre span.org-type                        {color:#6434A3;}
+    pre span.org-preprocessor                {color:#808080;font-weight:bold;}
+    pre span.org-constant                    {color:#D0372D;}
+    pre span.org-comment-delimiter           {color:#8D8D84;}
+    pre span.org-comment                     {color:#8D8D84;font-style:italic}
+    pre span.org-outshine-level-1            {color:#8D8D84;font-style:italic}
+    pre span.org-outshine-level-2            {color:#8D8D84;font-style:italic}
+    pre span.org-outshine-level-3            {color:#8D8D84;font-style:italic}
+    pre span.org-outshine-level-4            {color:#8D8D84;font-style:italic}
+    pre span.org-outshine-level-5            {color:#8D8D84;font-style:italic}
+    pre span.org-outshine-level-6            {color:#8D8D84;font-style:italic}
+    pre span.org-outshine-level-7            {color:#8D8D84;font-style:italic}
+    pre span.org-outshine-level-8            {color:#8D8D84;font-style:italic}
+    pre span.org-outshine-level-9            {color:#8D8D84;font-style:italic}
+    pre span.org-rainbow-delimiters-depth-1  {color:#707183;}
+    pre span.org-rainbow-delimiters-depth-2  {color:#7388d6;}
+    pre span.org-rainbow-delimiters-depth-3  {color:#909183;}
+    pre span.org-rainbow-delimiters-depth-4  {color:#709870;}
+    pre span.org-rainbow-delimiters-depth-5  {color:#907373;}
+    pre span.org-rainbow-delimiters-depth-6  {color:#6276ba;}
+    pre span.org-rainbow-delimiters-depth-7  {color:#858580;}
+    pre span.org-rainbow-delimiters-depth-8  {color:#80a880;}
+    pre span.org-rainbow-delimiters-depth-9  {color:#887070;}
+    pre span.org-sh-quoted-exec              {color:#FF1493;}
+    pre span.org-diff-added                  {color:#008000;}
+    pre span.org-diff-changed                {color:#0000FF;}
+    pre span.org-diff-header                 {color:#800000;}
+    pre span.org-diff-hunk-header            {color:#990099;}
+    pre span.org-diff-none                   {color:#545454;}
+    pre span.org-diff-removed                {color:#A60000;}
 
     label.org-src-name {
 	    font-size: 80%;
@@ -521,16 +329,28 @@
     }
 
 
-} /* END OF @media all */
+/* } /\* END OF @media all *\/ */
 
-@media screen
-{
-    #table-of-contents {
-	    position: fixed;
-	    margin-top: 20px;
-	    float: right;
-	    border: 1px solid #red;
-	    max-width: 50%;
-	    overflow: auto;
-    }
-} /* END OF @media screen */
+/* @media screen */
+/* { */
+/*     #table-of-contents { */
+/* 	    position: fixed; */
+/* 	    margin-top: 90px; */
+/* 	    float: right; */
+/* 	    border: 1px solid #red; */
+/* 	    max-width: 50%; */
+/* 	    overflow: auto; */
+/*     } */
+/* } /\* END OF @media screen *\/ */
+
+
+/*
+  Set the width of HTML export to 50% and center it
+  http://stackoverflow.com/a/14476955/1219634
+*/
+@media screen and (min-width: 1200px) {
+    /* body { */
+    /*     max-width:50%; */
+    /*     margin: auto; */
+    /* } */
+}
