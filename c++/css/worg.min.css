@@ -251,29 +251,29 @@ section {
 	    margin-top: 0;
 
     }
-    body #content {
-	    padding-top: 2em;
-	    margin: auto;
-	    max-width: 70%;
-	    background-color: white;
-    }
+    /* body #content { */
+	/*     padding-top: 2em; */
+	/*     margin: auto; */
+	/*     max-width: 70%; */
+	/*     background-color: white; */
+    /* } */
 
-    body #support {
-	    position: fixed;
-	    top:0;
-	    display:block;
-	    font-size: 1.1em;
-	    right:0pt;
-	    text-align: right;
-	    padding: .2em 1em;
-	    background: #EEE;
-	    border-radius: 10px;
-    }
+    /* body #support { */
+	/*     position: fixed; */
+	/*     top:0; */
+	/*     display:block; */
+	/*     font-size: 1.1em; */
+	/*     right:0pt; */
+	/*     text-align: right; */
+	/*     padding: .2em 1em; */
+	/*     background: #EEE; */
+	/*     border-radius: 10px; */
+    /* } */
 
-    body .title {
-	    margin-left: 0px;
-	    font-size: 2.5em;
-    }
+    /* body .title { */
+	/*     margin-left: 0px; */
+	/*     font-size: 2.5em; */
+    /* } */
     /* Title */
     h1 {
 	    font-size:2.1em;
