@@ -1,475 +1,627 @@
-.clearfix {
-    *zoom: 1;
-}
-.clearfix:before,
-.clearfix:after {
-    display: table;
-    content: "";
-    line-height: 0;
-}
-.clearfix:after {
-    clear: both;
-}
-.hide-text {
-    font: 0/0 a;
-    color: transparent;
-    text-shadow: none;
-    background-color: transparent;
-    border: 0;
+/*
+p.author	author information, including email
+p.date	publishing date
+p.creator	creator info, about org mode version
+.title	document title
+.subtitle	document subtitle
+.todo	TODO keywords, all not-done states
+.done	the DONE keywords, all states that count as done
+.WAITING	each TODO keyword also uses a class named after itself
+.timestamp	timestamp
+.timestamp-kwd	keyword associated with a timestamp, like ‘SCHEDULED’
+.timestamp-wrapper	span around keyword plus timestamp
+.tag	tag in a headline
+._HOME	each tag uses itself as a class, “@” replaced by “_”
+.target	target for links
+.linenr	the line number in a code example
+.code-highlighted	for highlighting referenced code lines
+div.outline-N	div for outline level N (headline plus text)
+div.outline-text-N	extra div for text at outline level N
+.section-number-N	section number in headlines, different for each level
+.figure-number	label like “Figure 1:”
+.table-number	label like “Table 1:”
+.listing-number	label like “Listing 1:”
+div.figure	how to format an in-lined image
+pre.src	formatted source code
+pre.example	normal example
+p.verse	verse paragraph
+div.footnotes	footnote section headline
+p.footnote	footnote definition paragraph, containing a footnote
+.footref	a footnote reference number (always a <sup>)
+.footnum	footnote number in footnote definition (always <sup>)
+.org-svg	default class for a linked ‘.svg’ image
+ */
+
+
+/* Import google fonts */
+/* import url(https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif); */
+
+
+/* Site init style of TAOBAO */
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+/* body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }  */
+h1, h2, h3, h4, h5, h6{ font-size:100%; }
+/* address, cite, dfn, em, var { font-style:normal; }  */
+/* code, kbd, pre, samp { font-family:couriernew, courier, monospace; } small{ font-size:12px; } */
+/* ul, ol { list-style:none; } */
+a { text-decoration:none; }
+/* a:hover { text-decoration:underline; } */
+/* sup { vertical-align:text-top; } */
+/* sub{ vertical-align:text-bottom; } */
+/* legend { color:#000; } */
+/* fieldset, img { border:0; } */
+/* button, input, select, textarea { font-size:100%; } */
+table { border-collapse:collapse; border-spacing:0; }
+
+
+/* Basic Style */
+
+html { font-size: 100px;  }
+
+body {
+    /* Monaco, Consolas, "kaiti",  */
+    /* font-family: "Droid Serif", "Lucida Grande", "Lucida Sans Unicode", "DejaVu Sans", Verdana, sans-serif;   */
+    font-family: Monaco, Consolas, "kaiti";
+    width: 60%;
+    margin: 0 auto;
+    font-size: .16rem;
+    line-height: 1.5;
 }
 
+#content { position: relative; }
+
+/* header line */
+/* i.e. h1 */
+.title {
+    font-size: .32rem;
+    width: 100%;
+    border-bottom: 2px solid #369;
+    border-image: linear-gradient(to right, #147 , #f66) 30 30;
+    padding: .08rem 0;
+    margin: .36rem 0;
+}
+
+
+a { color: #19f; }
+a:hover { color:#E69; text-shadow: 0px 0px 1px #E69;}
+
+h2, h3, h4, h5, h6 {
+    font-size: .20rem;
+    margin: .16rem 0;
+}
+
+h2 code:last-child, h3 code:last-child,
+h4 code:last-child, h5 code:last-child,
+h6 code:last-child {
+    border-radius: 3px;
+    background: #363;
+    color: #eee;
+    font-size: .12rem;
+    padding: 2px 6px;
+}
+
+h2 { color: #668BB6; }
+h2:before { content: "🐬 "; }
+
+h3 { color: #c396d8; }
+h3:before { content: "🌱 "; }
+
+h4 { color: #6fbfb1; }
+h4:before { content: "🌵 "; }
+
+h5 { color: #e77724; }
+h5:before { content: "🌼 "; }
+
+
+/* paragrapn */
+p {
+    margin: .16rem 0;
+}
+
+/* img */
 img {
-    /* Responsive images (ensure images don't scale beyond their parents) */
-
     max-width: 100%;
-    /* Part 1: Set a maxium relative to the parent */
-
-    width: auto\9;
-    /* IE7-8 need help adjusting responsive images */
-
-    height: auto;
-    /* Part 2: Scale the height according to the width, otherwise you get stretching */
-
-    vertical-align: middle;
-    border: 0;
-    -ms-interpolation-mode: bicubic;
 }
-#map_canvas img,
-.google-maps img {
-    max-width: none;
+
+.img-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: auto;
 }
-@media print {
-    * {
-        text-shadow: none !important;
-        color: #000 !important;
-        background: transparent !important;
-        box-shadow: none !important;
-    }
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-    .ir a:after,
-    a[href^="javascript:"]:after,
-    a[href^="#"]:after {
-        content: "";
-    }
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-    thead {
-        display: table-header-group;
-    }
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
-    img {
-        max-width: 100% !important;
-    }
-    @page  {
-        margin: 0.5cm;
-    }
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
+
+.img-zoom {
+    width: 98%;
+    margin-top: 1%;
+    background-color: #fff;
 }
-html {
-    min-height: 100%;
+
+
+
+/* img caption */
+.figure p:last-child {
+    color: #666;
+    font-size: .14rem;
+    text-align: center;
+    margin: .06rem 0;
+}
+
+
+/* blockquote */
+blockquote {
+    /* background: #eee; */
+    color: #369;
+    border-left: 1px solid #369;
+    padding-left: .16rem;
+}
+
+
+/* code */
+
+code {
+    color: #135;
+    /* font-family: "Droid Sans Mono"; */
+    font-family: Monaco, Consolas, 'monospace', "kaiti";
+    font-size: 0.14rem;
+}
+
+pre {
+    /* font-family: "Droid Sans Mono"; */
+    font-family: Monaco, Consolas, 'monospace', "kaiti";
+    color: #135;
+    font-size: 0.14rem;
+    padding: .14rem;
+    border: 2px solid #eee;
+    margin: .16rem 0;
+
+    overflow: hidden;
     position: relative;
 }
-body {
-    height: 100%;
-    background:  #ffffff;
+
+pre:hover {
+    overflow: auto;
 }
-section {
-    margin: 0;
-    padding: 0;
-}
-.social {
-    float: left;
-    min-height: 100%;
-    background: url('../images/blue-mocha-grunge.jpg') #192029;
+
+.code-type-flag {
+    color: #999;
+    /* text-shadow: -1px 1px 2px #f66; */
     position: absolute;
     top: 0;
-    bottom: 0;
-    left: 0;
     right: 0;
-    width: 180px;
+    margin: 0 .05rem;
+    z-index: -1;
 }
-@media (max-width: 773px) {
-    .social {
-        position: relative;
-    }
-}
-@media (min-width: 774px) and (max-width: 1047px) {
-    .social {
-        width: 210px;
-    }
-}
-@media (max-width: 773px) {
-    .social {
-        width: 100%;
-    }
-}
-.social ul {
-    position: fixed;
-    margin: 0;
-    top: 50px;
-    display: table;
-    width: 180px;
-}
-@media (max-width: 773px) {
-    .social ul {
-        position: relative;
-    }
-}
-@media (max-width: 773px) {
-    .social ul {
-        display: block;
-        top: 0px;
-    }
-}
-@media (min-width: 774px) and (max-width: 1047px) {
-    .social ul {
-        width: 210px;
-    }
-}
-.social ul li {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-}
-@media (max-width: 773px) {
-    .social ul li {
-        padding-top: 5%;
-        padding-left: 3%;
-        text-align: left;
-        display: table-cell;
-    }
-}
-.social ul li a {
-    display: block;
-}
-.social ul li a .label {
+
+pre:hover .code-type-flag {
     display: none;
 }
-@media (max-width: 773px) {
-    .social ul li a .label {
-        display: inline;
-        padding-left: 0.5em;
-    }
+
+/* list */
+ul, ol { list-style-position: inside; }
+
+li > ul, li > ol {
+    padding-left: .16rem;
 }
-.page-content {
+
+
+/* table */
+.t-above {
+    font-size: .14rem;
+    color: #666;
+    margin: .06rem 0;
+}
+
+table {
+    margin: .24rem 0;
+}
+
+thead tr {
+    border-top: 2px solid #369;
+}
+
+tbody {
+    border-top: 2px solid #369;
+}
+
+tbody tr {
+    border-bottom: 1px solid #369;
+}
+
+tbody tr:last-child {
+    border-bottom: 2px solid #369;
+}
+
+th, td {
+    border-right: 1px solid #369;
+    padding: 3px 6px;
+}
+
+.org-center {
+    text-align: center;
+}
+
+.org-right {
+    text-align: right;
+}
+
+th:first-child, td:first-child {
+    border-left:  rgba(255, 255, 255, 0);
+}
+
+th:last-child, td:last-child {
+    border-right: rgba(255, 255, 255, 0);
+}
+
+
+/* directory */
+#table-of-contents {
+    position: fixed;
+    box-shadow: 1px 0 3px #999;
+
+    left: -16%;
+    top: 0;
+    min-width: 16%;
     min-height: 100%;
-    padding: 48px 0 60px 42px;
-    margin-left: 180px;
-}
-@media (min-width: 774px) and (max-width: 1047px) {
-    .page-content {
-        padding-left: 24px;
-        margin-left: 214px;
-    }
-}
-@media (max-width: 773px) {
-    .page-content {
-        margin-left: 0;
-        width: 100%;
-        padding: 36px 0;
-    }
-}
-.page-content > .content {
-    max-width: 890px;
-}
-@media (min-width: 774px) and (max-width: 1047px) {
-    .page-content > .content {
-        min-width: 525px;
-    }
-}
-@media (max-width: 773px) {
-    .page-content > .content {
-        min-width: auto;
-        padding-left: 4px;
-        padding-right: 4px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-}
-/*!
- *  Font Awesome 3.2.1
- *  the iconic font designed for Bootstrap
- *  ------------------------------------------------------------------------------
- *  The full suite of pictographic icons, examples, and documentation can be
- *  found at http://fontawesome.io.  Stay up to date on Twitter at
- *  http://twitter.com/fontawesome.
- *
- *  License
- *  ------------------------------------------------------------------------------
- *  - The Font Awesome font is licensed under SIL OFL 1.1 -
- *    http://scripts.sil.org/OFL
- *  - Font Awesome CSS, LESS, and SASS files are licensed under MIT License -
- *    http://opensource.org/licenses/mit-license.html
- *  - Font Awesome documentation licensed under CC BY 3.0 -
- *    http://creativecommons.org/licenses/by/3.0/
- *  - Attribution is no longer required in Font Awesome 3.0, but much appreciated:
- *    "Font Awesome by Dave Gandy - http://fontawesome.io"
- *
- *  Author - Dave Gandy
- *  ------------------------------------------------------------------------------
- *  Email: dave@fontawesome.io
- *  Twitter: http://twitter.com/davegandy
- *  Work: Lead Product Designer @ Kyruus - http://kyruus.com
- */
-/* FONT PATH
- * -------------------------- */
-@font-face {
-    font-family: 'FontAwesome';
-    src: url('/assets/fonts/fontawesome-webfont.eot');
-    src: url('/assets/fonts/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('/assets/fonts/fontawesome-webfont.woff') format('woff'), url('/assets/fonts/fontawesome-webfont.ttf') format('truetype'), url('/assets/fonts/fontawesome-webfont.svg#fontawesomeregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+    height: 100%;
+    font-size: .16rem;
+    font-size: 90%;
+    color: #369;
+    padding: 0 1%;
+    transition: .3s all ease-in-out;
+    overflow: hidden;
+    opacity: 0;
+
+    z-index: 1;
 }
 
-    /* Title */
-    h1 {
-	    font-size:2.1em;
-        /* top right down left */
-	    padding:0 0 0.3em 0;
-	    /* margin-top: 10px; */
-	    /* margin-bottom: 10px; */
-	    /* margin-right: 7%; */
-	    /* color: grey; */
-        text-shadow: 0.2ex 0.2ex 0.2ex gray;
-    }
+#table-of-contents a { text-decoration: none; }
 
-    h2 {
-	    font-size:1.5em;
-        font-weight: bold;
-	    /* line-height:16px; */
-	    padding:0 0 0.25em 0;
-	    /* color: black; */
-	    border-bottom: 2px solid #DDDD;
-    }
+#table-of-contents:hover {
+    opacity: 1;
+    left: 0;
+    border-right: 1px solid #eee;
+    overflow: auto;
+    background: rgba(255, 255, 255, 0.86);
+}
 
-    h3 {
-	    font-size:1.3em;
-        padding:0 0 0 0;
-	    color: ;
-	    /* margin-left: 0.6em; */
-    }
-    h4 {
-	    font-size:1.2em;
-        padding:0 0 0 0;
-	    /* margin-left: 1.2em; */
-	    /* color: #A5573E; */
-    }
+#table-of-contents h2:before { content: ""; }
 
-    h2,h3,h4{
-        font-family:sans-serif;
-    }
-    h2 code, h3 code, h4 code, h5 code, td code {
-        font-family: inherit !important;
-        font-size: inherit !important;
-    }
 
-    td code {
-        font-weight: bold;
-    }
+/* Highlight TOC active item */
+.link-active {
+    color: #fff;
+    background: #19f;
+    padding: 1px 2px;
+}
 
-    /* #org-div-home-and-up{ */
-	/*     position: fixed; */
-	/*     right: 0; */
-	/*     bottom: 1em; */
-    /* } */
+
+/* #postamble, .status */
+.status {
+    color: #666;
+    border-top: 2px solid #369;
+    border-image: linear-gradient(to right, #f66 , #147) 30 30;
+    margin: .62rem 0 .2rem 0;
+    padding-top: .2rem;
+ }
+
+.status p {
+    margin: 0;
+}
+
+.status p:last-child {
+    margin-top: .36rem;
+    text-align: center;
+    color: #369;
+
+}
+
+.validation a {
+    color: #19f;
+}
 
 
 
-    a {
-        text-decoration: none;
-    }
+/* Inline Format */
 
-    a:hover {
-        background-color: gainsboro;
-        text-decoration: underline;
-    }
+.underline {
+    border-bottom: 1px solid #333;
+}
 
-    .todo {
-	    color: #CA0000;
-    }
 
-    .done {
-	    color: #006666;
-    }
+/* Contect with Me */
+.me {
+    margin-top: .48rem;
+}
 
-    .timestamp-kwd {
-	    color: #444;
-    }
+.me span {
+    color: #333;
+}
 
-    .tag {
-        color: #DDD;
-        font-weight: 500;
-        font-size: 70%;
-    }
+.contect {
+    padding: .16rem 0;
+}
 
-    li {
-	    margin: .4em;
-    }
+.contect i {
+    color: #369;
+    font-size: .20rem;
+    padding-right: .08rem;
+}
 
-    /* 表格 */
-    table {
-        text-align: center;
-        caption-side: bottom;
-        /* make table in page center */
-        margin-right: auto;
-        margin-left: auto;
-    }
 
-    /* 表格斑马线 */
-    tbody tr:nth-child(even){
-        background-color: #eee;
-    }
-    /* 表头 */
-    th {
-        font-weight: bold;
-	    border-top: 2px solid black;
-	    border-bottom: 2px solid black;
-    }
+/* Top Buttom */
+.top-btn {
+    /* background: #eee; */
+    opacity: .3;
+    box-shadow: 0 0 1px #666;
+    display: inline-block;
+    width: .64rem;
+    height: .32rem;
+    line-height: .32rem;
+    text-align: center;
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+    font-size: .12rem;
+    color: #222;
+    background: #eee;
+    transition: .3s all ease-in-out;
+}
 
-    /* 等宽字 */
-    code {
-        display: inline-block;
-        font-family: "Droid Sans Mono";
-	    font-size: 85%;
-        background-color: #e1e3e5;
-	    padding: .1em .2em;
-        margin: 0.1em;
-        line-height: 1.4;
-        color: #242729;
-        text-shadow: 0 1px 0 #FFF;
-        border: 1px solid #adb3b9;
-        border-radius: 3px;
+.top-btn:hover {
+    opacity: 1;
+    background:#eee;
+}
 
-        box-shadow: 0 1px 0 rgba(12,13,14,0.2),0 0 0 2px #FFF inset;
+
+/* Nav Button */
+.nav-btn {
+    /* background: #eee; */
+    opacity: .3;
+    box-shadow: 0 0 1px #666;
+    display: inline-block;
+    width: .64rem;
+    height: .32rem;
+    line-height: .32rem;
+    text-align: center;
+    position: fixed;
+    bottom: 8%;
+    right: 2%;
+    font-size: .12rem;
+    color: #222;
+    background: #eee;
+    transition: .3s all ease-in-out;
+}
+
+.nav-btn:hover {
+    opacity: 1;
+    background:#eee;
+}
+
+
+.nav-show-hide {
+    background: #eee;
+    opacity: 1;
+}
+
+
+
+/* GTD Style */
+.todo {
+    border-radius: 3px;
+    background: #911;
+    color: #eee;
+    font-size: .12rem;
+    padding: 2px 6px;
+}
+
+.done {
+    border-radius: 3px;
+    background: #147;
+    color: #eee;
+    font-size: .12rem;
+    padding: 2px 6px;
+}
+
+.tag span {
+    border-radius: 3px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: #c60;
+    color: #eee;
+    font-size: .12rem;
+    padding: 2px 6px;
+    display: inline-block;
+}
+
+.priority {
+    border-radius: 3px;
+    background: #991;
+    color: #eee;
+    font-size: .12rem;
+    padding: 2px 6px;
+}
+
+/* .timestamp-wrapper */
+/* In CSS&CSS3, there has no a selector to get parentNode. Now via js. */
+.gtd-timestamp {
+    color: #999;
+    font-size: .14rem;
+}
+
+
+.org-ul .on code {
+    color: #009;
+    font-weight: 900;
+}
+
+.org-ul .off code {
+    color: #900;
+    font-weight: 900;
+}
+
+/* Footnotes */
+
+.footpara {
+    display: inline;
+    font-size: .14rem;
+    color: #333;
+}
+
+
+/* Beautiful Items */
+.custom-wrap,
+.custom-item {
+    position: relative;
+    border-radius: .06rem;
+    box-shadow: 1px 1px 5px #ccc;
+    /* border: 3px solid #eee; */
+    padding: .25rem .32rem .05rem .1rem;
+    margin: .2rem 0;
+    transition: all .3s ease-in-out;
+}
+
+.custom-item:nth-child(odd) pre {
+    border: 2px solid #ddd;
+}
+
+.custom-item:nth-child(odd) .code-type-flag {
+    z-index: 0;
+}
+
+.custom-item:nth-child(odd) {
+    background-color: #eee;
+}
+
+.custom-item h3 {
+    position: absolute;
+    top: -.08rem;
+    right: 0.1rem;
+    color: #ccc!important;
+    font-size: .12rem;
+}
+
+.custom-item:hover {
+    box-shadow: 5px 5px 9px #ccc;
+}
+
+
+/* Navigations Page Style */
+.custom-nav p {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.custom-nav p progress {
+    align-self: center;
+}
+
+.custom-nav p a {
+    display: inline-block;
+    flex-direction: row;
+    justify-content: space-between;
+    white-space: nowrap;
+    border: 1px solid #19f;
+    border-radius: 3px;
+    padding: .01rem .02rem;
+    width: 1.6rem;
+    margin: .03rem 0;
+}
+
+.custom-nav p a:hover {
+    background-color: #19f;
+    color: #fff;
+}
+
+.custom-nav ul {
+    border: 2px solid #eee;
+    border-radius: .09rem;
+    padding: .16rem .09rem;
+    list-style-type: none;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.custom-nav ul:hover {
+    overflow: auto;
+}
+
+.custom-nav ul li a {
+    display: inline-block;
+    width: 96%;
+}
+
+.custom-nav ul li::before {
+    content: '➣ ';
+}
+
+
+/* Home Page Style */
+.custom-home tbody tr td a {
+    display: inline-block;
+    width: 100%;
+}
+
+
+/* Mobile UI */
+@media screen and (max-width: 1026px) {
+
+    body { width: 96%; }
+
+    .title {
+        font-size: .28rem;
         white-space: nowrap;
+        overflow: auto;
     }
 
-    p>code, li>code{
-        background-color: #eee;
-        padding: 0.1em;
-    }
-    img {
-        display: block;
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-	    border: 0;
-    }
-    footer {
-        border:solid thin silver;
-        margin:1ex;
-        border-radius:1rem;
-        text-align: center;
-    }
-    .share img {
-	    opacity: .4;
-	    -moz-opacity: .4;
-	    filter: alpha(opacity=40);
+    #table-of-contents {
+        height: 400px;
+        min-height: 400px;
+        width: 100%;
+        top: -380px;
+        left: 0;
+        color: #369;
+        opacity: 0;
+        box-shadow: 0 1px 3px #999;
+        background: #fff;
     }
 
-    .share img:hover {
-	    opacity: 1;
-	    -moz-opacity: 1;
-	    filter: alpha(opacity=100);
+    #table-of-contents:hover { top: 0px; opacity: 1; }
+
+    .link-active {
+        color: #fff;
+        background: #19f;
+        padding: 1px 2px;
     }
 
-    /* org-src-block */
-    pre {
-        font-family: "Inconsolata","Source Sans Pro";
-        background-color: #EEE;
-        color: black;
-        border-radius: 10px;
+    pre { overflow: auto; }
 
+    .top-btn {
+        opacity: .1;
+        bottom: 1%;
+        right: 0;
     }
-    pre.src{
-        display: block;
-        word-break: break-all;
-        word-wrap: break-word;
-        white-space: pre-wrap;
 
-        padding-top: 0.3em;
-        font-size: 1.1em;
+    .top-btn:hover {
+        opacity: .1;
     }
-    pre.src:before{
-        background-color: transparent;
-        top:-10px;
-        right: 10px;
-        padding: 1px;
-        border: transparent;
-        border-radius: 5px;
-        color: #1e3436;
-        text-shadow: 0.2ex 0.2ex 0.2ex gray;
+
+    .nav-btn {
+        opacity: .1;
+        bottom: 7%;
+        right: 0;
     }
-    /* src results face */
-    pre.example{
-        background: transparent;
-        color: gray;
-        font-size: 1.0em;
-        height: auto;
+
+    .nav-btn:hover {
+        opacity: .1;
     }
-    /* line number */
-    .linenr{
-        font-size: 1.0em;
+
+    .custom-wrap,
+    .custom-item {
+        padding: .25rem .01rem .05rem .01rem;
     }
-    /* Set the colors in <pre> blocks from the Leuven theme */
-    /* pre                                      {background-color:#FFFFFF;} */
-    pre span.org-builtin                     {color:#006FE0;font-weight:bold;}
-    pre span.org-string                      {color:#008000;}
-    pre span.org-doc                         {color:#008000;}
-    pre span.org-keyword                     {color:#0000FF;}
-    pre span.org-variable-name               {color:#BA36A5;}
-    pre span.org-function-name               {color:#006699;}
-    pre span.org-type                        {color:#6434A3;}
-    pre span.org-preprocessor                {color:#808080;font-weight:bold;}
-    pre span.org-constant                    {color:#D0372D;}
-    pre span.org-comment-delimiter           {color:#8D8D84;}
-    pre span.org-comment                     {color:#8D8D84;font-style:italic}
-    pre span.org-outshine-level-1            {color:#8D8D84;font-style:italic}
-    pre span.org-outshine-level-2            {color:#8D8D84;font-style:italic}
-    pre span.org-outshine-level-3            {color:#8D8D84;font-style:italic}
-    pre span.org-outshine-level-4            {color:#8D8D84;font-style:italic}
-    pre span.org-outshine-level-5            {color:#8D8D84;font-style:italic}
-    pre span.org-outshine-level-6            {color:#8D8D84;font-style:italic}
-    pre span.org-outshine-level-7            {color:#8D8D84;font-style:italic}
-    pre span.org-outshine-level-8            {color:#8D8D84;font-style:italic}
-    pre span.org-outshine-level-9            {color:#8D8D84;font-style:italic}
-    pre span.org-rainbow-delimiters-depth-1  {color:#707183;}
-    pre span.org-rainbow-delimiters-depth-2  {color:#7388d6;}
-    pre span.org-rainbow-delimiters-depth-3  {color:#909183;}
-    pre span.org-rainbow-delimiters-depth-4  {color:#709870;}
-    pre span.org-rainbow-delimiters-depth-5  {color:#907373;}
-    pre span.org-rainbow-delimiters-depth-6  {color:#6276ba;}
-    pre span.org-rainbow-delimiters-depth-7  {color:#858580;}
-    pre span.org-rainbow-delimiters-depth-8  {color:#80a880;}
-    pre span.org-rainbow-delimiters-depth-9  {color:#887070;}
-    pre span.org-sh-quoted-exec              {color:#FF1493;}
-    pre span.org-diff-added                  {color:#008000;}
-    pre span.org-diff-changed                {color:#0000FF;}
-    pre span.org-diff-header                 {color:#800000;}
-    pre span.org-diff-hunk-header            {color:#990099;}
-    pre span.org-diff-none                   {color:#545454;}
-    pre span.org-diff-removed                {color:#A60000;}
+}
