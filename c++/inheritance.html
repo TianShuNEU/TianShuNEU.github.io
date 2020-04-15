@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-13 Mon 23:53 -->
+<!-- 2020-04-15 Wed 11:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Vincent Zhang" />
+<meta name="author" content="Tian" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -193,7 +193,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="css/worg.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/worg.min.css"/>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -247,9 +247,9 @@ for the JavaScript code in this tag.
  |
  <a accesskey="H" href="../index.html"> HOME </a>
 </div><div id="content">
-<div id="outline-container-org1dcbf35" class="outline-2">
-<h2 id="org1dcbf35">继承的基本知识</h2>
-<div class="outline-text-2" id="text-org1dcbf35">
+<div id="outline-container-org3d2f528" class="outline-2">
+<h2 id="org3d2f528">继承的基本知识</h2>
+<div class="outline-text-2" id="text-org3d2f528">
 <ol class="org-ol">
 <li>在继承中，每个类控制它自己的成员初始化过程，在重载操作符时，每个类调用自己的操作符对自己的成员操作；每个控制自己的友元</li>
 <li>如果基类定义了一个静态成员，则在整个继承体系中只有一个该成员的定义</li>
@@ -273,21 +273,21 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgb4bed74" class="outline-2">
-<h2 id="orgb4bed74">访问控制与继承</h2>
-<div class="outline-text-2" id="text-orgb4bed74">
+<div id="outline-container-org53a6b77" class="outline-2">
+<h2 id="org53a6b77">访问控制与继承</h2>
+<div class="outline-text-2" id="text-org53a6b77">
 </div>
-<div id="outline-container-org91ed064" class="outline-3">
-<h3 id="org91ed064">基类成员在派生类中的可访问性</h3>
-<div class="outline-text-3" id="text-org91ed064">
+<div id="outline-container-org4c4f46c" class="outline-3">
+<h3 id="org4c4f46c">基类成员在派生类中的可访问性</h3>
+<div class="outline-text-3" id="text-org4c4f46c">
 <p>
 派生类的成员和友元可以访问基类中的 <code>public</code> <code>protected</code> 成员，不可以访问其 <code>private</code> 成员；派生类的成员函数和友元函数只能访问派生类对象中的基类部分的受保护成员，对于普通的基类对象中的成员不具有访问特权。
 </p>
 </div>
 </div>
-<div id="outline-container-org7e5a9a1" class="outline-3">
-<h3 id="org7e5a9a1">派生类中基类成员的可访问性</h3>
-<div class="outline-text-3" id="text-org7e5a9a1">
+<div id="outline-container-org527d02a" class="outline-3">
+<h3 id="org527d02a">派生类中基类成员的可访问性</h3>
+<div class="outline-text-3" id="text-org527d02a">
 <p>
 派生类中继承来的成员的访问权限受到两个因素的影响：1.在基类中的访问说明符；2. 在派生列表中的访问说明符。
 派生访问说明符可以控制基类成员在派生类中的访问说明符：
@@ -307,9 +307,9 @@ for the JavaScript code in this tag.
 </dl>
 </div>
 </div>
-<div id="outline-container-orgf6ccc95" class="outline-3">
-<h3 id="orgf6ccc95">友元关系与继承</h3>
-<div class="outline-text-3" id="text-orgf6ccc95">
+<div id="outline-container-org57a8064" class="outline-3">
+<h3 id="org57a8064">友元关系与继承</h3>
+<div class="outline-text-3" id="text-org57a8064">
 <p>
 友元关系不能传递和继承，这种关系只对做出声明的类有效。友元可以访问一个类的所有成员。
 如下面的例子，Frd是Base 的友元，则Frd 就可以访问Base 的所有成员，甚至包括其派生类对象中的Base 部分的成员。
@@ -371,9 +371,9 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="outline-container-orged400cc" class="outline-3">
-<h3 id="orged400cc">改变个别成员的可访问性</h3>
-<div class="outline-text-3" id="text-orged400cc">
+<div id="outline-container-org78bed41" class="outline-3">
+<h3 id="org78bed41">改变个别成员的可访问性</h3>
+<div class="outline-text-3" id="text-org78bed41">
 <p>
 如果要改变派生类中继承的某个名字的访问权限，通过使用 <code>using</code> 声明可以实现。
 下例中，在派生类中本该是 <code>private</code> 的 size() 和 n,被分别改成了 <code>public</code> 和 <code>protected</code> :
@@ -416,32 +416,32 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org7968a0b" class="outline-2">
-<h2 id="org7968a0b">继承中的作用域</h2>
-<div class="outline-text-2" id="text-org7968a0b">
+<div id="outline-container-orga2346b0" class="outline-2">
+<h2 id="orga2346b0">继承中的作用域</h2>
+<div class="outline-text-2" id="text-orga2346b0">
 <p>
 每个类定义自己的作用域，在这个作用域内我们定义类的成员。当存在继承关系时，派生类作用域嵌套在其基类作用域内。如果一个名字在派生类作用域中找不到，编译器会在外层的基类作用域中寻找。
 </p>
 </div>
-<div id="outline-container-org6ee9060" class="outline-3">
-<h3 id="org6ee9060">在编译期进行名字查找</h3>
-<div class="outline-text-3" id="text-org6ee9060">
+<div id="outline-container-org5b1602f" class="outline-3">
+<h3 id="org5b1602f">在编译期进行名字查找</h3>
+<div class="outline-text-3" id="text-org5b1602f">
 <p>
 一个对象、指针或引用的静态类型决定了它们可以调用哪些成员函数，即使静态类型与动态类型不一致（使用基类指针和引用时会发生这种情况），但我们能使用哪些成员仍然由静态类型决定。
 </p>
 </div>
 </div>
-<div id="outline-container-orge7a550c" class="outline-3">
-<h3 id="orge7a550c">名字冲突与继承</h3>
-<div class="outline-text-3" id="text-orge7a550c">
+<div id="outline-container-orga33859b" class="outline-3">
+<h3 id="orga33859b">名字冲突与继承</h3>
+<div class="outline-text-3" id="text-orga33859b">
 <p>
 和其它作用域一样，派生类也能重用定义在其直接基类或间接基类中的名字，此时定义在内层作用域（派生类）的名字会隐藏定义在外层作用域（基类）的名字。如果要使用外层作用域的名字，应该通过作用域运算符（::）解析。
 </p>
 </div>
 </div>
-<div id="outline-container-org1ac4b83" class="outline-3">
-<h3 id="org1ac4b83">名字查找先于类型检查</h3>
-<div class="outline-text-3" id="text-org1ac4b83">
+<div id="outline-container-org1e0fdb8" class="outline-3">
+<h3 id="org1e0fdb8">名字查找先于类型检查</h3>
+<div class="outline-text-3" id="text-org1e0fdb8">
 <p>
 声明在内层作用域的函数并不会重载声明在外层作用域的函数，因此，如果派生类的成员与基类的某个成员同名，则派生类将在其作用域内隐藏该基类成员及其重载的一系列函数，即使派生类成员与基类成员的形参列表不一致。
 </p>
@@ -499,9 +499,9 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org6752a7f" class="outline-3">
-<h3 id="org6752a7f">重载基类函数成员</h3>
-<div class="outline-text-3" id="text-org6752a7f">
+<div id="outline-container-org32a7f14" class="outline-3">
+<h3 id="org32a7f14">重载基类函数成员</h3>
+<div class="outline-text-3" id="text-org32a7f14">
 <p>
 和其它函数一样，成员函数无论是否是虚函数都能被重载，通过前面的学习知道，如果简单的在派生类中添加重载的版本，那么基类中的同名函数会倍隐藏，那么一个办法就是把基类中的每个重载版本在派生类中重新写一遍，这是非常麻烦的，另一个解决办法就是提供一条 <code>using</code> 声明，指定一个函数名字即可，不必指定形参列表，这样就可以无需覆盖基类中的每一个重载版本了，比如上面那个例子只需在类 <code>Derived</code> 中加一句
 </p>
@@ -515,9 +515,9 @@ using Base::fun
 </div>
 </div>
 </div>
-<div id="outline-container-org89c6ac9" class="outline-2">
-<h2 id="org89c6ac9">构造函数与拷贝控制</h2>
-<div class="outline-text-2" id="text-org89c6ac9">
+<div id="outline-container-orgeffa7ec" class="outline-2">
+<h2 id="orgeffa7ec">构造函数与拷贝控制</h2>
+<div class="outline-text-2" id="text-orgeffa7ec">
 <p>
 默认情况下，派生类可以从基类继承所有的数据成员和除了构造函数、析构函数、赋值操作符以外的所有成员函数。
 </p>
@@ -528,9 +528,9 @@ using Base::fun
 </ol>
 </div>
 </div>
-<div id="outline-container-org99c9836" class="outline-2">
-<h2 id="org99c9836">多态与虚函数</h2>
-<div class="outline-text-2" id="text-org99c9836">
+<div id="outline-container-org745bff1" class="outline-2">
+<h2 id="org745bff1">多态与虚函数</h2>
+<div class="outline-text-2" id="text-org745bff1">
 <p>
 观察下面一段代码
 </p>
@@ -613,14 +613,15 @@ Base::~Base
 <li>派生类VTABLE 中的函数地址的排序与基类一致，如果派生类中新定义了虚函数，则添加在派生类的VTABLE 的末尾，不过新添加的虚函数无法被基类指针调用。</li>
 </ol>
 </div>
-<div id="outline-container-org5488612" class="outline-3">
-<h3 id="org5488612">在汇编下普通函数、普通成员函数与虚函数调用的区别</h3>
-<div class="outline-text-3" id="text-org5488612">
+<div id="outline-container-org1a4c539" class="outline-3">
+<h3 id="org1a4c539">在汇编下普通函数、普通成员函数与虚函数调用的区别</h3>
+<div class="outline-text-3" id="text-org1a4c539">
 <p>
 普通函数是直接通过 <code>call</code> 函数的绝对地址来实现函数调用，函数参数从右至左依次压入栈；普通成员函数基本与前者无异，除了多一次向栈压入 <code>this</code> 指针，通常是对象的地址，this 指针是隐藏的第一个参数，所以它最后入栈；虚函数的调用不同于前两者，区别在于不是直接 <code>call</code> 函数的地址： <code>this</code> 入栈后将第一个字长（VPTR）存入寄存器中，因为解引用VPTR 可以获得VTABLE 中第一个虚函数的地址，其余虚函数地址可以累加得到，因此调用虚函数是 <code>call (*VPTR+n)</code> ,n 是虚函数在VTABLE 中的位置。由此可见，虚函数虽然提供了多态性，同时也带来时间和空间上的开销。
 </p>
 <ul class="org-ul">
 <li><a href="stl.html">C++ Standard Libarary</a></li>
+<li><a href="class.html">Class</a></li>
 <li><a href="names.html">Names And Memory Layout</a></li>
 <li><a href="lei.html">Class Usage</a></li>
 <li><a href="IO.html">IO lib</a></li>
@@ -628,7 +629,6 @@ Base::~Base
 <li><a href="GCC_Clang_Settings.html">Setting GCC and Clang</a></li>
 <li><a href="function.html">Function</a></li>
 <li><a href="dynamic_memory.html">Dynamic Memory</a></li>
-<li><a href="class.html">Class</a></li>
 <li><a href="index.html">Index</a></li>
 </ul>
 </div>
@@ -636,8 +636,8 @@ Base::~Base
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Vincent Zhang</p>
-<p class="date">Created: 2020-04-13 Mon 23:53</p>
+<p class="author">Author: Tian</p>
+<p class="date">Created: 2020-04-15 Wed 11:30</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-13 Mon 23:52 -->
+<!-- 2020-04-15 Wed 11:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C++ Standard Libarary</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Vincent Zhang" />
+<meta name="author" content="Tian" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -193,7 +193,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="css/worg.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/worg.min.css"/>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -248,46 +248,16 @@ for the JavaScript code in this tag.
  <a accesskey="H" href="../index.html"> HOME </a>
 </div><div id="content">
 <h1 class="title">C++ Standard Libarary</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org4598c79">1. 顺序容器</a>
-<ul>
-<li><a href="#orgdc7f025">1.1. 容器库概览</a>
-<ul>
-<li><a href="#org7be9db4">1.1.1. 容器定义和初始化</a></li>
-<li><a href="#org20263a6">1.1.2. 迭代器</a></li>
-<li><a href="#orgee1820e">1.1.3. 赋值和swap</a></li>
-</ul>
-</li>
-<li><a href="#org560ed09">1.2. 顺序容器操作</a>
-<ul>
-<li><a href="#org226a54b">1.2.1. 添加元素</a></li>
-<li><a href="#org0ab11f1">1.2.2. 访问元素</a></li>
-<li><a href="#org291a655">1.2.3. 删除元素</a></li>
-<li><a href="#org5f03f20">1.2.4. 改变容器大小</a></li>
-<li><a href="#org25b9f10">1.2.5. 迭代器失效问题</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org8676ca4">2. 关联容器</a></li>
-<li><a href="#orgc82e681">3. 泛型算法</a></li>
-<li><a href="#org5c76d02">4. 动态内存</a></li>
-</ul>
-</div>
-</div>
 <p>
 本文重点是C++标准库，分为顺序容器、泛型算法、关联容器、动态内存四个大部分。
 </p>
-<div id="outline-container-org4598c79" class="outline-2">
-<h2 id="org4598c79"><span class="section-number-2">1</span> 顺序容器</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org1fef7cf" class="outline-2">
+<h2 id="org1fef7cf">顺序容器</h2>
+<div class="outline-text-2" id="text-org1fef7cf">
 <p>
 顺序容器是指元素在容器中的位置与其加入容器的顺序相对应的容器。
 </p>
-<table id="orgadfc546" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org7af64e0" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> 顺序容器类型</caption>
 
 <colgroup>
@@ -338,9 +308,9 @@ for the JavaScript code in this tag.
 </tbody>
 </table>
 </div>
-<div id="outline-container-orgdc7f025" class="outline-3">
-<h3 id="orgdc7f025"><span class="section-number-3">1.1</span> 容器库概览</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgd2bd37e" class="outline-3">
+<h3 id="orgd2bd37e">容器库概览</h3>
+<div class="outline-text-3" id="text-orgd2bd37e">
 <p>
 容器类型上的操作形成了一种层次：
 </p>
@@ -353,9 +323,9 @@ for the JavaScript code in this tag.
 本小结主要介绍都所有容器都适用的操作，下一小节介绍顺序容器的操作，关联容器的操作将在下一节介绍。
 </p>
 </div>
-<div id="outline-container-org7be9db4" class="outline-4">
-<h4 id="org7be9db4"><span class="section-number-4">1.1.1</span> 容器定义和初始化</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-org5b2b620" class="outline-4">
+<h4 id="org5b2b620">容器定义和初始化</h4>
+<div class="outline-text-4" id="text-org5b2b620">
 <p>
 容器是模板，需要在尖括号中填入元素的类型，对于 <code>array</code> 还要提供大小信息。
 将一个容器初始化为另一个容器的拷贝有两种：
@@ -376,17 +346,17 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org20263a6" class="outline-4">
-<h4 id="org20263a6"><span class="section-number-4">1.1.2</span> 迭代器</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-orgeab8281" class="outline-4">
+<h4 id="orgeab8281">迭代器</h4>
+<div class="outline-text-4" id="text-orgeab8281">
 <p>
 迭代器可以认为是指针，可以对它解引用获取容器的元素值。当 <code>auto</code> 与 <code>begin</code> 或 <code>end</code> 结合使用时，获得的迭代器类型（是否const)依赖于容器类型，但 <code>cbegin</code> 和 <code>cend</code> 可以获得常量迭代器，而不管容器是什么类型。
 </p>
 </div>
 </div>
-<div id="outline-container-orgee1820e" class="outline-4">
-<h4 id="orgee1820e"><span class="section-number-4">1.1.3</span> 赋值和swap</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-orga2ffaf6" class="outline-4">
+<h4 id="orga2ffaf6">赋值和swap</h4>
+<div class="outline-text-4" id="text-orga2ffaf6">
 <ol class="org-ol">
 <li><p>
 赋值
@@ -428,45 +398,45 @@ swap 操作交换两个相同类型容器的内容，除array外，该操作元�
 <span class="linenr">24: </span>    <span class="org-keyword">auto</span> <span class="org-variable-name">it4</span> = a2.cbegin<span class="org-rainbow-delimiters-depth-2">()</span>;
 <span class="linenr">25: </span>
 <span class="linenr">26: </span>    <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-string">"Before swap: "</span> &lt;&lt; *it1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; *it2 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; *it3 &lt;&lt; <span class="org-string">'\t'</span>
-<span class="linenr">27: </span>            &lt;&lt; *it4 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;v1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;v2 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;a1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;a2
-<span class="linenr">28: </span>            &lt;&lt; <span class="org-string">'\n'</span>;
-<span class="linenr">29: </span>  <span class="org-constant">std</span>::swap<span class="org-rainbow-delimiters-depth-2">(</span>v1, v2<span class="org-rainbow-delimiters-depth-2">)</span>;
-<span class="linenr">30: </span>  <span class="org-constant">std</span>::swap<span class="org-rainbow-delimiters-depth-2">(</span>a1, a2<span class="org-rainbow-delimiters-depth-2">)</span>;
-<span class="linenr">31: </span>  <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-string">"After swap: "</span> &lt;&lt; *it1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; *it2 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; *it3 &lt;&lt; <span class="org-string">'\t'</span>
-<span class="linenr">32: </span>            &lt;&lt; *it4 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;v1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;v2 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;a1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;a2
-<span class="linenr">33: </span>            &lt;&lt; <span class="org-string">'\n'</span>;
+<span class="linenr">27: </span>              &lt;&lt; *it4 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;v1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;v2 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;a1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;a2
+<span class="linenr">28: </span>              &lt;&lt; <span class="org-string">'\n'</span>;
+<span class="linenr">29: </span>    <span class="org-constant">std</span>::swap<span class="org-rainbow-delimiters-depth-2">(</span>v1, v2<span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="linenr">30: </span>    <span class="org-constant">std</span>::swap<span class="org-rainbow-delimiters-depth-2">(</span>a1, a2<span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="linenr">31: </span>    <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-string">"After swap: "</span> &lt;&lt; *it1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; *it2 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; *it3 &lt;&lt; <span class="org-string">'\t'</span>
+<span class="linenr">32: </span>              &lt;&lt; *it4 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;v1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;v2 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;a1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;a2
+<span class="linenr">33: </span>              &lt;&lt; <span class="org-string">'\n'</span>;
 <span class="linenr">34: </span>
-<span class="linenr">35: </span>  it1 = v1.cbegin<span class="org-rainbow-delimiters-depth-2">()</span>;
-<span class="linenr">36: </span>  it2 = v2.cbegin<span class="org-rainbow-delimiters-depth-2">()</span>;
-<span class="linenr">37: </span>  it3 = a1.cbegin<span class="org-rainbow-delimiters-depth-2">()</span>;
-<span class="linenr">38: </span>  it4 = a2.cbegin<span class="org-rainbow-delimiters-depth-2">()</span>;
-<span class="linenr">39: </span>  <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-string">"After swap: "</span> &lt;&lt; *it1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; *it2 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; *it3 &lt;&lt; <span class="org-string">'\t'</span>
-<span class="linenr">40: </span>            &lt;&lt; *it4 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;v1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;v2 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;a1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;a2
-<span class="linenr">41: </span>            &lt;&lt; <span class="org-string">'\n'</span>;
-<span class="linenr">42: </span>  <span class="org-keyword">return</span> 0;
+<span class="linenr">35: </span>    it1 = v1.cbegin<span class="org-rainbow-delimiters-depth-2">()</span>;
+<span class="linenr">36: </span>    it2 = v2.cbegin<span class="org-rainbow-delimiters-depth-2">()</span>;
+<span class="linenr">37: </span>    it3 = a1.cbegin<span class="org-rainbow-delimiters-depth-2">()</span>;
+<span class="linenr">38: </span>    it4 = a2.cbegin<span class="org-rainbow-delimiters-depth-2">()</span>;
+<span class="linenr">39: </span>    <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-string">"After swap: "</span> &lt;&lt; *it1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; *it2 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; *it3 &lt;&lt; <span class="org-string">'\t'</span>
+<span class="linenr">40: </span>              &lt;&lt; *it4 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;v1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;v2 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;a1 &lt;&lt; <span class="org-string">'\t'</span> &lt;&lt; &amp;a2
+<span class="linenr">41: </span>              &lt;&lt; <span class="org-string">'\n'</span>;
+<span class="linenr">42: </span>    <span class="org-keyword">return</span> 0;
 <span class="linenr">43: </span><span class="org-rainbow-delimiters-depth-1">}</span>
 </pre>
 </div>
 
 <pre class="example">
 England	China
-Before swap: 1	6	1	6	0x7ffdd0c8aab0	0x7ffdd0c8aad0	0x7ffdd0c8aaf0	0x7ffdd0c8ab10
-After swap: 1	6	6	1	0x7ffdd0c8aab0	0x7ffdd0c8aad0	0x7ffdd0c8aaf0	0x7ffdd0c8ab10
-After swap: 6	1	6	1	0x7ffdd0c8aab0	0x7ffdd0c8aad0	0x7ffdd0c8aaf0	0x7ffdd0c8ab10
+Before swap: 1	6	1	6	0x7ffef9dc18f0	0x7ffef9dc1910	0x7ffef9dc1930	0x7ffef9dc1950
+After swap: 1	6	6	1	0x7ffef9dc18f0	0x7ffef9dc1910	0x7ffef9dc1930	0x7ffef9dc1950
+After swap: 6	1	6	1	0x7ffef9dc18f0	0x7ffef9dc1910	0x7ffef9dc1930	0x7ffef9dc1950
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org560ed09" class="outline-3">
-<h3 id="org560ed09"><span class="section-number-3">1.2</span> 顺序容器操作</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org815c804" class="outline-3">
+<h3 id="org815c804">顺序容器操作</h3>
+<div class="outline-text-3" id="text-org815c804">
 <p>
 添加和删除元素会改变容器的大小，因此array 不支持添加和删除元素的操作。forward_list 有自己特殊的添加元素的函数，因此，先介绍比较通用的添加元素的方法，最后单独介绍forwar_list.
 </p>
 </div>
-<div id="outline-container-org226a54b" class="outline-4">
-<h4 id="org226a54b"><span class="section-number-4">1.2.1</span> 添加元素</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-orgba6a292" class="outline-4">
+<h4 id="orgba6a292">添加元素</h4>
+<div class="outline-text-4" id="text-orgba6a292">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Add Element</caption>
 
@@ -548,17 +518,17 @@ insert*函数都会返回新添加的（第一个）元素的迭代器，插入�
 </p>
 </div>
 </div>
-<div id="outline-container-org0ab11f1" class="outline-4">
-<h4 id="org0ab11f1"><span class="section-number-4">1.2.2</span> 访问元素</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-org43d2982" class="outline-4">
+<h4 id="org43d2982">访问元素</h4>
+<div class="outline-text-4" id="text-org43d2982">
 <p>
 由于vector 和 array 的元素是连续存放的，因此支持快速随机访问；list 是双向链表，只支持双向顺序访问；forward_list 是单向链表，只支持单向顺序访问，deque 双端队列，也支持快速随机访问。
 </p>
 </div>
 </div>
-<div id="outline-container-org291a655" class="outline-4">
-<h4 id="org291a655"><span class="section-number-4">1.2.3</span> 删除元素</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-org6ae88e7" class="outline-4">
+<h4 id="org6ae88e7">删除元素</h4>
+<div class="outline-text-4" id="text-org6ae88e7">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -622,17 +592,17 @@ erase 函数返回最后一个被删元素之后元素的迭代器
 </p>
 </div>
 </div>
-<div id="outline-container-org5f03f20" class="outline-4">
-<h4 id="org5f03f20"><span class="section-number-4">1.2.4</span> 改变容器大小</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-orgcaca387" class="outline-4">
+<h4 id="orgcaca387">改变容器大小</h4>
+<div class="outline-text-4" id="text-orgcaca387">
 <p>
 resize 函数可以改变容器的大小，可以放大或缩小容器，放大时可以指定增加的元素的值： resize(n,t),缩小时多余的元素会被删掉。
 </p>
 </div>
 </div>
-<div id="outline-container-org25b9f10" class="outline-4">
-<h4 id="org25b9f10"><span class="section-number-4">1.2.5</span> 迭代器失效问题</h4>
-<div class="outline-text-4" id="text-1-2-5">
+<div id="outline-container-orgb268d98" class="outline-4">
+<h4 id="orgb268d98">迭代器失效问题</h4>
+<div class="outline-text-4" id="text-orgb268d98">
 <p>
 当对除list 和 forward_list 以外的容器添加/删除元素后，其原有的迭代器很可能会失效，因此在这些操作后要及时更新迭代器，可以使用 insert() 和 erase()函数返回的迭代器进行更新。还有特别要注意的是，不要保存end()返回的迭代器，因为在添加/删除元素后，它很可能已经失效了。
 </p>
@@ -640,17 +610,57 @@ resize 函数可以改变容器的大小，可以放大或缩小容器，放大�
 </div>
 </div>
 </div>
-<div id="outline-container-org8676ca4" class="outline-2">
-<h2 id="org8676ca4"><span class="section-number-2">2</span> 关联容器</h2>
+<div id="outline-container-orgfc6183e" class="outline-2">
+<h2 id="orgfc6183e">关联容器</h2>
+<div class="outline-text-2" id="text-orgfc6183e">
+<p>
+关联容器是按照关键字来保存和访问的，主要分为两类： <code>map</code> 和 <code>set</code>, <code>map</code> 中每个元素是 (<i>key-value</i>) 对(pair), <i>key</i> 起到索引的作用， <i>value</i> 代表相应的值； <code>set</code> 中的元素只包含关键字（key），它可以高效的查询一个关键字是否在其中。
+</p>
+
+<p>
+标准库提供8个关联容器，可以从三个维度区分他们：
+</p>
+<ol class="org-ol">
+<li>是map还是set</li>
+<li>是否允许重复元素：有无multi</li>
+<li>是否有序：有无unordered</li>
+</ol>
 </div>
-<div id="outline-container-orgc82e681" class="outline-2">
-<h2 id="orgc82e681"><span class="section-number-2">3</span> 泛型算法</h2>
+<div id="outline-container-org0f53065" class="outline-3">
+<h3 id="org0f53065">有序关联容器</h3>
+<div class="outline-text-3" id="text-org0f53065">
+<p>
+在有序关联容器，关键字类型必须定义元素的比较方法，默认情况下，标准库使用元素类型的（&lt;）比较两个元素的大小。
+</p>
 </div>
-<div id="outline-container-org5c76d02" class="outline-2">
-<h2 id="org5c76d02"><span class="section-number-2">4</span> 动态内存</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org474ccdf" class="outline-4">
+<h4 id="org474ccdf"><code>pair</code> 模板类</h4>
+<div class="outline-text-4" id="text-org474ccdf">
+<p>
+pair 保存两个公有数据成员， <code>first</code> 和 <code>second</code> ,定义在头文件 utility 中，
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf07b979" class="outline-3">
+<h3 id="orgf07b979">无序关联容器</h3>
+<div class="outline-text-3" id="text-orgf07b979">
+<p>
+无序关联容器依靠哈希表和（＝＝）运算符组织原素，
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfe40fc9" class="outline-2">
+<h2 id="orgfe40fc9">泛型算法</h2>
+</div>
+<div id="outline-container-org235500d" class="outline-2">
+<h2 id="org235500d">动态内存</h2>
+<div class="outline-text-2" id="text-org235500d">
 <ul class="org-ul">
 <li><a href="stl.html">C++ Standard Libarary</a></li>
+<li><a href="class.html">Class</a></li>
 <li><a href="names.html">Names And Memory Layout</a></li>
 <li><a href="lei.html">Class Usage</a></li>
 <li><a href="IO.html">IO lib</a></li>
@@ -658,7 +668,6 @@ resize 函数可以改变容器的大小，可以放大或缩小容器，放大�
 <li><a href="GCC_Clang_Settings.html">Setting GCC and Clang</a></li>
 <li><a href="function.html">Function</a></li>
 <li><a href="dynamic_memory.html">Dynamic Memory</a></li>
-<li><a href="class.html">Class</a></li>
 <li><a href="index.html">Index</a></li>
 </ul>
 </div>
@@ -666,8 +675,8 @@ resize 函数可以改变容器的大小，可以放大或缩小容器，放大�
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2018-12-13</p>
-<p class="author">Author: Vincent Zhang</p>
-<p class="date">Created: 2020-04-13 Mon 23:52</p>
+<p class="author">Author: Tian</p>
+<p class="date">Created: 2020-04-15 Wed 11:30</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.0.50 (<a href="https://orgmode.org">Org</a> mode 9.3.6)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
