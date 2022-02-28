@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-02-28 一 15:14 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>消去法求解线性方程组</title>
+<meta name="author" content="Tian tongtong" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../css/org.css"/>
+
+<script>
+window.MathJax = {
+  tex: {
+   inlineMath: [ ["\\(","\\)"] ],
+   displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+    processEscapes: false,
+    processEnvironments: true,
+    processRefs: true,
+    autoload: {
+      color: [],
+      colorv2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    skipHtmlTags: [ "script ", "noscript ", "style ", "textarea ", "pre ", "code "],
+    ignoreHtmlClass: "tex2jax_ignore ",
+    processHtmlClass: 'tex2jax_process'
+  },
+  chtml: {
+    displayAlign: 'left',
+    displayIndent: "5em"
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  }
+};
+</script>
+<script type="text/javascript" src="../MathJax/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="sitemap.html"> UP </a>
+ |
+ <a accesskey="H" href="../index.html"> HOME </a>
+</div><div id="preamble" class="status">
+By Tian tongtong. Date: 2022-02-18. Last modified 2022-02-26 六 15:22
+</div>
+<div id="content" class="content">
+<h1 class="title">消去法求解线性方程组
+<br />
+<span class="subtitle">Gauss-Jordan method</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org1d7e5c4">1. n元线性方程组</a></li>
+<li><a href="#orga4efb0e">2. Gauss-Jordan Elimination</a></li>
+<li><a href="#org641f37a">3. 线性方程组解的个数与判别准则</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1d7e5c4" class="outline-2">
+<h2 id="org1d7e5c4"><span class="section-number-2">1.</span> n元线性方程组</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+具有n个未知量的多个一次方程构成了n元线性方程组，形式如下：
+</p>
+\begin{flalign}
+\left\{\begin{matrix}
+  a_{11}x_{1}+a_{12}x_{2}+\dots+a_{1n}x_{n}=b_{1} \\
+  a_{21}x_{1}+a_{22}x_{2}+\dots+a_{2n}x_{n}=b_{2} \\
+  \vdots                                          \\
+  a_{m1}x_{1}+a_{m2}x_{2}+\dots+a_{mn}x_{n}=b_{m}
+\end{matrix}\right.
+\end{flalign}
+
+<p>
+线性代数由n元线性方程组出发，逐步引出了矩阵，行列式等概念，本节主要介绍n元线性方程组的Gauss-Jordan解法和引入矩阵。
+</p>
+
+<p>
+在n元线性方程组等号右边的叫常数项，在未知量前的是系数，如果常数项全为0,则称为齐次线性方程组了，否则是非齐次线性方程组。
+</p>
+
+<p>
+解n元线性方程组最常用的是消元法，将未知量的个数逐渐减少，直到方程组得解或者无解，方程组有解又分为有唯一解和有无穷多解。回忆中学阶段的消去过程：交换两个方程的位置；在某一个方程上乘一个非零数；在一个方程上加上另一个方程。这3个步骤称为方程组的<b>初等行变换</b>. 在这个消去的过程中，实际上只有未知量的系数与常数项在参与运算，未知量本身并没参与任何运算，所以我们现在把系数和常数项分别从方程组中取出来，组成一张<b>表格</b>  ,这个表格称为一个矩阵，包含系数和常数项的矩阵称为增广炬阵（augmented  matrix
+），而只包含系数的矩阵称为系数矩阵，下面我们用矩阵的方法再做消元处理，我们介绍
+<b>Gauss-jordan</b> 消元法。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga4efb0e" class="outline-2">
+<h2 id="orga4efb0e"><span class="section-number-2">2.</span> Gauss-Jordan Elimination</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+目的是通过3个初等行变换（elementary row operations）把矩阵转换为阶梯形矩阵（echelon form），阶梯形矩阵满足如下条件：
+</p>
+
+<ol class="org-ol">
+<li>All rows with only zero entries are at the bottom of the matrix</li>
+<li>The first nonzero entry in a row, called the <b>leading entry</b> or the <b>pivot</b> , of each nonzero row is to the right of the leading entry of the row above it.</li>
+<li>The leading entry, also known as the pivot, in any nonzero row is 1.</li>
+<li>All other entries in the column containing a leading 1 are zeroes.</li>
+</ol>
+
+<p>
+To perform Gauss-Jordan Elimination:
+</p>
+
+<ol class="org-ol">
+<li>Swap the rows so that all rows with all zero entries are on the bottom</li>
+<li>Swap the rows so that the row with the largest, leftmost nonzero entry is on top.</li>
+<li>Multiply the top row by a scalar so that top row's leading entry becomes 1.</li>
+<li>Add/subtract multiples of the top row to the other rows so that all other entries in the column containing the top row's leading entry are all zero.</li>
+<li>Repeat steps 2-4 for the next leftmost nonzero entry until all the leading entries are 1.</li>
+<li>Swap the rows so that the leading entry of each nonzero row is to the right of the leading entry of the row above it.</li>
+</ol>
+
+<p>
+示例:
+</p>
+
+\begin{flalign*}
+\left\{\begin{matrix}
+2x_1 & + 4x_2 & -2x_3 &= 2 \\
+4x_1 & +9x_2 & -3x_3 &= 8 \\
+-2x_1 & -3x_2 & +7x_3 &= 10
+\end{matrix}\right.
+\end{flalign*}
+
+<p>
+获得增广炬阵并对其进行初等行变换最终获得简化阶梯形矩阵。
+</p>
+
+<p>
+\[
+\left[\begin{array}{c c c | c}
+  2&  4&  -2&  2\\
+  4&  9&  -3&  8\\
+  -2&  -3&  7& 10
+\end{array}  \right]
+\xrightarrow[(2)-(1)*2]{(3)+(1)}
+\left[\begin{array}{c c c | c}
+  2&  4&  -2&  2\\
+  0&  1&  1&  4\\
+  0&  1&  5& 12
+\end{array}  \right]
+\xrightarrow[(3)-(2)]{}
+\left[\begin{array}{c c c | c}
+  2&  4&  -2&  2\\
+  0&  1&  1&  4\\
+  0&  0&  4& 8
+\end{array}  \right]
+\xrightarrow[(3)\div 4]{(1)\div2}
+\left[\begin{array}{c c c | c}
+  1&  2&  -1&  1\\
+  0&  1&  1&  4\\
+  0&  0&  1& 2
+\end{array}  \right]
+\xrightarrow[(2)-(3)]{(1)+(3)}
+\left[\begin{array}{c c c | c}
+  1&  2&  0&  3\\
+  0&  1&  0&  2\\
+  0&  0&  1& 2
+\end{array}  \right]
+\xrightarrow[(1)-(2)*2]{}
+\left[\begin{array}{c c c | c}
+  1&  0&  0&  -1\\
+  0&  1&  0&  2\\
+  0&  0&  1& 2
+\end{array}  \right]
+\]
+</p>
+
+<p>
+以上手动计算过程需要用矩阵乘法表示出来，每一步变换对应一个变换矩阵，变换矩阵可以从单位矩阵开示构造，而且我们是逐行改变增广矩阵，所以变换矩阵应该放在增广矩阵的左边，我们的主要目的是通过消元法不断消去未知量的个数，也就是不断的让未知量的系数变为0.
+</p>
+
+<p>
+<b>我们使用矩阵的初等行变换来构造i行j列位置的元素为0：第i行加上第j行的 \(\ell_{ij}\)
+倍，本次变换矩阵记作 \(E_{ij}\) .</b>
+</p>
+
+<p>
+第一次变换需要把第二行和第三行的第一列变为0(如果有n行则要一直把第n行的第一列也变为0),所以包含两个矩阵 \(E_{21}\quad E_{31}\),其中 \(\ell_{21}=-2 \quad \ell_{31}=1\).
+</p>
+\begin{equation*}
+E_{21}=
+\begin{bmatrix}
+1& 0&  0\\
+-2&  1&  0\\
+0&  0&  1
+\end{bmatrix}
+\quad
+E_{31}=
+\begin{bmatrix}
+1& 0&  0\\
+0&  1&  0\\
+1&  0&  1
+\end{bmatrix}
+\end{equation*}
+
+\begin{equation*}
+E_{21}E_{31}=E_{31}E_{21}=
+\begin{bmatrix}
+1& 0&  0\\
+-2&  1&  0\\
+1&  0&  1
+\end{bmatrix}
+\end{equation*}
+<p>
+记第一次变换后的矩阵 \(U^{'}=E_{31}E_{21}A=\big(\begin{smallmatrix} 2 & 4 &
+-2\\ 0 & 1 & 1\\0 & 1 & 5\end{smallmatrix}\big)\)
+第二次变换要把第三行的第二列变为0(如果有n行则要一直把第n行的第二列也变为0), \(\ell_{32}=-1\) ,
+</p>
+\begin{equation*}
+E_{32}=
+\begin{bmatrix}
+1& 0&  0\\
+0&  1&  0\\
+0&  -1&  1
+\end{bmatrix}
+\end{equation*}
+
+<p>
+记第二次变换后的矩阵 \(U=E_{32}U^{'}=E_{32}E_{31}E_{21}A=\big(\begin{smallmatrix} 2 & 4 &
+-2\\ 0 & 1 & 1\\0 & 0 & 4\end{smallmatrix}\big)\)
+</p>
+
+<p>
+计算前两步的变换矩阵：
+</p>
+\begin{equation*}
+E_{32}E_{31}E_{21}=
+\begin{bmatrix}
+1& 0&  0\\
+-2&  1&  0\\
+\boxed3&  -1&  1
+\end{bmatrix}
+\end{equation*}
+<p>
+注意观察总变换矩阵第三行第一列元素3,可以这样理解（顺序很重要）：首先第三行加上1
+倍的第一行，第二行减去第1行的2倍，然后第三行减去新的第二行，所以第三行与第一行的关系应该是：先加1倍，再减去(-2）倍，也就是加3倍的第一行。
+</p>
+
+<p>
+<b>在这个顺序下第一行对第三行有额外的影响。</b>元素被矩阵乘法弄乱了，下面看更加优美的矩阵A的LU分解
+</p>
+<hr />
+<p>
+最后的结果矩阵 \(U\) 称为上三角矩阵，以上过程是正向变换，从 <i>A</i> 变换到 <i>U</i>,那么现在研究一下反向变换，从 <i>U</i> 变换到 <i>A</i>,也就是把 <i>A</i> 分解为一个下三角矩阵和一个上三角矩阵的乘积 \(A=LU\),很明显 \(L=E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}\).
+</p>
+
+<p>
+以上的变换矩阵都是为了在某一行减去另一行的 \(\ell\) 倍获得新行，在反变换的时候，应该是在新行加上另一行的 \(\ell\) 倍。因此反变换矩阵的各元素应该是变换矩阵相应元素的反数。即
+</p>
+\begin{equation*}
+(E_{31}E_{21})^{-1}=
+\begin{bmatrix}
+1& 0&  0\\
+2&  1&  0\\
+-1&  0&  1
+\end{bmatrix}
+\quad
+E_{32}^{-1}=
+\begin{bmatrix}
+1& 0&  0\\
+0&  1&  0\\
+0&  1&  1
+\end{bmatrix}
+\end{equation*}
+
+
+\begin{equation*}
+(E_{31}E_{21})^{-1}E_{32}^{-1}=
+\begin{bmatrix}
+1& 0&  0\\
+2&  1&  0\\
+-1&  1&  1
+\end{bmatrix}
+\end{equation*}
+
+<p>
+可以看到这时候的反变换矩阵很整洁漂亮，因为 \(\ell_{ij}\) 都在总的反变换矩阵相应的位置上，矩阵的乘法并没有弄乱这些数据。这也是为什么下一节选择 <b>A=LU</b> 从上三角矩阵U还原矩阵A的原因：每个乘数完美的落在下三角矩阵L相应的位置上，
+</p>
+
+
+<p>
+以上手动计算过程也可以通过矩阵计算获得，因为改变的是增广炬阵的行，所以需要在增广矩阵的左边乘变换矩阵（左乘），以上每一次变换都对应一个变换矩阵，所以共有5个变换矩阵，它们的顺序是有严格要求的，第一次的变换写在增广矩阵的左边，第二次变换写在第一次的左边，第三次的变换写在第二次的左边，以此类推。因此变换矩阵应该是
+</p>
+
+\begin{equation*}
+E=
+\begin{bmatrix}
+1& -2&  0\\
+0&  1&  0\\
+0&  0&  1
+\end{bmatrix}
+\begin{bmatrix}
+1& 0& 1\\
+0& 1& -1\\
+0& 0& 1
+\end{bmatrix}
+\begin{bmatrix}
+0.5& 0& 0\\
+0  & 1& 0\\
+0  & 0& 0.25
+\end{bmatrix}
+\begin{bmatrix}
+1&  0& 0\\
+0&  1& 0\\
+0& -1& 1
+\end{bmatrix}
+\begin{bmatrix}
+ 1& 0& 0\\
+-2& 1& 0\\
+ 1& 0& 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 6.75& -2.75& 0.75\\
+-2.75& 1.25& -0.25\\
+ 0.75& -0.25& 0.25
+\end{bmatrix}
+\end{equation*}
+
+<p>
+\[
+E
+\left[\begin{array}{c | c}
+A & b
+\end{array}  \right]
+=
+\left[\begin{array}{c | c}
+EA & Eb
+\end{array}  \right]
+=
+\left[\begin{array}{c c c | c}
+  1&  0&  0&  -1\\
+  0&  1&  0&  2\\
+  0&  0&  1& 2
+\end{array}  \right]
+\]
+</p>
+
+<p>
+在这个变换中，\(E\) 其实就是 \(A^{-1}\)
+</p>
+
+<p>
+To obtain the inverse of a n × n matrix A :
+</p>
+
+<ol class="org-ol">
+<li>Create the partitioned matrix(分块矩阵) \(( A | I )\) I is the identity matrix.</li>
+<li>Perform Gauss-Jordan Elimination on the partitioned matrix with the objective of converting the first part of the matrix to reduced-row echelon form.</li>
+<li>If done correctly, the resulting partitioned matrix will take the form \((I|A^{-1})\)</li>
+<li>Double-check your work by making sure that \(AA^{-1}=I\).</li>
+</ol>
+
+<p>
+示例：
+</p>
+
+\begin{align*}
+\left[\begin{array}{c c c | c c c}
+  2&  4&  -2&  1& 0& 0&\\
+  4&  9&  -3&  0& 1& 0&\\
+  -2&  -3&  7& 0& 0& 1&
+\end{array}  \right]
+\xrightarrow[(2)-(1)*2]{(3)+(1)}
+\left[\begin{array}{c c c | c c c}
+  2&  4&  -2& 1& 0& 0&\\
+  0&  1&  1&  -2& 1& 0&\\
+  0&  1&  5&  1& 0& 1&
+\end{array}  \right]
+\xrightarrow[(3)-(2)]{}
+\left[\begin{array}{c c c | c c c}
+  2&  4&  -2& 1& 0& 0&\\
+  0&  1&  1&  -2& 1& 0&\\
+  0&  0&  4&  3& -1& 1&
+\end{array}  \right] \\
+\xrightarrow[(3)\div 4]{(1)\div2}
+\left[\begin{array}{c c c | c c c}
+  1&  2&  -1& \frac{1}{2}& 0& 0&\\
+  0&  1&  1&  -2& 1& 0&\\
+  0&  0&  1&  \frac{3}{4}& \frac{-1}{4}& \frac{1}{4}&
+\end{array}  \right]
+\xrightarrow[(2)-(3)]{(1)+(3)}
+\left[\begin{array}{c c c | c c c}
+  1&  2&  0&  \frac{5}{4}& \frac{-1}{4}& \frac{1}{4}&\\
+  0&  1&  0&  \frac{-11}{4}& \frac{5}{4}& \frac{-1}{4}&\\
+  0&  0&  1&  \frac{3}{4}& \frac{-1}{4}& \frac{1}{4}&
+\end{array}  \right]
+\xrightarrow[(1)-(2)*2]{}
+\left[\begin{array}{c c c | c c c}
+  1&  0&  0&  \frac{27}{4}& \frac{-11}{4}& \frac{3}{4}&\\
+  0&  1&  0&  \frac{-11}{4}& \frac{5}{4}& \frac{-1}{4}&\\
+  0&  0&  1&  \frac{3}{4}& \frac{-1}{4}& \frac{1}{4}&
+\end{array}  \right]
+\end{align*}
+</div>
+</div>
+
+<div id="outline-container-org641f37a" class="outline-2">
+<h2 id="org641f37a"><span class="section-number-2">3.</span> 线性方程组解的个数与判别准则</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+当增广矩阵经过初等行变换后，观察最终的阶梯形矩阵，如果系数矩阵存在零行，且相应的常数矩阵的元素不为0,则原方程组无解；如果系数矩阵存在零行且相应的常数矩阵元素为0,
+则有解，有解的时候又可分为两种情况：
+</p>
+<ol class="org-ol">
+<li>非零行个数等于未知量个数时其解唯一</li>
+<li>非零行个数小于未知量个数时有无穷多解</li>
+</ol>
+
+<p>
+齐次线性方程组肯定存在一组零解（变量全为0），
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+This blog is generated by: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.0.50 (<a href="https://orgmode.org">Org</a> mode 9.5.2)
+</div>
+</body>
+</html>
