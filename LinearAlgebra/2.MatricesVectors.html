@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-02-28 一 15:14 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>矩阵和向量</title>
+<meta name="author" content="Tian tongtong" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../css/org.css"/>
+
+<script>
+window.MathJax = {
+  tex: {
+   inlineMath: [ ["\\(","\\)"] ],
+   displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+    processEscapes: false,
+    processEnvironments: true,
+    processRefs: true,
+    autoload: {
+      color: [],
+      colorv2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    skipHtmlTags: [ "script ", "noscript ", "style ", "textarea ", "pre ", "code "],
+    ignoreHtmlClass: "tex2jax_ignore ",
+    processHtmlClass: 'tex2jax_process'
+  },
+  chtml: {
+    displayAlign: 'left',
+    displayIndent: "5em"
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  }
+};
+</script>
+<script type="text/javascript" src="../MathJax/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="sitemap.html"> UP </a>
+ |
+ <a accesskey="H" href="../index.html"> HOME </a>
+</div><div id="preamble" class="status">
+By Tian tongtong. Date: 2022-02-21. Last modified 2022-02-26 六 08:36
+</div>
+<div id="content" class="content">
+<h1 class="title">矩阵和向量</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgb18f776">1. 向量</a></li>
+<li><a href="#orgcd053ef">2. 矩阵</a>
+<ul>
+<li><a href="#org438f3e8">2.1. 矩阵与向量乘法</a></li>
+<li><a href="#org7911487">2.2. 矩阵与矩阵乘法</a></li>
+<li><a href="#orgce36515">2.3. 特殊矩阵</a></li>
+<li><a href="#org2193dbb">2.4. 矩阵的逆</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb18f776" class="outline-2">
+<h2 id="orgb18f776"><span class="section-number-2">1.</span> 向量</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+在矩阵中，横向是行向量，纵向是列向量，通常说向量就指列向量。向量有标量乘法运算，即每个元素与标量相乘；元素个数相等的两个向量之间也可以加法运算，即每个元素分别相加。向量的标量乘法和加法则称为<b>线性组合</b>,这是一个非常重要的概念，也是线性代数的基础。
+</p>
+
+<p>
+对于n元线性方程组，中学阶段是横向看的，即每个等式代表一个面（3元）或者一条线（2
+元），解线性方程组就是在寻找面或者线的交点；现在可以用向量的线性组合来重新理解n
+元线性方程组：纵向看，提取出每一列的未知量，系数写为列向量，整个方程组变为了n个列向量的线性组合。
+</p>
+\begin{equation*}
+x_1 \begin{bmatrix} a_{11}\\a_{21}\\ \vdots\\ a_{m1}\end{bmatrix}+
+x_2 \begin{bmatrix} a_{12}\\a_{22}\\ \vdots\\ a_{m2}\end{bmatrix}+ \dots+
+x_n \begin{bmatrix} a_{1n}\\a_{2n}\\ \vdots\\ a_{mn}\end{bmatrix}=
+\begin{bmatrix} b_1 \\b_2\\ \vdots\\ b_m\end{bmatrix}
+\end{equation*}
+<p>
+这样就把解n元线性方程组的问题转化为向量 \(b\) 能否被向量组 \(a_{i}\) <b>线性表出</b>的问题，这个问题是线性代数主要的研究对象之一。
+</p>
+
+<dl class="org-dl">
+<dt>长度（length,magnitude,norm）</dt><dd>设 \(\vec a=(x,y)\),其长度 \(\lVert \vec a
+  \rVert=\sqrt{x^2+y^2}\).The vector length is called <b>Euclidean length</b>, or
+<b>Euclidean norm</b>,Mathematician often use term norm instead of length.There are many common norms:
+
+<ol class="org-ol">
+<li>1-norm is defined by the sum of absolute value of the vector elements \(\left \| \mathbf{a} \right \|_{1} = \left | a_{1} \right | + \left | a_{2} \right | + ... + \left | a_{n} \right |\)</li>
+<li>2-norm is the most often used vector norm, sometimes called Euclidean norm. \(\left \| \mathbf{a} \right \| = \left \| \mathbf{a} \right \|_{2} = \sqrt{a_{1}^{2}+a_{2}^{2}+...+a_{n}^{2}}\)</li>
+<li>p-norm is sometimes called Minskowski norm is defined as \(\left \| \mathbf{a} \right \|_{p} = \sqrt[p]{a_{1}^{p}+a_{2}^{p}+...+a_{n}^{p}}\)</li>
+</ol></dd>
+
+<dt>点乘积（dot product）</dt><dd>结果是一个数字 \(\vec a_1\cdot\vec a_2=x_1x_2+y_1y_2=\lVert \vec a_1
+  \rVert \lVert \vec a_2 \rVert\cos{\theta}\).所以当两个向量互相垂直时。它们的内积为0.</dd>
+<dt>叉乘积（cross product） </dt><dd>也称向量积(vector product)，结果是一个向量，向量的大小（Magnitude）\(\lVert\vec  a_1\times\vec  a_2\lVert=\lVert  \vec  a_1\rVert
+  \lVert \vec a_2 \rVert\sin{\theta}\) ,方向满足右手定则。外积还有行列式形式的计算方法 \(\vec a_1\times\vec a_2=\begin{vmatrix} \vec i &  \vec j & \vec k\\ x_1 &
+  y_1   &  z_1\\   x_2   &   y_2  &z_2\end{vmatrix}=\vec   i(y_1z_2-z_1y_2)+\vec
+  j(x_1z_2-z_1x_2)+\vec k(x_1y_2-y_1x_2)\).</dd>
+<dt>外积 (outer product)</dt><dd>两个向量的张量积（tensor product），其结果是一个矩阵，设 \(u=\begin{bmatrix} u_1 \\u_2\\ \vdots\\ u_m\end{bmatrix} v=\begin{bmatrix}
+  v_1 \\v_2\\ \vdots\\ v_n\end{bmatrix}\),那么两者的外积： \(u\otimes
+  v=uv^T=\begin{bmatrix} u_1 \\u_2\\ \vdots\\ u_m\end{bmatrix}\begin{bmatrix}
+  v_1 v_2 \dots v_n\end{bmatrix}=\begin{bmatrix} u_1v_1 & u_1v_2 &\dots &
+  u_1v_n\\  u_2v_1 &  u_2v_2 & \dots & u_2v_n\\  \vdots &  \vdots & \vdots &
+  \vdots\\ u_mv_1 &  u_mv_2 & \dots & u_mv_n\end{bmatrix}\)</dd>
+</dl>
+
+
+
+<div id="org0520e9d" class="figure">
+<p><img src="figures/DC-1776V9.png" alt="DC-1776V9.png" />
+</p>
+</div>
+
+
+<p>
+Cross product is much more related to exterior product which is in fact a far going generalization.
+</p>
+
+<p>
+Outer product is a matricial description of tensor product of two vectors.
+</p>
+</div>
+</div>
+<div id="outline-container-orgcd053ef" class="outline-2">
+<h2 id="orgcd053ef"><span class="section-number-2">2.</span> 矩阵</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+A matrix is a rectangular array of numbers or entries,when \(A\) has <i>m</i> rows and <i>n</i>
+columns,it is an "m by n" matrix.当两个矩阵纬度相同时，它们可以做加法，即对应的每个元素分别相加，矩阵与标量的乘积运算是标量与每个元素相乘。
+</p>
+</div>
+<div id="outline-container-org438f3e8" class="outline-3">
+<h3 id="org438f3e8"><span class="section-number-3">2.1.</span> 矩阵与向量乘法</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+一个m行n列的矩阵 \(A\) 可以和一个n行1列的向量 \(x\) 做乘法，假设 \(Ax=b\),可以从两个角度理解矩阵与向量的乘法。第一， <i>b</i> 中的每个元素都是矩阵 <i>A</i> 的行向量与 <i>x</i> 的点乘积；第二，把 <i>A</i> 看作是n个列向量， <i>b</i> 是这n个列向量的一个线性组合。
+</p>
+</div>
+</div>
+<div id="outline-container-org7911487" class="outline-3">
+<h3 id="org7911487"><span class="section-number-3">2.2.</span> 矩阵与矩阵乘法</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+一个m行n列的矩阵 \(A\) 可以和一个n行p列的矩阵 \(B\) 做乘法，结果是一个m行p列的矩阵。假设 \(AB=C\),可以从四个角度理解矩阵乘法。
+</p>
+<ol class="org-ol">
+<li>直接计算法。矩阵 <i>C</i> 中第 <i>i</i> 行第 <i>j</i> 列元素 \(C_{ij}\) 是 <i>A</i> 的第 <i>i</i> 个行向量与 <i>B</i> 的第 <i>j</i> 个列向量的点乘积。</li>
+<li><i>C</i> 中的每一列（每个列向量）是矩阵 <i>A</i> 与 <i>B</i> 中的每个列向量 <i>b<sub>j</sub></i> 的乘积。</li>
+<li><i>C</i> 中的每一行（每个行向量）是 <i>A</i> 的行向量 <i>a<sub>i</sub></i> 与 <i>B</i> 的乘积。</li>
+<li>分别计算 <i>A</i> 的每一列和 <i>B</i> 的每一行的外积，将得到的矩阵分别相加。</li>
+</ol>
+
+<p>
+矩阵乘法的性质：
+\(AB \neq BA \quad A(B+C)=AB+AC\quad(A+B)C=AC+BC\quad\)
+\(A^{p}A^{q}=A^{p+q}\quad(A^{p})^{q}=A^{pq}\quad(AB)^{p} \neq A^{p}B^{p}\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgce36515" class="outline-3">
+<h3 id="orgce36515"><span class="section-number-3">2.3.</span> 特殊矩阵</h3>
+<div class="outline-text-3" id="text-2-3">
+<ol class="org-ol">
+<li>单位矩阵（identity matrix），是一个方阵，对角元素全为1,非对角元素全为0,任何矩阵与其相乘后仍是原矩阵。</li>
+<li>零矩阵（null matrix），元素全为0的矩阵，</li>
+<li>1矩阵（matrix one），元素全为1的矩阵，用于累加原矩阵的行（左乘）或列（右乘）</li>
+<li>对角矩阵（diagonal matrix），是一个方阵，对角元素非零，其余元素全为0.两个对角矩阵相乘等于相应位置上的两个元素分别相乘，对角矩阵左乘（右乘）一个矩阵相当于在那个矩阵的行（列）乘对应对角矩阵上的主元。</li>
+</ol>
+
+
+\begin{equation*}
+\begin{bmatrix}
+   &2 &0 &0 \\
+   &0 &8 &0 \\
+   &0 &0 &3
+\end{bmatrix}
+\begin{bmatrix}
+   &1 &2 &3 \\
+   &4 &5 &6 \\
+   &7 &8 &9
+\end{bmatrix}
+=
+\begin{bmatrix}
+   &2 &4 &6 \\
+   &32 &40 &48 \\
+   &21 &24 &27
+\end{bmatrix}
+\end{equation*}
+
+
+\begin{equation*}
+\begin{bmatrix}
+   &1 &2 &3 \\
+   &4 &5 &6 \\
+   &7 &8 &9
+\end{bmatrix}
+\begin{bmatrix}
+   &2 &0 &0 \\
+   &0 &8 &0 \\
+   &0 &0 &3
+\end{bmatrix}
+=
+\begin{bmatrix}
+   &2 &16 &9 \\
+   &8 &40 &18 \\
+   &14 &64 &27
+\end{bmatrix}
+\end{equation*}
+</div>
+</div>
+<div id="outline-container-org2193dbb" class="outline-3">
+<h3 id="org2193dbb"><span class="section-number-3">2.4.</span> 矩阵的逆</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+只有方阵才有逆矩阵，满足 \(AA^{-1}=A^{-1}A=I\),在 \(Ax=b\) 中，如果 <i>A</i> <i>x</i> 为已知量，
+<i>b</i> 为未知量，我们可以很容易计算出 <i>b</i>,那么如果 <i>A</i> 和 <i>b</i> 已知，反过来求 <i>x</i> 怎么办呢，这时候就用到了逆矩阵： \(x=A^{-1}b\),根据n 元线性方程组解的情况看，并不是所有矩阵都可逆，如果矩阵可逆那么方程组有解，否则无解。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+This blog is generated by: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.0.50 (<a href="https://orgmode.org">Org</a> mode 9.5.2)
+</div>
+</body>
+</html>
