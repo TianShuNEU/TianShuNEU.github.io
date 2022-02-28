@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-28 一 15:16 -->
+<!-- 2022-02-28 一 16:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>向量空间和子空间</title>
@@ -47,7 +47,7 @@ window.MathJax = {
  |
  <a accesskey="H" href="../index.html"> HOME </a>
 </div><div id="preamble" class="status">
-By Tian tongtong. Date: 2022-02-26. Last modified 2022-02-28 一 15:16
+By Tian tongtong. Date: 2022-02-26. Last modified 2022-02-28 一 16:54
 </div>
 <div id="content" class="content">
 <h1 class="title">向量空间和子空间</h1>
@@ -123,6 +123,138 @@ the subspace</b>
 Null Space(零空间) 指的是齐次线性方程组 \(Ax= 0\) 的所有解，组成的向量空间。对于一个 <i>m</i> 行 <i>n</i>  列的参数矩阵 \(A\),齐次线性方程组的每个解都包含 <i>n</i> 个元素，属于 \(R^{n}\),
 零空间是 \(R^{n}\) 的子空间。  对于齐次线性方程组，肯定有一个解 \(x=0\) 称为零解，除了零解如果还有其它解称为非零解，它的解的情况是要么只有一个零解，要么有无数的非零解。
 </p>
+
+<p>
+例题：找到 \(A \quad B \quad C\) 的零空间，以及 \(Cx=0\) 的特殊解。
+</p>
+\begin{equation*}
+A=
+\begin{bmatrix}
+1& 2&\\
+3& 8&
+\end{bmatrix}
+\quad
+B=
+\begin{bmatrix}
+A\\
+2A
+\end{bmatrix}
+=
+\begin{bmatrix}
+1& 2&\\
+3& 8&\\
+2& 4&\\
+6& 16&\\
+\end{bmatrix}
+C=
+\begin{bmatrix}
+A \quad 2A
+\end{bmatrix}
+=
+\begin{bmatrix}
+1& 2& 2& 4&\\
+3& 8& 6& 16&\\
+\end{bmatrix}
+\end{equation*}
+<p>
+采用消元的方法：
+</p>
+
+\begin{align*}
+A=
+\left[\begin{array}{c c}
+  1&  2& \\
+  3&  8&
+\end{array}  \right]
+\xrightarrow[]{}
+U=
+\left[\begin{array}{c c}
+  1&  2&\\
+  0&  2&
+\end{array}  \right]
+\end{align*}
+
+\begin{align*}
+C=
+\left[\begin{array}{c c c c}
+  1&  2& 2& 4&\\
+  3&  8& 6& 16&
+\end{array}  \right]
+\xrightarrow[]{}
+U=
+\left[\begin{array}{c c c c}
+ 1& 2& 2& 4&\\
+ 0& 2& 0& 4&
+\end{array}  \right]
+\xrightarrow[]{}
+R=
+\left[\begin{array}{c c c c}
+ 1& 0& 2& 0&\\
+ 0& 1& 0& 2&
+\end{array}  \right]
+\end{align*}
+
+<p>
+由 \(A\) 变换后的 \(U\) 可知原矩阵可逆，由  \(Ux=0\) 可知只有零解，它的nullspace 只包含 \(R^{2}\) 中的 \(x=0\), 而 \(B\) 有同样的nullspace.
+</p>
+
+<p>
+\(N(A)=N(U)=N(R)\).
+而 \(C\) 就不同了，它有多余的列而不是行，它的解有4个元素，消元法只能在前两列产生主元（pivot），通过观察，可得  <i>U</i> 的  pivot  有2个。我们称之为rank  = 2.  有pivot的
+column 我们称之为 pivot column。  没有pivot 的 column我们称之为 Free column,对于后面两个free column， 其所代表的variable，我们称为free variable。 <i>R</i> 称为简化的阶梯形矩阵（reduced row echelon from R=rref(A)），到了这一步是最容易看出nullspace
+的。
+</p>
+
+<p>
+free variable 有一个好处，就是可以随便取值，因为没有公式限定它。我们采取特殊值(0,1)的办法求得2个特殊解。当 \(x_{3}=1,x_{4}=0\) 时，\(s_{1}=(-2,0,1,0)\),当 $x<sub>3</sub>=0,x<sub>4</sub>=1$时，
+\(s_{2}=(0,-2,0,1)\).
+</p>
+
+<p>
+现在我们有了两个特殊解，这两个特殊解都不能代表完全的nullspace。 但是分别代表了有
+\(x_{3}\) 没有 \(x_{4}\) 的情况，和没有 \(x_{3}\) 有 \(x_{4}\) 的情况，还剩下两种情况，一种是没有 \(x_{3}\) 没有 \(x_{4}\) 的情况，一种是有  \(x_{3}\) 也有 \(x_{4}\) 的情况，
+</p>
+
+<p>
+这四种情况都能由 两个特殊解的线性组合而得
+</p>
+
+\begin{align*}
+x=
+c
+\left[\begin{array}{c}
+-2&\\
+0&\\
+1&\\
+0&
+\end{array}  \right]
++d
+\left[\begin{array}{c}
+0&\\
+-2&\\
+0&\\
+1
+\end{array}  \right]
+\end{align*}
+
+<p>
+这样子就能代表整个null space
+</p>
+
+<hr />
+<p>
+查找主元个数的方法引向了一个非常重要的理论，假设 \(A\) 的列数多于行数(n&gt;m)，那至少有一个自由变量， \(Ax=0\) 至少有一个特殊解，这个特殊解是非零解。
+</p>
+
+<p>
+一个“矮胖”的矩阵的零空间里通常有非零向量，至少有n-m个自由变量，因为主元的个数不可能超过m.
+</p>
+
+<blockquote>
+<p>
+The nullspace is a subspace,It's dimension is the number of variables.
+</p>
+</blockquote>
 </div>
 </div>
 </div>
