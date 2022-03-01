@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-28 一 16:54 -->
+<!-- 2022-03-01 二 16:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>向量空间和子空间</title>
@@ -47,7 +47,7 @@ window.MathJax = {
  |
  <a accesskey="H" href="../index.html"> HOME </a>
 </div><div id="preamble" class="status">
-By Tian tongtong. Date: 2022-02-26. Last modified 2022-02-28 一 16:54
+By Tian tongtong. Date: 2022-02-26. Last modified 2022-03-01 二 16:49
 </div>
 <div id="content" class="content">
 <h1 class="title">向量空间和子空间</h1>
@@ -56,7 +56,21 @@ By Tian tongtong. Date: 2022-02-26. Last modified 2022-02-28 一 16:54
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
 <li><a href="#orgc2081e3">1. 向量空间</a></li>
-<li><a href="#org347a354">2. 求解齐次线性方程组</a></li>
+<li><a href="#org347a354">2. 求解齐次线性方程组</a>
+<ul>
+<li><a href="#orgf4d026a">2.1. 矩阵的秩</a></li>
+</ul>
+</li>
+<li><a href="#orgd5d4975">3. \(Ax=b\) 的全解</a>
+<ul>
+<li><a href="#orgfa3a882">3.1. One particular solution \(Ax_{p}=b\)</a></li>
+</ul>
+</li>
+<li><a href="#orgcc4df4b">4. independence,Basis and Dimension</a>
+<ul>
+<li><a href="#org6380182">4.1. Linear independence</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -199,14 +213,13 @@ R=
 </p>
 
 <p>
-\(N(A)=N(U)=N(R)\).
-而 \(C\) 就不同了，它有多余的列而不是行，它的解有4个元素，消元法只能在前两列产生主元（pivot），通过观察，可得  <i>U</i> 的  pivot  有2个。我们称之为rank  = 2.  有pivot的
-column 我们称之为 pivot column。  没有pivot 的 column我们称之为 Free column,对于后面两个free column， 其所代表的variable，我们称为free variable。 <i>R</i> 称为简化的阶梯形矩阵（reduced row echelon from R=rref(A)），到了这一步是最容易看出nullspace
-的。
+\(N(A)=N(U)=N(R)\). 而 \(C\) 就不同了，它有多余的列而不是行，它的解有4个元素，消元法只能在前两列产生主元（pivot），通过观察，可得 <i>U</i> 的 pivot 有2个。我们称之为rank
+= 2. 有pivot的column 我们称之为 pivot column。 没有pivot 的 column我们称之为
+Free column, 其所代表的variable，我们称为free variable。 <i>R</i> 称为简化的阶梯形矩阵（reduced row echelon from R=rref(A)），到了这一步是最容易看出nullspace的。
 </p>
 
 <p>
-free variable 有一个好处，就是可以随便取值，因为没有公式限定它。我们采取特殊值(0,1)的办法求得2个特殊解。当 \(x_{3}=1,x_{4}=0\) 时，\(s_{1}=(-2,0,1,0)\),当 $x<sub>3</sub>=0,x<sub>4</sub>=1$时，
+free variable 有一个好处，就是可以随便取值，因为没有公式限定它。我们采取特殊值(0,1)的办法求得2个特殊解。当 \(x_{3}=1,x_{4}=0\) 时， \(s_{1}=(-2,0,1,0)\) ,当 \(x_{3}=0,x_{4}=1\) 时，
 \(s_{2}=(0,-2,0,1)\).
 </p>
 
@@ -241,13 +254,8 @@ c
 这样子就能代表整个null space
 </p>
 
-<hr />
 <p>
-查找主元个数的方法引向了一个非常重要的理论，假设 \(A\) 的列数多于行数(n&gt;m)，那至少有一个自由变量， \(Ax=0\) 至少有一个特殊解，这个特殊解是非零解。
-</p>
-
-<p>
-一个“矮胖”的矩阵的零空间里通常有非零向量，至少有n-m个自由变量，因为主元的个数不可能超过m.
+查找主元个数的方法引向了一个非常重要的理论，假设 \(A\) 的列数多于行数(n&gt;m)，那至少有一个自由变量，  \(Ax=0\) 至少有n-m个自由变量，因为主元的个数不可能超过m.至少有一个特殊解（special solution），这个特殊解是非零解。
 </p>
 
 <blockquote>
@@ -255,6 +263,283 @@ c
 The nullspace is a subspace,It's dimension is the number of variables.
 </p>
 </blockquote>
+</div>
+<div id="outline-container-orgf4d026a" class="outline-3">
+<h3 id="orgf4d026a"><span class="section-number-3">2.1.</span> 矩阵的秩</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+一个线性系统（linear system）的真正大小并不能由其参数矩阵的大小（m行n列）真实反应出来，比如矩阵中的某一行是其它若干行的线性组合，在消元的过程中这一行会变成零行，零行对于解线性方程组是没有用的。所以要表示一个线性系统真正的大小应该使用消元后 <b>U</b>
+或 <b>R</b> 的<i>非零行</i>的个数来表示，并且这个数与主元的个数相等，我们把它叫做矩阵 <b>A</b>
+的秩（rank),记作 <i>r</i> ,我们有：
+</p>
+
+<blockquote>
+<p>
+Defination: The rank of A is the number of pivots.This number is r
+</p>
+</blockquote>
+
+<p>
+如果矩阵中存在pivot那么证明，第i行的pivot下面的行没办法表示出第i行，上面的也没办法表示第i行，
+</p>
+
+<p>
+有了秩的概念以后就可以更准确的知道齐次线性方程组解的情况了： \(Ax=0\) 自由变量的个数等于 \(n-r\),当自由变量个数等于0的时候原齐次线性方程组没有特解，否则有 \(n-r\) 个特解。 \(n-r\) is the <b>dimension of the nullspace</b>
+</p>
+
+<p>
+比如一个3x4矩阵：
+</p>
+\begin{align*}
+A=
+\left[\begin{array}{c c c c}
+  1&  1&  2&  4\\
+  1&  2&  2&  5\\
+  1&  3&  2&  6
+\end{array}  \right]
+\xrightarrow[]{}
+U=
+\left[\begin{array}{c c c c}
+  1&  1&  2&  4\\
+  0&  1&  0&  1\\
+  0&  0&  0&  0
+\end{array}  \right]
+\xrightarrow[]{}
+R=
+\left[\begin{array}{c c | c c}
+  1&  0&  2&  3\\
+  0&  1&  0&  1\\
+  \hline
+  0&  0&  0&  0
+\end{array}  \right]
+\end{align*}
+<p>
+有两个主元 <i>r=2</i>.
+</p>
+
+<p>
+从行的角度看这次变换，从上往下看各行，第2行不是第1行的线性组合，第3行确实前两行的线性组合： <b>row(3)=2*row(2)-(1)</b>,所以主元位于第1,2行；
+</p>
+
+<p>
+从列的角度看这次变换，从佐往右看各列，第2列不是第1行的线性组合，后两列都是前两列的线性组合（从矩阵 \(R\) 很容易得出）：
+<b>col(3)=2*col(1)+0*col(2)col(4)=3*col(1)+1*col(2)</b> ,而它的两个特解是
+s<sub>1</sub>=(-2,0,1,0),s<sub>2</sub>=(-3,-1,0,1). 很容易观察到，自由列线性组合的系数跟特解中主元列的取值是相反数的关系。实际上消元到最后的 \(R\) 可以写成如下形式（可能需要改变列的顺序）：
+</p>
+\begin{align*}
+R=
+\left[\begin{array}{c c}
+I& F\\
+0& 0
+\end{array}  \right]
+\end{align*}
+
+<p>
+而null space 有一个通用的表达方式。那就是：
+</p>
+
+\begin{align*}
+x=
+c*
+\left[\begin{array}{c}
+-F\\
+I
+\end{array}  \right]
+\end{align*}
+<hr />
+<p>
+总结：
+</p>
+
+<p>
+在使用消元法把矩阵 \(A\) 变换到 \(U\) 的过程中，从第一个主元开始，每次从上往下移动1
+行，从左往右移动1列，随着移动，消去过程中同时回答了2个问题：
+</p>
+<dl class="org-dl">
+<dt>这一列是前面列的线性组合吗</dt><dd>如果这1列包含主元，那就不是。主元列和前面的列是独力的关系。</dd>
+<dt>这一行是前面行的线性组合吗</dt><dd>如果这1行包含主元，那就不是。主元行和前面行也是独力的。</dd>
+</dl>
+<p>
+<b>从矩阵 \(U\) 可以看出哪些是主元列，哪些是自由列，而且自由列是主元列的线性组合；从矩阵 \(R\) 可以直接看出主元列是怎么线性组合出自由列的。</b>
+</p>
+
+<p>
+从 \(U\) 变到 \(R\) 是从下往上，从右往左进行的。 在接下来的学习中 \(R\) 揭示了下面三个空间的基（basis）
+</p>
+<dl class="org-dl">
+<dt>The <b>column space</b> of \(A\)</dt><dd>choose the pivot columns of <b>A</b> as a basis</dd>
+<dt>The row space of \(A\)</dt><dd>choose the nonzero row of <b>A</b> as a basis</dd>
+<dt>The nullspace of \(A\)</dt><dd>choose the special solutions to \(Rx=0\)</dd>
+</dl>
+
+<p>
+我们从消元法中学到了一个很重要的概念－－秩  <i>r</i> ，它表征了主元行和主元列的个数，
+<i>n-r</i> 表征了自由列和特解的个数。
+</p>
+
+<p>
+另外从 <b>[A I]</b> 到 <b>[R E]</b>, 两边都乘个 <b>E</b> 可得 <b>EA=R</b>,当 A 是方阵而且可逆时， <b>R</b> 是 <b>I</b>, <b>E</b>
+是 <b>A<sup>-1</sup></b> .
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd5d4975" class="outline-2">
+<h2 id="orgd5d4975"><span class="section-number-2">3.</span> \(Ax=b\) 的全解</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+在上一节解决了齐次线性方程组的解的问题， 将 \(Ax=0\) 转化到 \(Rx=0\),自由变量（free variable)被赋予特殊值（0或1），主元变量（pivot variable）可以采用回代的方式解算，这个过程中并没有在意等式右边的常数项，因为它始终是0.现在常数项不再是0了，在进行初等行变换的时候必须要考虑常数项了，因此把常数项添加到系数矩阵上的最后一列，组成增广矩阵（augmented matrix） <b>[A b]</b>, 还是像原来一样进行初等行变换，把 <b>A</b> 变换到 <b>R</b>,同时 <b>b</b>
+也跟着变换，得到 <b>[U/R d]</b> 矩阵以后，最后一行非常关键，如果系数项全为0,常数项不为
+0,那就无解了，只有当它们都为0或者都不为0时才有解。
+</p>
+
+<p>
+要解 \(Ax=b\) 首先要找到一个particular solution \(x_{p}\), 使其满足上面等式，然后再找到使 \(Ax=0\) 成立的special solution \(x_{n}\), 全解 \(x=x_{p}+x_{n}\)
+</p>
+</div>
+
+<div id="outline-container-orgfa3a882" class="outline-3">
+<h3 id="orgfa3a882"><span class="section-number-3">3.1.</span> One particular solution \(Ax_{p}=b\)</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+要找到particular solution,需要先将增广矩阵和以前一样转换到 <b>[R d]</b> 也就是
+A-&gt;D,b-&gt;d,然后将R中的自由变量全都赋值0,主元变量从d中获得。
+</p>
+<blockquote>
+<p>
+For a solution to exist,zero rows in <i>R</i> must also be zero in <i>d</i>,the pivot
+variables in x<sub>particular</sub> comes from <i>d</i>.
+</p>
+</blockquote>
+
+<p>
+\(x_{particular}\) 可以解决 \(Ax_{p}=b\) 的问题， \(x_{nullspace}\) 中 <i>n-r</i> 个special
+solutions解决了 \(Ax_{n}=0\) 的问题。那么 \(Ax=b\) 的全解就应该是 \(x=x_{p}+x_{n}\),
+</p>
+
+<p>
+如果 <b>A</b> 是一个方阵而且可逆，m=n=r,那么particular solution就是唯一解，
+\(x_{particular}=A^{-1}b\),没有自由变量和special solution.
+</p>
+<hr />
+<p>
+当 <i>n=r</i> 时，称 \(A\) 是<b>列满秩（full column rank）</b>,它有如下性质：
+</p>
+<ol class="org-ol">
+<li>\(A\) 的所有列都是主元列</li>
+<li>没有自由变量和special solution</li>
+<li>The nullspace <i>N(A)</i> contains zero vector \(x=0\)</li>
+<li>\(Ax=b\) 有唯一解或没有解（m&gt;n is overdetermined）</li>
+</ol>
+
+<p>
+Full column rank is tall and thin
+</p>
+\begin{equation*}
+R=
+\begin{bmatrix}
+I\\
+0\end{bmatrix}
+=
+\begin{bmatrix}
+n \: by \: n \: identity \: matrix\\
+m-n \quad rows \: of \: zeros
+\end{bmatrix}
+\end{equation*}
+<p>
+所以当 <i>d</i> 中有 <i>m-n</i> 行0的时候才有唯一解，否则就没有解。
+</p>
+<hr />
+<p>
+当 <i>m=r</i> 时称 \(A\) 是 *行满秩（full row rank），它有如下性质：
+</p>
+<ol class="org-ol">
+<li>\(A\) 的所有行都有主元， \(R\) 没有零行</li>
+<li>\(Ax=b\) has a solution for every \(b\)</li>
+<li>The column space is the whole space \(R^{m}\)</li>
+<li>There are \(n-m=n-r\) special solutions in \(N(A)\)</li>
+</ol>
+
+<p>
+当 <i>m&lt;n</i> 时， \(Ax=b\) 有无穷解（underdetermined），
+</p>
+<hr />
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> The 4 possibilities for \(Ax=b\) denpend on rank <i>r</i></caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">rank r</th>
+<th scope="col" class="org-left">\(A\) shape</th>
+<th scope="col" class="org-left">solutions</th>
+<th scope="col" class="org-left">\(R\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">r=m,r=n</td>
+<td class="org-left">square,invertible</td>
+<td class="org-left">1 solution</td>
+<td class="org-left">\(\begin{equation*}\begin{bmatrix} I\\ \end{bmatrix}\end{equation*}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">r=m,r&lt;n</td>
+<td class="org-left">short,wide</td>
+<td class="org-left">∞ solutions</td>
+<td class="org-left">\(\begin{equation*}\begin{bmatrix} I \quad F\\ \end{bmatrix}\end{equation*}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">r&lt;m,r=n</td>
+<td class="org-left">tall,thin</td>
+<td class="org-left">0 or 1</td>
+<td class="org-left">\(\begin{equation*}\begin{bmatrix} I\\0 \end{bmatrix}\end{equation*}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">r&lt;m,r&lt;n</td>
+<td class="org-left">not full rank</td>
+<td class="org-left">0 or ∞</td>
+<td class="org-left">\(\begin{equation*}\begin{bmatrix} I& F&\\0& 0& \end{bmatrix}\end{equation*}\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgcc4df4b" class="outline-2">
+<h2 id="orgcc4df4b"><span class="section-number-2">4.</span> independence,Basis and Dimension</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+矩阵 \(A\) 的列空间的真正大小并不一定是 <i>n</i>,而是 rank <i>r</i>,
+</p>
+</div>
+
+<div id="outline-container-org6380182" class="outline-3">
+<h3 id="org6380182"><span class="section-number-3">4.1.</span> Linear independence</h3>
+<div class="outline-text-3" id="text-4-1">
+<blockquote>
+<p>
+DEFINITION:The columns of \(A\) are linear independence when the only solution to
+\(Ax=0\) is \(x=0\), <b>No other combination of columns gives zero vector</b>
+</p>
+</blockquote>
+<p>
+也就是说如果 \(A\) 中的列向量不能相互线性表出，任何一个列向量不能由其它列向量线性组合得到。
+</p>
+</div>
 </div>
 </div>
 </div>
