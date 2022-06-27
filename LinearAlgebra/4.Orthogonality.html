@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-06-27 一 12:59 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>正交</title>
+<meta name="author" content="Tian tongtong" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../styles/font.css"/>
+<link rel="stylesheet" type="text/css" href="../styles/styleNew.css"/>
+
+<script src="../scripts/org-info.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "../index.html");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+// @license-end
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+   inlineMath: [ ["\\(","\\)"] ],
+   displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+    processEscapes: false,
+    processEnvironments: true,
+    processRefs: true,
+    autoload: {
+      color: [],
+      colorv2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    skipHtmlTags: [ "script ", "noscript ", "style ", "textarea ", "pre ", "code "],
+    ignoreHtmlClass: "tex2jax_ignore ",
+    processHtmlClass: 'tex2jax_process'
+  },
+  chtml: {
+    displayAlign: 'left',
+    displayIndent: "5em"
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  }
+};
+</script>
+<script type="text/javascript" src="../MathJax/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+Created: 2022-03-04. Modified 2022-06-27 一 12:58
+</div>
+<div id="content" class="content">
+<h1 class="title">正交</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orga687d51">1. 四个子空间的正交</a></li>
+<li><a href="#orgc7800c7">2. Projection</a>
+<ul>
+<li><a href="#org5d35969">2.1. Projection onto a line</a></li>
+<li><a href="#org1ad9c95">2.2. Projection onto a subspace</a></li>
+</ul>
+</li>
+<li><a href="#orgb284e48">3. 最小二乘近似(Least Squares Approximations)</a></li>
+<li><a href="#orgf2c3e28">4. 正交基和Gram算法(Orthogonal Bases and Gram-Schmidt)</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga687d51" class="outline-2">
+<h2 id="orga687d51"><span class="section-number-2">1.</span> 四个子空间的正交</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+之前学习了用点乘的方法判断两个向量是否正交（垂直），现在我们要更加伸入的学习正交，
+把它扩展到正交子空间、正交基和正交矩阵。两个字空间中的向量、一组基中的向量、矩阵
+中的列向量，分别成对互相垂直。
+</p>
+
+<p>
+正交子空间的定义：
+</p>
+<blockquote>
+<p>
+DEFINITION: Two subspaces <i>V</i> and <i>W</i> of a vector space are orthogonal if
+every vector <i>v</i> in <i>V</i> is perpendicular to every vector <i>w</i> in <i>W</i>.
+</p>
+
+<p>
+v<sup>T</sup>w=0 for all v in V and all w in W(V,W are two subspaces).
+</p>
+</blockquote>
+<p>
+当 \(x\) 属于 \(Ax=b\) 的 \(nullspace\) 时，则有 \(Ax_{n}=0\) 也就是 \(x_{n}\) 与 \(A\) 的每
+个行向量都正交，也就是说 \(nullspace\) 和 \(rowspace\) 正交。同理 \(left-nullspace\)
+和 \(columnspace\) 正交。
+</p>
+
+<p>
+那么思考一个问题，在三维空间中，一条直线可以由一个列向量表示，即秩为1,一个平面可
+以由两个向量表示，秩为2,那么与一个平面垂直的可以是直线，也可以是另一个平面，同样，
+与一条直线垂直的可以是直线也可以是平面，这样结果就不唯一了，那有没有一种方法能够
+确定的描述到底是直线还是平面呢，那就要引入 <b>正交补</b>.
+</p>
+
+<p>
+正交补不仅要求两个子空间正交，还多了一个维度的要求，如在三维空间中，一个平面的正
+交补是一条线，反之亦然。 即互相正交的两个子空间的维数的和如果等于向量空间的维数
+（既正交又互补），
+那么就称一个子空间是另一个子空间的正交补。
+</p>
+
+<blockquote>
+<p>
+Definition:Orthogonal Complement of a subspace V contains every vector that is perpendicular to V.This orthogonal subsapce is denot V<sup>⊥</sup>(pronounced “V perp”)
+</p>
+</blockquote>
+
+
+<p>
+<i>Fundamental Theorem of Linear Algebra,Part 2</i>
+</p>
+<blockquote>
+<p>
+\(N(A)\) is the orthogonal complement of the row space \(C(A^{T})\) (in \(R^{n}\))
+</p>
+
+<p>
+\(N(A^{T})\) is the orthogonal complement of the row space \(C(A)\) (in \(R^{m}\))
+</p>
+</blockquote>
+<p>
+解读：Fundamental Theorem Part I给出维度关系，Fundamental Theorem Part II给出垂
+直关系，complement时表示一个向量 <i>x</i> in \(R^{n}\) 总能分解到rowspace和nullspace两部分，而且根
+据两个subspace之间的dimension关系，可以确定，rowspace和nullspace加起来是完整的Rn
+空间。
+</p>
+
+<p>
+我们重新审视一下 <i>n</i> 个未知量， <i>m</i> 个方程的 <i>n</i> 元线性方程组 \(A_{m \times n} \time
+ x_{n \times 1}=b_{m \times 1}\) 的意义，列空间的
+维数 <i>m</i>,行空间的维数 <i>n</i>,系数矩阵 \(A\) 的秩为 <i>r</i>,以上是以前学到的信息，现在往下看， <i>x</i>
+有 <i>n</i> 个元素， <i>b</i> 都有 <i>m</i> 个元素，也就是说 <i>x</i> 在行空间中，而 <i>b</i> 在列空间中，所以这个
+方程可以解读为将 \(R^{n}\) 中的一个向量 <i>x</i> 映射到 \(R^{m}\) 中, 同时注意到 \(x\) 由分别
+来自行空间和零空间的 \(x_{r}\) 和 \(x_{n}\) 构成，这两个空间是 \(R^{n}\) 的子空间。而
+<i>b</i> 来自列空间（ \(R^{m}\) 的子空间）。我们在学习解方程 \(Ax=b\) 时总是分别求出一个
+particular solution 和 special solutions,再将它们相加，这两个部分即 \(x_{r}\) 和 \(x_{n}\) 。
+</p>
+
+
+<div id="orgb92ad30" class="figure">
+<p><img src="figures/2022-03-04_16-37-16_screenshot.png" alt="2022-03-04_16-37-16_screenshot.png" width="80%" align="center" />
+</p>
+</div>
+
+<p>
+矩阵A和向量相乘，可以有很多种解读，但是说到最根本的地方就是，Ax就是为了让x goes
+to column space，并没有其他什么更高级的功能。
+</p>
+
+
+<div id="org10465ec" class="figure">
+<p><img src="figures/2022-03-07_13-47-58_screenshot.png" alt="2022-03-07_13-47-58_screenshot.png" width="80%" align="center" />
+</p>
+</div>
+
+<p>
+通过上面那张图可以看出，任何一个n维向量可以被分解到rowspace和nullspace，然后通过
+A 映射到m维列空间。
+</p>
+
+<p>
+这里最重要的是任何一个属于 \(R^{n}\) 的向量都能被分解到row space 和 null space
+</p>
+</div>
+</div>
+<div id="outline-container-orgc7800c7" class="outline-2">
+<h2 id="orgc7800c7"><span class="section-number-2">2.</span> Projection</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+本节主要讲向量的映射（投影），先讲映射到直线，重点是映射到子空间。
+</p>
+
+<p>
+从上一节可知，矩阵 \(A_{m \times n}\) 可以将 <i>n</i> 维向量 \(x\) 映射到 <i>m</i> 维空间，得到新的
+<i>m</i> 维向量 <i>b</i> ，这一节主要研究如果已知空间 \(R^m\) (也就是它n个线性独立的基），怎么得
+到 \(A_{m \times n}\).
+</p>
+
+<p>
+我们先从最简单的映射到直线开始。
+</p>
+</div>
+<div id="outline-container-org5d35969" class="outline-3">
+<h3 id="org5d35969"><span class="section-number-3">2.1.</span> Projection onto a line</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+目标子空间是一条直线，其维度为1,直线可以用一个列向量表示，我们把它称作 \(a\) ,我们
+要投影的向量是 \(b\) ,那么向量 \(p\) 就是我们要求的向量，如下图。
+</p>
+
+
+<div id="org35111a3" class="figure">
+<p><img src="figures/2022-03-07_15-03-37_screenshot.png" alt="2022-03-07_15-03-37_screenshot.png" width="80%" align="center" />
+</p>
+</div>
+
+<p>
+很明显 \(p\) 与 \(a\) 共线，即 \(p=\hat x a\),又因为 \(e \cdot a=0\) 得 \((b-\hat x a)
+\cdot a=0\) 所以
+\(b \cdot a=\hat x a \cdot a\) ,求出了 \(\hat x=\frac{b \cdot a}{a \cdot a}\). 当把
+\(a , b\) 看作是只有1列的矩阵的时候，应该写为 \(\hat x=\frac{a^{T}b}{a^{T}a}\),所以
+\(p=Pb=a \frac{a^{T}b}{a^{T}{a}}\),所以映射矩阵 \(P=\frac{aa^{T}}{a^{T}a}\),分母是行
+向量乘列向量，是一个数字，分子是一个列向量乘行向量，是一个矩阵。
+</p>
+
+<p>
+\(I-P\)  也是一个变换矩阵， \((I-P)b=b-p=e\) ,所以在这个变换下，把 \(b\) 投影到了与
+\(a\) 正交的子空间上。
+</p>
+
+<blockquote>
+<p>
+When \(P\) projects onto one subspace, \(I-p\) projects onto the orthogonal subspace.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org1ad9c95" class="outline-3">
+<h3 id="org1ad9c95"><span class="section-number-3">2.2.</span> Projection onto a subspace</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+现在需要再向前迈进一步，把向量映射到一个子空间上，维数大于1.要映射到子空间上，必
+须要把这个子空间表示出来，最好的方法就是通过基。如果已知 \(R^{m}\) 的基（列向量） \(a_{1},
+\dots a_{n}\) ,待映射的向量 \(b\) ,求映射后的向量，和映射矩阵。
+</p>
+
+<p>
+假设映射后的向量 \(p=\hat x_{1}a_{1}+ \dots + \hat x_{n}a_{n}=A \hat x\) ,本问题转
+化为求一个合适的向量 \(\hat x\) ,使得 \(b-p\) 与子空间正交，也就是与该子空间的基的点
+乘积为0:
+</p>
+
+
+<div id="orgdb3b0ab" class="figure">
+<p><img src="figures/2022-03-07_16-26-17_screenshot.png" alt="2022-03-07_16-26-17_screenshot.png" width="80%" align="center" />
+</p>
+</div>
+
+<p>
+上式又可以写为 \(A^{T}(b-A \hat x)=0 \to A^{T}b=A^{T}A \hat x\) ,所以有：
+</p>
+
+
+<div id="orgb530aef" class="figure">
+<p><img src="figures/2022-03-07_16-38-42_screenshot.png" alt="2022-03-07_16-38-42_screenshot.png" width="80%" align="center" />
+</p>
+</div>
+
+<p>
+这里面是涉及到了一个求逆过程 \(A^{T}A\) 的逆，存在且仅存在于当B的所有列线性独立
+</p>
+
+<p>
+\(B^TB\vec{x}=0\\ B^T(B\vec{x})=0\\ for: \, B^T\neq 0\\ so: \, B\vec{x}=0\)
+</p>
+
+<p>
+也就是说 BTB 的Nullspace和 B 的 Nullspace是相同的，如果想可逆，那么nullspace必须
+只有0，所以B必须是线性独立的，证毕。
+</p>
+
+<p>
+另外P还有些小性质：
+</p>
+
+<ul class="org-ul">
+<li>P^2=P</li>
+<li>P^n=P</li>
+<li>distance from \(\vec{a}\) to subspace is \(\vec{e}\)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb284e48" class="outline-2">
+<h2 id="orgb284e48"><span class="section-number-2">3.</span> 最小二乘近似(Least Squares Approximations)</h2>
+</div>
+
+<div id="outline-container-orgf2c3e28" class="outline-2">
+<h2 id="orgf2c3e28"><span class="section-number-2">4.</span> 正交基和Gram算法(Orthogonal Bases and Gram-Schmidt)</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+Generated by: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.0.50 (<a href="https://orgmode.org">Org</a> mode 9.5.2)
+</div>
+</body>
+</html>

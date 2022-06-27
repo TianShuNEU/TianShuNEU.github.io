@@ -1,0 +1,726 @@
+/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
+/*
+ * CSS for org-mode document. Save with name style.css and include with
+ * #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
+ * It should be placed on the same directory as the HTML that is exported.
+ *
+ * Print options
+ */
+/* https://gongzhitaao.org/orgcss/ */
+@page {
+    margin:                    2.54cm;
+    size:                      A4;
+    /* Page numbers, does not really work on most browsers. */
+    @bottom-right {
+        padding-right:         20px;
+        content:               "Page " counter(page);
+    }
+}
+/* FONT PATHS
+ * -------------------------- */
+/*!
+ *  Hack typeface https://github.com/source-foundry/Hack
+ *  License: https://github.com/source-foundry/Hack/blob/master/LICENSE.md
+ */
+/* FONT PATHS
+ * -------------------------- */
+@font-face {
+  font-family:                 'Hack';
+  src:                         url('../fonts/hack/hack-regular-subset.woff2?sha=3114f1256') format('woff2'), url('../fonts/hack/hack-regular-subset.woff?sha=3114f1256') format('woff');
+  font-weight:                 400;
+  font-style:                  normal;
+}
+
+@font-face {
+  font-family:                 'Hack';
+  src:                         url('../fonts/hack/hack-bold-subset.woff2?sha=3114f1256') format('woff2'), url('../fonts/hack/hack-bold-subset.woff?sha=3114f1256') format('woff');
+  font-weight:                 700;
+  font-style:                  normal;
+}
+
+@font-face {
+  font-family:                 'Hack';
+  src:                         url('../fonts/hack/hack-italic-subset.woff2?sha=3114f1256') format('woff2'), url('../fonts/hack/hack-italic-webfont.woff?sha=3114f1256') format('woff');
+  font-weight:                 400;
+  font-style:                  italic;
+}
+
+@font-face {
+  font-family:                 'Hack';
+  src:                         url('../fonts/hack/hack-bolditalic-subset.woff2?sha=3114f1256') format('woff2'), url('../fonts/hack/hack-bolditalic-subset.woff?sha=3114f1256') format('woff');
+  font-weight:                 700;
+  font-style:                  italic;
+}
+
+@font-face {
+    font-family:               'Droid Serif';
+    font-style:                normal;
+    font-weight:               400;
+    font-display:              swap;
+    src:                       local('Droid Serif Regular'), local('DroidSerif-Regular'), url(../fonts/droid/droid-serif.woff2) format('woff2');
+    unicode-range:             U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family:               'Droid Serif';
+    font-style:                italic;
+    font-weight:               400;
+    font-display:              swap;
+    src:                       local('Droid Serif Italic'), local('DroidSerif-Italic'), url(../fonts/droid/droid-serif-italic.woff2) format('woff2');
+    unicode-range:             U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family:               'Droid Sans Mono';
+    font-style:                normal;
+    font-weight:               400;
+    font-display:              swap;
+    src:                       local('Droid Sans Mono Regular'), local('DroidSansMono-Regular'), url(../fonts/droid/droid-sans-mono.woff2) format('woff2');
+    unicode-range:             U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family:               'Droid Sans';
+    font-style:                normal;
+    font-weight:               400;
+    src:                       local('Droid Sans Regular'), local('DroidSans-Regular'), url(../fonts/droid/droid-sans.woff2) format('woff2');
+    unicode-range:             U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family:                 "et-book";
+  src:                         url("../fonts/et-book/etbookot-italic-webfont.woff2") format('woff2');
+  font-weight:                 normal;
+  font-style:                  italic;
+}
+@font-face {
+  font-family:                 "et-book";
+  src:                         url("../fonts/et-book/etbookot-bold-webfont.woff2") format('woff2');
+  font-weight:                 normal;
+  font-style:                  normal;
+}
+@font-face {
+  font-family:                 "et-book";
+  src:                         url("../fonts/et-book/etbookot-roman-webfont.woff2") format('woff2');
+  font-weight:                 normal;
+  font-style:                  normal;
+}
+@font-face{
+    font-family:               'Source Code Variable';
+    font-weight:               200 900;
+    font-style:                normal;
+    font-stretch:              normal;
+    src:                       url('../fonts/SourceCode/SourceCodeVariable-Roman.ttf.woff2') format('woff2');}
+
+@font-face{
+    font-family:               'Source Code Variable';
+    font-weight:               200 900;
+    font-style:                italic;
+    font-stretch:              normal;
+    src:                       url('../fonts/SourceCode/SourceCodeVariable-Italic.ttf.woff2') format('woff2');
+}
+
+/** CSS variables
+ */
+
+:root {
+    /* Body */
+    /* ---- */
+    --body-bg: white;
+    --content-padding: 10px;
+    --content-bg: #F1F1F1;
+    --content-box-shadow: 0;
+    --body-margin: 30px; /* not used for small screens */
+
+    /* Footer */
+    /* ------ */
+    --footer-border: 1px solid black;
+    --footer-padding: 10px;
+    --footer-buttons-bg: #4C6FB0;
+    --footer-buttons-bg-hover: navy;
+    --footer-buttons-padding: 5px 10px;
+    --footer-buttons-color: white;
+    --footer-buttons-font-size: 90%;
+    --footer-buttons-border: 2px solid navy;
+    --footer-buttons-min-width: 270px;
+
+    /* Table of contents */
+    /* ----------------- */
+
+    /* Tables */
+    /* ------ */
+    --tbl-border-color: #4E4E4F;
+    --tbl-border-size: 1px;
+
+    /* Org-js */
+    /* ------ */
+    --org-js-console-bg: var(--footer-buttons-bg);
+
+    /* Fonts */
+    /* ----- */
+
+    /* Text */
+    --font-body-family: Droid Serif,Droid Sans;
+    --font-body-size: 14pt;
+
+    /* Code */
+    --font-code-family: Droid Sans Mono;
+    --font-code-color: #4E4E4F;
+    --font-code-size: 11pt;
+    --font-src-family: Hack, monospace;
+    --font-example-family: Hack, monospace;
+    --font-example-size: 11pt;
+
+    /* Links */
+    --font-a-color: navy;
+    --font-a-coderef-color: #7082BC;
+
+    /* Color scheme */
+    /* ------------ */
+
+    /* Source blocks */
+    --src-bg: #fBF9E7;
+    --lua-bg: var(--src-bg);
+
+}
+
+/** Responsive variables
+ */
+
+/* Large screens */
+@media (min-width: 1024px) {
+    :root {
+        --side-width: 250px;
+        --body-width: calc(92% - var(--side-width));
+        --font-src-size: 11pt;
+    }
+}
+
+/* Medium screens */
+@media (min-width: 600px) and (max-width: 1024px) {
+    :root {
+        --side-width: 150px;
+        --body-width: calc(92% - var(--side-width));
+        --font-src-size: 11pt;
+    }
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+    :root {
+        --side-width: 150px; /* unused in this case */
+        --body-width: 100%;
+        --font-src-size: 10pt;
+    }
+}
+/* Source block color based on file type */
+
+/* Source block label */
+.src-label {
+    color:                     darkgray;
+}
+/* style-css-src-block ends here */
+
+/* [[file:~/dotfiles/emacs/website/website.org::style-css-src-block][style-css-src-block]] */
+/* HTML tables */
+table, th, td {
+    border-color:              var(--tbl-border-color);
+    border:                    solid var(--tbl-border-size);
+}
+/* style-css-src-block ends here */
+
+/* [[file:~/dotfiles/emacs/website/website.org::style-css-org-js][style-css-org-js]] */
+#org-info-js_console-container {
+    bottom:                    0;
+    margin-top:                0;
+}
+/* style-css-org-js ends here */
+
+/* [[file:~/dotfiles/emacs/website/website.org::style-css-body][style-css-body]] */
+/* Body */
+body {
+    width:                     var(--body-width);
+    overflow-x:                hidden;
+    background-color:          var(--body-bg);
+}
+
+@media (min-width: 600px) {
+    body {
+        margin-left:           calc(var(--side-width) + var(--body-margin));
+        margin-right:          var(--body-margin);
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        margin-left:           0;
+        margin-right:          0;
+    }
+}
+/* style-css-body ends here */
+
+/* [[file:~/dotfiles/emacs/website/website.org::style-css-preamble][style-css-preamble]] */
+/* Text before post (date and help) */
+.foreword {
+    color:                     gray;
+    font-size:                 80%;
+}
+/* style-css-preamble ends here */
+
+/* [[file:~/dotfiles/emacs/website/website.org::style-css-home-up][style-css-home-up]] */
+@media screen and (max-width: 600px) {
+    #org-div-home-and-up {
+        display:               none;
+    }
+}
+/* style-css-home-up ends here */
+
+/* [[file:~/dotfiles/emacs/website/website.org::style-css-content][style-css-content]] */
+/* Main content */
+#content {
+    background-color:          var(--content-bg);
+    box-shadow:                var(--content-box-shadow);
+    padding-left:              var(--content-padding);
+    padding-right:             var(--content-padding);
+}
+/* style-css-content ends here */
+
+/* [[file:~/dotfiles/emacs/website/website.org::style-css-blockquote][style-css-blockquote]] */
+blockquote {
+    font-family:               et-book;
+    margin:                    1em 2em;
+    padding-left:              1em;
+    font-style:                italic;
+    font-size:                 1.2em;
+    color:                     #616161;
+    border-left:               2px solid #616161;
+}
+/* style-css-blockquote ends here */
+
+/* [[file:~/dotfiles/emacs/website/website.org::style-css-postamble][style-css-postamble]] */
+#postamble {
+    padding:                   var(--footer-padding);
+    border:                    var(--footer-border);
+}
+/* style-css-postamble ends here */
+
+/* [[file:~/dotfiles/emacs/website/website.org::style-css-fonts][style-css-fonts]] */
+/* Fonts */
+body {
+    font-family:               var(--font-body-family);
+    font-size:                 var(--font-body-size);
+    line-height:               1.4em;
+
+}
+code {
+    font-family:               var(--font-code-family);
+    font-size:                 var(--font-code-size);
+    color:                     var(--font-code-color);
+}
+
+pre.src {
+    font-family:               var(--font-src-family);
+    font-size:                 var(--font-src-size);
+    /* background-color: var(--src-bg); */
+    border-left:               2px dashed #616161;
+    border-right:              2px dashed #616161;
+    border-top:                2px dashed #616161;
+    border-bottom:             2px dashed #616161;
+    padding:                   0.5em;
+    position:                  relative; /*make pre.src::brfore right top coner*/
+    overflow:                  visible; /*make pre.src::brfore right top coner*/
+}
+pre {
+    background-color:          #f8f8f8;
+    background-size:           8px 8px;
+    background-image:          linear-gradient(135deg, transparent 25%, rgba(0, 0, 0, 0.02) 25%, rgba(0, 0, 0, 0.02) 50%, transparent 50%, transparent 75%, rgba(0, 0, 0, 0.02) 75%, rgba(0, 0, 0, 0.02));
+}
+pre.src:before {
+    display:                   block;
+    position:                  absolute;
+    background-color:          transparent;
+    top:                       0;
+    right:                     0;
+    padding:                   0.25em 0.5em;
+    border-bottom-left-radius: 8px;
+    border:                    2px;
+    color:                     #1e3437;
+    font-size:                 80%;
+    font-style:                italic;
+}
+
+pre.src-css:before { content: 'CSS'; }
+    pre.src-ditaa:before { content: 'ditaa'; }
+    pre.src-dot:before { content: 'Graphviz'; }
+    pre.src-calc:before { content: 'Emacs Calc'; }
+    pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+    pre.src-gnuplot:before { content: 'gnuplot'; }
+    pre.src-latex:before { content: 'LaTeX'; }
+    pre.src-lisp:before { content: 'Lisp'; }
+    pre.src-org:before { content: 'Org mode'; }
+    pre.src-plantuml:before { content: 'Plantuml'; }
+    pre.src-python:before { content: 'Python'; }
+
+pre.example {
+    font-family:               var(--font-example-family);
+    font-size:                 var(--font-example-size);
+}
+
+/* Links */
+a {
+    text-decoration:           none;
+    color:                     var(--font-a-color);
+}
+
+a.coderef {
+    color:                     var(--font-a-coderef-color);
+}
+/* style-css-fonts ends here */
+
+/* [[file:~/dotfiles/emacs/website/website.org::style-css-button][style-css-button]] */
+.footer-button {
+    border:                    none;
+    text-align:                center;
+    text-decoration:           none;
+    display:                   inline-block;
+    background-color:          var(--footer-buttons-bg);
+    color:                     var(--footer-buttons-color);
+    padding:                   var(--footer-buttons-padding);
+    font-size:                 var(--footer-buttons-font-size);
+    border:                    var(--footer-buttons-border);
+    min-width:                 var(--footer-buttons-min-width);
+}
+.footer-button:hover {
+    background-color:          var(--footer-buttons-bg-hover);
+}
+/* style-css-button ends here */
+
+/* [[file:~/dotfiles/emacs/website/website.org::style-css-kbd][style-css-kbd]] */
+kbd {
+    font-family:               DejaVu, Lucida Console, monospace;
+    font-size:                 85%;
+    display:                   inline-block;
+    padding:                   0.5px 5px;
+    color:                     #616161;
+    vertical-align:            middle;
+    background-color:          #fefefe;
+    border:                    solid 1px #616161;
+    border-radius:             4px;
+    box-shadow:                0 0 12px 2px #dbdbdb inset, 0 4px 1px -2px #dbdbdb;
+}
+/* style-css-kbd ends here */
+
+
+a:active,
+a:hover {
+    outline-width:0
+}
+b,
+strong {
+    font-weight:               inherit;
+    font-weight:bolder
+}
+dfn {
+    font-style:italic
+}
+h1 {
+    font-size:                 2em;
+    margin:.67em 0
+}
+mark {
+    background-color:          #ff0;
+    color:#000
+}
+small {
+    font-size:80%
+}
+
+svg:not(:root) {
+    overflow:hidden
+}
+
+code{
+    background-color:          #EEE;
+}
+hr {
+    box-sizing:                content-box;
+    height:                    0;
+    overflow:visible
+}
+a {
+    color:                     inherit;
+    background-color:          inherit;
+    font:                      inherit;
+    text-decoration:inherit
+}
+a:hover {
+    text-decoration:underline
+}
+
+p {
+    margin:1em auto
+}
+dl,
+ol,
+ul {
+    margin:0 auto
+}
+.title {
+    margin:                    .8em auto;
+    color:#000
+}
+.subtitle,
+.title {
+    text-align:center
+}
+.subtitle {
+    font-style:                italic;
+    font-size:                 0.8em;
+    line-height:               1.4;
+    font-weight:               700;
+    margin:0.5em auto
+}
+.abstract {
+    margin:                    auto;
+    width:                     80%;
+    font-style:italic
+}
+.abstract p:last-of-type:before {
+    content:                   "    ";
+    white-space:pre
+}
+.status {
+    font-size:                 90%;
+    margin:2em auto
+}
+[class^=section-number-] {
+    margin-right:.5em
+}
+[id^=orgheadline] {
+    clear:both
+}
+#footnotes {
+    font-size:90%
+}
+.footpara {
+    display:                   inline;
+    margin:.2em auto
+}
+.footdef {
+    margin-bottom:1em
+}
+.footdef sup {
+    padding-right:.5em
+}
+a {
+    color:                     #527d9a;
+    text-decoration:none
+}
+a:hover {
+    color:                     #035;
+    border-bottom:1px dotted
+}
+figure {
+    padding:                   0;
+    margin:                    1em auto;
+    text-align:center
+}
+img {
+  margin:                      auto;
+  display:                     block;
+}
+.MathJax_Display {
+    margin:                    0!important;
+    width:90%!important
+}
+h1 { font-size:2em; }
+h2 { font-size:1.5em; }
+h3 { font-size:1.3em }
+h1,h2,h3 {
+    font-family:               "DejaVu Serif";
+    line-height:               1.4em;}
+h4,h5,h6 { font-size:1.1em; }
+/* @media screen{ */
+
+/* } */
+dt {
+    font-weight:700
+}
+table {
+    margin:                    1em auto;
+    border-top:                2px solid;
+    border-collapse:collapse
+}
+table,
+thead {
+    border-bottom:2px solid
+}
+table td+td,
+table th+th {
+    border-left:1px solid grey
+}
+table tr {
+    border-top:1px solid #d3d3d3
+}
+td,
+th {
+    padding:                   .3em .6em;
+    vertical-align:middle
+}
+caption.t-above {
+    caption-side:top
+}
+caption.t-bottom {
+    caption-side:bottom
+}
+caption {
+    margin-bottom:.3em
+}
+figcaption {
+    margin-top:.3em
+}
+th.org-center,
+th.org-left,
+th.org-right {
+    text-align:center
+}
+td.org-right {
+    text-align:right
+}
+td.org-left {
+    text-align:left
+}
+td.org-center {
+    text-align:center
+}
+.note{
+    font-family:               et-book-semi-bold-old-style-figures;
+    padding-left:              1em;
+    border-left:               3px solid #000000;;
+    background-color:          antiquewhite;
+}
+kbd {
+    background-color:          #f7f7f7;
+    font-size:                 80%;
+    margin:                    0 .1em;
+    padding:.1em .6em
+}
+.todo {
+    background-color:red
+}
+.done,
+.todo {
+    color:                     #fff;
+    padding:                   .1em .3em;
+    border-radius:             3px;
+    background-clip:           padding-box;
+    font-size:                 80%;
+    font-family:               Lucida Console,monospace;
+    line-height:1
+}
+.done {
+    background-color:green
+}
+.priority {
+    color:                     orange;
+    font-family:Lucida Console,monospace
+}
+.tag {
+    font-family:               Lucida Console,monospace;
+    font-size:                 .7em;
+    font-weight:400
+}
+.tag span {
+    padding:                   .3em;
+    float:                     right;
+    margin-right:              .5em;
+    border:                    1px solid #bbb;
+    border-radius:             3px;
+    background-clip:           padding-box;
+    color:                     #333;
+    background-color:          #eee;
+    line-height:1
+}
+#postamble p,
+#preamble p {
+    font-size:                 90%;
+    margin:.2em
+}
+p.verse {
+    margin-left:3%
+}
+
+/* More languages 0% http://orgmode.org/worg/org-contrib/babel/languages.html */
+#org-div-home-and-up {
+    font-size:                 70%;
+    text-align:                right;
+    white-space:nowrap
+}
+.linenr {
+    font-size:90%
+}
+.code-highlighted {
+    background-color:#ff0
+}
+#bibliography {
+    font-size:90%
+}
+#bibliography table {
+    width:100%
+}
+.creator {
+    display:block
+}
+
+#license {
+    background-color:          #eeeeee;
+}
+@media screen and (min-width:600px) {
+    #table-of-contents {
+        display:               none;
+    }
+    .creator {
+        display:               inline;
+        float:right
+    }
+}
+/* @media print { */
+/*     @page { */
+/*         margin-top:                2cm; */
+/*         margin-bottom:             2cm; */
+/*         margin:                    5mm; */
+/*         @bottom-right { */
+/*             padding-right:         20px; */
+/*             content:               "Page " counter(page); */
+/*         } */
+/*  } */
+/*     #org-div-home-and-up { */
+/*         display:               none; */
+/*     } */
+/*     body { */
+/*      width:                    85%; */
+/*         /\* margin-top:            15mm; margin-bottom: 15mm; *\/ */
+/*         /\* margin-left:           0mm; margin-right: 0mm; *\/ */
+/*      color:                 black; */
+/*      font-size:             10pt; */
+/*      overflow-x:            hidden; */
+/*     } */
+
+/*     /\* h2, h3 { *\/ */
+/*     /\*     page-break-before: always; *\/ */
+/*     /\*     margin-top: 0; *\/ */
+/*     /\* } *\/ */
+
+/*     table { */
+/*         page-break-inside:     avoid; */
+/*     } */
+
+/*     a:visited { */
+/*         color:                 black; */
+/*         background:            #ff8; */
+/*     } */
+
+/*     a[href^="http"]:visited { */
+/*         background:            #bff; */
+/*     } */
+
+/*     div.notice:before { */
+/*         display:               none; */
+/*     } */
+/* } */

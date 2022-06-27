@@ -3,12 +3,34 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-28 一 15:14 -->
+<!-- 2022-06-27 一 12:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>Org Note</title>
 <meta name="author" content="Tian tongtong" />
 <meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../styles/font.css"/>
+<link rel="stylesheet" type="text/css" href="../styles/styleNew.css"/>
+
+<script src="../scripts/org-info.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "../index.html");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+// @license-end
+</script>
 
 <script>
 window.MathJax = {
@@ -31,7 +53,7 @@ window.MathJax = {
   },
   chtml: {
     displayAlign: 'left',
-    displayIndent: "2em"
+    displayIndent: "5em"
   },
   loader: {
     load: ['[tex]/noerrors']
@@ -42,27 +64,29 @@ window.MathJax = {
 </head>
 <body>
 <div id="preamble" class="status">
-By Tian tongtong. Date: . Last modified 2022-02-21 一 10:02
+Created: 2022-02-21. Modified 2022-06-27 一 12:59
 </div>
 <div id="content" class="content">
+<h1 class="title">Org Note</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0029aa3">1. Latex fragments</a></li>
-<li><a href="#org30557ee">2. 常用LaTex 数学符号</a></li>
+<li><a href="#orgc5c1447">1. Latex fragments</a></li>
+<li><a href="#orgf27b991">2. 常用LaTex 数学符号</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0029aa3" class="outline-2">
-<h2 id="org0029aa3"><span class="section-number-2">1.</span> Latex fragments</h2>
+<div id="outline-container-orgc5c1447" class="outline-2">
+<h2 id="orgc5c1447"><span class="section-number-2">1.</span> Latex fragments</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Org mode不需要任何特殊的配置即可支持Latex 公式片段，在org mode 中符合以下情况即可认为是Latex 片段：
+Org mode不需要任何特殊的配置即可支持Latex 公式片段，在org mode 中符合以下情况即
+可认为是Latex 片段：
 </p>
 <ol class="org-ol">
 <li><p>
-位于环境（Environment）中的单独的公式。只要在行首以<i>‘\begin’</i>开头的语句：
+位于环境（Environment）中的单独的公式。只要在行首以 <i>‘\begin’</i> 开头的语句：
 </p>
 
 \begin{equation}                        % arbitrary environments,
@@ -70,7 +94,9 @@ x=\sqrt{b}                              % even tables, figures etc
 \end{equation}</li>
 
 <li><p>
-行内公式。可以使用两个 <i>'$'</i> 作为数学分隔符，但是有限制，就是在两个 <i>'$'</i> 中间不能有空格，在后面的 <i>'$'</i> 符号后面跟空格、标点符号或短划线时才行，其它的分隔符没有此限制，所以可以优先使用 "\(" ,and "\[" make formule in next line
+行内公式。可以使用两个 <i>'$'</i> 作为数学分隔符，但是有限制，就是在两个 <i>'$'</i> 中间不
+能有空格，在后面的 <i>'$'</i> 符号后面跟空格、标点符号或短划线时才行，其它的分隔符没
+有此限制，所以可以优先使用 "\(" ,and "\[" make formule in next line
 center
 </p>
 
@@ -81,19 +107,21 @@ or \[ a=-\sqrt{2} \].
 </ol>
 
 <p>
-当变量 <i>org-export-with-latex</i> 为 <i>t</i> 时，表明在导出HTML时使用Mathjax 渲染latex 代码，你也可以通过一个 per-file basis 来改变这个变量：
+当变量 <i>org-export-with-latex</i> 为 <i>t</i> 时，表明在导出HTML时使用Mathjax 渲染latex 代码，
+你也可以通过一个 per-file basis 来改变这个变量：
 </p>
-<pre class="example" id="org944a0b9">
+<pre class="example" id="orgec000d9">
 ‘#+OPTIONS: tex:t’  Do the right thing automatically (MathJax)
 ‘#+OPTIONS: tex:nil’    Do not process LaTeX fragments at all
 ‘#+OPTIONS: tex:verbatim’   Verbatim export, for jsMath or so
 </pre>
 
 <p>
-如果你想把latex 公式片段转化为图片插入到网页，可以使用如下设置，需要确保本地安装了 dvipng program, dvisvgm or ImageMagick suite：
+如果你想把latex 公式片段转化为图片插入到网页，可以使用如下设置，需要确保本地安装
+了 dvipng program, dvisvgm or ImageMagick suite：
 </p>
 
-<pre class="example" id="orgffe84a2">
+<pre class="example" id="org113e0b0">
 #+OPTIONS: tex:dvipng
 
 #+OPTIONS: tex:dvisvgm
@@ -109,16 +137,16 @@ or
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>path <span class="org-string">"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"</span><span class="org-rainbow-delimiters-depth-2">)</span>
- <span class="org-rainbow-delimiters-depth-2">(</span>scale <span class="org-string">"100"</span><span class="org-rainbow-delimiters-depth-2">)</span>
- <span class="org-rainbow-delimiters-depth-2">(</span>align <span class="org-string">"center"</span><span class="org-rainbow-delimiters-depth-2">)</span>
- <span class="org-rainbow-delimiters-depth-2">(</span>font <span class="org-string">"TeX"</span><span class="org-rainbow-delimiters-depth-2">)</span>
- <span class="org-rainbow-delimiters-depth-2">(</span>linebreaks <span class="org-string">"false"</span><span class="org-rainbow-delimiters-depth-2">)</span>
- <span class="org-rainbow-delimiters-depth-2">(</span>autonumber <span class="org-string">"AMS"</span><span class="org-rainbow-delimiters-depth-2">)</span>
- <span class="org-rainbow-delimiters-depth-2">(</span>indent <span class="org-string">"0em"</span><span class="org-rainbow-delimiters-depth-2">)</span>
- <span class="org-rainbow-delimiters-depth-2">(</span>multlinewidth <span class="org-string">"85%"</span><span class="org-rainbow-delimiters-depth-2">)</span>
- <span class="org-rainbow-delimiters-depth-2">(</span>tagindent <span class="org-string">".8em"</span><span class="org-rainbow-delimiters-depth-2">)</span>
- <span class="org-rainbow-delimiters-depth-2">(</span>tagside <span class="org-string">"right"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">((path <span class="org-string">"https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=T</span><span class="org-string"><span class="org-whitespace-line">eX-AMS_HTML"</span></span><span class="org-whitespace-line">)</span>
+ (scale <span class="org-string">"100"</span>)
+ (align <span class="org-string">"center"</span>)
+ (font <span class="org-string">"TeX"</span>)
+ (linebreaks <span class="org-string">"false"</span>)
+ (autonumber <span class="org-string">"AMS"</span>)
+ (indent <span class="org-string">"0em"</span>)
+ (multlinewidth <span class="org-string">"85%"</span>)
+ (tagindent <span class="org-string">".8em"</span>)
+ (tagside <span class="org-string">"right"</span>))
 </pre>
 </div>
 
@@ -136,8 +164,8 @@ MathJax 模板可以由 <i>org-html-mathjax-template</i> 变量设置。
 </p>
 </div>
 </div>
-<div id="outline-container-org30557ee" class="outline-2">
-<h2 id="org30557ee"><span class="section-number-2">2.</span> 常用LaTex 数学符号</h2>
+<div id="outline-container-orgf27b991" class="outline-2">
+<h2 id="orgf27b991"><span class="section-number-2">2.</span> 常用LaTex 数学符号</h2>
 <div class="outline-text-2" id="text-2">
 \begin{align}
 {\color{red} x} + {\color{blue} y}
@@ -179,7 +207,7 @@ y = \textcolor{red}{\sin} x
 </div>
 </div>
 <div id="postamble" class="status">
-This blog is generated by: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.0.50 (<a href="https://orgmode.org">Org</a> mode 9.5.2)
+Generated by: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.0.50 (<a href="https://orgmode.org">Org</a> mode 9.5.2)
 </div>
 </body>
 </html>

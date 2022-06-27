@@ -1,0 +1,406 @@
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif);
+@font-face {
+  font-family: 'Hack';
+  src: url('fonts/hack-regular.woff2?sha=3114f1256') format('woff2'), url('fonts/hack-regular.woff?sha=3114f1256') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('fonts/hack-bold.woff2?sha=3114f1256') format('woff2'), url('fonts/hack-bold.woff?sha=3114f1256') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('fonts/hack-italic.woff2?sha=3114f1256') format('woff2'), url('fonts/hack-italic.woff?sha=3114f1256') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('fonts/hack-bolditalic.woff2?sha=3114f1256') format('woff2'), url('fonts/hack-bolditalic.woff?sha=3114f1256') format('woff');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face{
+    font-family: 'Source Code Variable';
+    font-weight: 200 900;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('fonts/VAR/SourceCodeVariable-Roman.ttf.woff2') format('woff2');}
+
+@font-face{
+    font-family: 'Source Code Variable';
+    font-weight: 200 900;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('fonts/SourceCodeVariable-Italic.ttf.woff2') format('woff2');}
+body {
+max-width: 60em;
+margin: auto;
+padding: 2em;
+text-align: justify;
+font-family: "Source Code Variable","Droid Serif", Cambria, Georgia, "DejaVu Serif", serif;
+font-weight: 400;
+font-size: 1.2em;
+line-height: 1.5;
+color: #111;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Slab', 'PT Sans Narrow', sans-serif;
+    text-align: left;
+}
+h1 {
+    color: #dc322f;
+    font-size: 2.6em;
+    font-weight: 700;
+}
+h2 {
+    color: #859900;
+    font-size: 2.2em;
+    font-weight: 700;
+}
+h3 {
+    color: #859900;
+    font-weight: bold;
+    font-size: 1.7rem;
+    margin-top: 2rem;
+    margin-bottom: 1.4rem;
+}
+
+.lbl-toggle, a:link, a:visited{
+    text-decoration: none;
+    color: #822433;
+}
+#content a {
+    font-weight: bold;
+}
+a:hover {text-decoration: underline;}
+.lbl-toggle:hover,a:hover, a:active {
+    text-decoration: underline;
+    /* color: #8186d5; */
+}
+.todo {
+    color: #CA0000;
+}
+
+.done {
+    color: #006666;
+}
+
+.timestamp-kwd {
+    color: #444;
+}
+
+.tag {
+
+}
+.post-date {
+    font-style: italic;
+}
+table {
+    border: solid 1px #AAA;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    box-shadow: 5px 5px 10px #555;
+}
+table thead th {
+    background-color: #822433;
+    border: solid 0px #000;
+    color: #fff;
+    padding: 10px 5px 10px 5px;
+    text-align: center;
+}
+table tbody td {
+    border: solid 1px #AAA;
+    padding: 10px 5px 10px 5px;
+}
+table tr:nth-child(2n) {
+    background: #FDD;
+}
+.ltd {width: 20%; min-width: 8em; margin:auto;}
+div.comment{
+    margin-left: 1em;
+    padding-left: 1em;
+    border-left: 1px solid grey;
+}
+pre, figure {
+    overflow: scroll;
+}
+.org-svg{
+    width:auto;
+    vertical-align:middle;
+}
+
+.lbl-toggle {
+    display: block;
+}
+
+.collapsible-content {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 1s ease-in-out;
+}
+
+.toggle:checked + .lbl-toggle + .collapsible-content {
+    max-height: 350em;
+}
+figure {
+    text-align: center;
+}
+ul li{
+list-style-type:square;
+/* background:#CCC; */
+}
+dl {
+    display: flex;
+    flex-flow: row wrap;
+}
+dt {
+    flex-basis: 20%;
+    padding-right: 1em;
+    text-align: right;
+    border-right: 1px solid #aaa;
+    color: #888;
+}
+dd {
+    flex-basis: 70%;
+    flex-grow: 1;
+    margin: 0;
+    padding-left: 1em;
+    margin-bottom: 1em
+}
+#content {
+    text-align: justify;
+    hyphens: auto;
+}
+element {
+    font-size: 17;
+}
+/* 等宽字 */
+code {
+    font-size: 95%;
+    color: black;
+    border: 1px solid #DEDEDE;
+    padding: 0px 0.2em;
+    display: inline-block;
+    font-family: "Droid Sans Mono";
+    margin: 0.1em;
+    white-space: nowrap;
+}
+/* org-src-block */
+pre {
+    font-weight: 400;
+    line-height: 1.2em;
+    border-radius: 10px;
+    font-family: Source Code Variable,Hack, monospace;
+    font-size: 0.8em;
+
+}
+pre.src{
+    display: block;
+    padding: .5em;
+    background: rgb(17, 17, 17);
+    color: #dcdcdc;
+    box-shadow: 0px 0px 5px black;;
+    display: block;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    padding-top: 0.3em;
+}
+pre.src:before{
+    background-color: transparent;
+    top:-10px;
+    right: 10px;
+    padding: 1px;
+    border: transparent;
+    border-radius: 5px;
+    color: #1e3436;
+    /* text-shadow: 0.2ex 0.2ex 0.2ex gray; */
+}
+/* src results face */
+pre.example{
+    background: transparent;
+    /* color: gray; */
+    height: min-content;
+}
+/* line number */
+.linenr{
+    font-size: 0.8em;
+    color: #1e3436;
+}
+/* Set the colors in <pre> blocks from the Leuven theme */
+/* pre                                      {background-color:#FFFFFF;} */
+pre span.org-builtin                     {color:#006FE0;font-weight:bold;}
+pre span.org-string                      {color:#008000;}
+pre span.org-doc                         {color:#008000;}
+pre span.org-keyword                     {color:#cc7832;}
+pre span.org-variable-name               {color:#BA36A5;}
+pre span.org-function-name               {color:#006699;}
+pre span.org-type                        {color:#9876aa;}
+pre span.org-preprocessor                {color:#808080;font-weight:bold;}
+pre span.org-constant                    {color:#D0372D;}
+pre span.org-comment-delimiter           {color:#8D8D84;}
+pre span.org-comment                     {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-1            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-2            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-3            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-4            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-5            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-6            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-7            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-8            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-9            {color:#8D8D84;font-style:italic}
+pre span.org-rainbow-delimiters-depth-1  {color:#707183;}
+pre span.org-rainbow-delimiters-depth-2  {color:#7388d6;}
+pre span.org-rainbow-delimiters-depth-3  {color:#909183;}
+pre span.org-rainbow-delimiters-depth-4  {color:#709870;}
+pre span.org-rainbow-delimiters-depth-5  {color:#907373;}
+pre span.org-rainbow-delimiters-depth-6  {color:#6276ba;}
+pre span.org-rainbow-delimiters-depth-7  {color:#858580;}
+pre span.org-rainbow-delimiters-depth-8  {color:#80a880;}
+pre span.org-rainbow-delimiters-depth-9  {color:#887070;}
+pre span.org-sh-quoted-exec              {color:#FF1493;}
+pre span.org-diff-added                  {color:#008000;}
+pre span.org-diff-changed                {color:#0000FF;}
+pre span.org-diff-header                 {color:#800000;}
+pre span.org-diff-hunk-header            {color:#990099;}
+pre span.org-diff-none                   {color:#545454;}
+pre span.org-diff-removed                {color:#A60000;}
+img{
+    box-shadow: 5px 5px 10px #555;
+}
+/* TOC inspired by http://jashkenas.github.com/coffee-script */
+#table-of-contents {
+    margin-top: 70px;
+    font-size: 10pt;
+    position: fixed;
+    right: 0em;
+    top: 0em;
+    background: white;
+    line-height: 12pt;
+    text-align: right;
+    box-shadow: 0 0 1em #777777;
+    -webkit-box-shadow: 0 0 1em #777777;
+    -moz-box-shadow: 0 0 1em #777777;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    /* ensure doesn't flow off the screen when expanded */
+    max-height: 80%;
+    overflow: auto; }
+#table-of-contents h2 {
+    font-size: 13pt;
+    max-width: 9em;
+    border: 0;
+    font-weight: normal;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.05em;
+    padding-bottom: 0.05em; }
+#table-of-contents #text-table-of-contents {
+    display: none;
+    text-align: left; }
+#table-of-contents:hover #text-table-of-contents {
+    display: block;
+    padding: 0.5em;
+    margin-top: -1.5em; }
+
+#license {
+    background-color: #eeeeee;
+}
+.builtin {
+    /* font-lock-builtin-face */
+    color: #f4a460;
+}
+.comment {
+    /* font-lock-comment-face */
+    color: #737373;
+}
+.comment-delimiter {
+    /* font-lock-comment-delimiter-face */
+    color: #666666;
+}
+.constant {
+    /* font-lock-constant-face */
+    color: #db7093;
+}
+.doc {
+    /* font-lock-doc-face */
+    color: #b3b3b3;
+}
+.function-name {
+    /* font-lock-function-name-face */
+    color: #5f9ea0;
+}
+.headline {
+    /* headline-face */
+    color: #ffffff;
+    background-color: #000000;
+    font-weight: bold;
+}
+.keyword {
+    /* font-lock-keyword-face */
+    color: #cc7832;
+}
+.negation-char {
+}
+.regexp-grouping-backslash {
+}
+.regexp-grouping-construct {
+}
+.string {
+    /* font-lock-string-face */
+    color: #ccc79a;
+}
+.todo-comment {
+    /* todo-comment-face */
+    color: #ffffff;
+    background-color: #000000;
+    font-weight: bold;
+}
+.variable-name {
+    /* font-lock-variable-name-face */
+    color: #ff6a6a;
+}
+.warning {
+    /* font-lock-warning-face */
+    color: #ffffff;
+    background-color: #cd5c5c;
+    font-weight: bold;
+}
+.org-warning {
+    /* font-lock-warning-face */
+    color: #ff0000;
+    font-weight: bold;
+}
+#postamble {
+    font-size: 75%;
+    min-width: 700px;
+    max-width: 80%;
+    line-height: 14pt;
+    margin-left: 20px;
+    margin-top: 10px;
+    padding: .2em;
+    background-color: #ffffff;
+    z-index: -1000;
+}
+
+@media screen
+{
+    #table-of-contents {
+        position: fixed;
+        margin-top: 80px;
+        float: right;
+        border: 1px solid #red;
+        max-width: 20%;
+        overflow: auto;
+    }
+} /* END OF @media screen */

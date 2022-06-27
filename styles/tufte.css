@@ -1,0 +1,727 @@
+/*
+p.author	author information, including email
+p.date	publishing date
+p.creator	creator info, about org mode version
+.title	document title
+.subtitle	document subtitle
+.todo	TODO keywords, all not-done states
+.done	the DONE keywords, all states that count as done
+.WAITING	each TODO keyword also uses a class named after itself
+.timestamp	timestamp
+.timestamp-kwd	keyword associated with a timestamp, like ‘SCHEDULED’
+.timestamp-wrapper	span around keyword plus timestamp
+.tag	tag in a headline
+._HOME	each tag uses itself as a class, “@” replaced by “_”
+.target	target for links
+.linenr	the line number in a code example
+.code-highlighted	for highlighting referenced code lines
+div.outline-N	div for outline level N (headline plus text)
+div.outline-text-N	extra div for text at outline level N
+.section-number-N	section number in headlines, different for each level
+.figure-number	label like “Figure 1:”
+.table-number	label like “Table 1:”
+.listing-number	label like “Listing 1:”
+div.figure	how to format an in-lined image
+pre.src	formatted source code
+pre.example	normal example
+p.verse	verse paragraph
+div.footnotes	footnote section headline
+p.footnote	footnote definition paragraph, containing a footnote
+.footref	a footnote reference number (always a <sup>)
+.footnum	footnote number in footnote definition (always <sup>)
+.org-svg	default class for a linked ‘.svg’ image
+*/
+@charset "UTF-8";
+
+/* Import ET Book styles
+   adapted from https://github.com/edwardtufte/et-book/blob/gh-pages/et-book.css */
+
+/*!
+ *  Hack typeface https://github.com/source-foundry/Hack
+ *  License: https://github.com/source-foundry/Hack/blob/master/LICENSE.md
+ */
+/* FONT PATHS
+ * -------------------------- */
+@font-face {
+  font-family: 'Hack';
+  src: url('et-book/hack/hack-regular.woff2') format('woff2'), url('et-book/hack/hack-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('et-book/hack/hack-bold.woff2') format('woff2'), url('et-book/hack/hack-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('et-book/hack/hack-italic.woff2') format('woff2'), url('et-book/hack/hack-italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('et-book/hack/hack-bolditalic.woff2') format('woff2'), url('et-book/hack/hack-bolditalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('et-book/hack/hack-regular-subset.woff2') format('woff2'), url('et-book/hack/hack-regular-subset.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('et-book/hack/hack-bold-subset.woff2') format('woff2'), url('et-book/hack/hack-bold-subset.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('et-book/hack/hack-italic-subset.woff2') format('woff2'), url('et-book/hack/hack-italic-subset.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url('et-book/hack/hack-bolditalic-subset.woff2') format('woff2'), url('et-book/hack/hack-bolditalic-subset.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+/* Tufte CSS styles */
+html {
+    font-size: 15px;
+}
+
+body {
+    width: 87.5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 12.5%;
+    font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    background-color: #fffff8;
+    color: #111;
+    max-width: 1400px;
+    counter-reset: sidenote-counter;
+}
+
+h1 {
+    font-weight: 400;
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+    font-size: 3.2rem;
+    line-height: 1;
+}
+
+h2 {
+    font-style: italic;
+    font-weight: 400;
+    margin-top: 2.1rem;
+    margin-bottom: 1.4rem;
+    font-size: 2.2rem;
+    line-height: 1;
+}
+
+h3 {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.7rem;
+    margin-top: 2rem;
+    margin-bottom: 1.4rem;
+    line-height: 1;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    width: 55%;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+p.subtitle {
+    font-style: italic;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    display: block;
+    line-height: 1;
+}
+
+.numeral {
+    font-family: et-book-roman-old-style;
+}
+
+.danger {
+    color: red;
+}
+
+article {
+    padding: 5rem 0rem;
+}
+
+section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+p,
+ol,
+ul {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+}
+
+p {
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+    padding-right: 0;
+    vertical-align: baseline;
+}
+
+/* Chapter Epigraphs */
+div.epigraph {
+    margin: 5em 0;
+}
+
+div.epigraph > blockquote {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+div.epigraph > blockquote,
+div.epigraph > blockquote > p {
+    font-style: italic;
+}
+
+div.epigraph > blockquote > footer {
+    font-style: normal;
+}
+
+div.epigraph > blockquote > footer > cite {
+    font-style: italic;
+}
+/* end chapter epigraphs styles */
+
+blockquote {
+    font-size: 1.4rem;
+}
+
+blockquote p {
+    width: 55%;
+    margin-right: 40px;
+}
+
+blockquote footer {
+    width: 55%;
+    font-size: 1.1rem;
+    text-align: right;
+}
+
+section > p,
+section > footer,
+section > table {
+    width: 55%;
+}
+
+/* 50 + 5 == 55, to be the same width as paragraph */
+section > ol,
+section > ul {
+    width: 50%;
+    -webkit-padding-start: 5%;
+}
+
+li:not(:first-child) {
+    margin-top: 0.25rem;
+}
+
+figure {
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    max-width: 55%;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    margin: 0 0 3em 0;
+}
+
+figcaption {
+    float: right;
+    clear: right;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    vertical-align: baseline;
+    position: relative;
+    max-width: 40%;
+}
+
+figure.fullwidth figcaption {
+    margin-right: 24%;
+}
+
+/* Links: replicate underline that clears descenders */
+a:link,
+a:visited {
+    color: inherit;
+}
+
+.no-tufte-underline:link {
+    background: unset;
+    text-shadow: unset;
+}
+
+a:link, .tufte-underline, .hover-tufte-underline:hover {
+    text-decoration: none;
+    background: -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(currentColor, currentColor);
+    background: linear-gradient(#fffff8, #fffff8), linear-gradient(#fffff8, #fffff8), linear-gradient(currentColor, currentColor);
+    -webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+    -moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+    background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    text-shadow: 0.03em 0 #fffff8, -0.03em 0 #fffff8, 0 0.03em #fffff8, 0 -0.03em #fffff8, 0.06em 0 #fffff8, -0.06em 0 #fffff8, 0.09em 0 #fffff8, -0.09em 0 #fffff8, 0.12em 0 #fffff8, -0.12em 0 #fffff8, 0.15em 0 #fffff8, -0.15em 0 #fffff8;
+    background-position: 0% 93%, 100% 93%, 0% 93%;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    a:link, .tufte-underline, .hover-tufte-underline:hover {
+        background-position-y: 87%, 87%, 87%;
+    }
+}
+
+a:link::selection,
+a:link::-moz-selection {
+    text-shadow: 0.03em 0 #b4d5fe, -0.03em 0 #b4d5fe, 0 0.03em #b4d5fe, 0 -0.03em #b4d5fe, 0.06em 0 #b4d5fe, -0.06em 0 #b4d5fe, 0.09em 0 #b4d5fe, -0.09em 0 #b4d5fe, 0.12em 0 #b4d5fe, -0.12em 0 #b4d5fe, 0.15em 0 #b4d5fe, -0.15em 0 #b4d5fe;
+    background: #b4d5fe;
+}
+
+/* Sidenotes, margin notes, figures, captions */
+img {
+    max-width: 100%;
+}
+
+.sidenote,
+.marginnote {
+    float: right;
+    clear: right;
+    margin-right: -60%;
+    width: 50%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    vertical-align: baseline;
+    position: relative;
+}
+
+.sidenote-number {
+    counter-increment: sidenote-counter;
+}
+
+.sidenote-number:after,
+.sidenote:before {
+    font-family: et-book-roman-old-style;
+    position: relative;
+    vertical-align: baseline;
+}
+
+.sidenote-number:after {
+    content: counter(sidenote-counter);
+    font-size: 1rem;
+    top: -0.5rem;
+    left: 0.1rem;
+}
+
+.sidenote:before {
+    content: counter(sidenote-counter) " ";
+    font-size: 1rem;
+    top: -0.5rem;
+}
+
+blockquote .sidenote,
+blockquote .marginnote {
+    margin-right: -82%;
+    min-width: 59%;
+    text-align: left;
+}
+
+div.fullwidth,
+table.fullwidth {
+    width: 100%;
+}
+
+div.table-wrapper {
+    overflow-x: auto;
+    font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
+}
+
+.sans {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    letter-spacing: .03em;
+}
+/* list ul and ol */
+.org-ul,
+.org-ol{
+    padding: 0 0 0 0.8em;
+}
+
+/* Title */
+/* h1 { */
+/* 	font-size:2.1em; */
+/*     /\* top right down left *\/ */
+/* 	padding:0 0 0.3em 0; */
+/* 	/\* margin-top: 10px; *\/ */
+/* 	/\* margin-bottom: 10px; *\/ */
+/* 	/\* margin-right: 7%; *\/ */
+/* 	/\* color: grey; *\/ */
+/*     text-shadow: 0.2ex 0.2ex 0.2ex gray; */
+/* } */
+
+/* h2 { */
+/* 	font-size:1.5em; */
+/*     font-weight: bold; */
+/* 	/\* line-height:16px; *\/ */
+/* 	padding:0 0 0.25em 0; */
+/* 	/\* color: black; *\/ */
+/* 	border-bottom: 2px solid #DDDD; */
+/* } */
+
+/* h3 { */
+/* 	font-size:1.3em; */
+/*     padding:0 0 0 0; */
+/* 	color: ; */
+/* 	/\* margin-left: 0.6em; *\/ */
+/* } */
+/* h4 { */
+/* 	font-size:1.2em; */
+/*     padding:0 0 0 0; */
+/* 	/\* margin-left: 1.2em; *\/ */
+/* 	/\* color: #A5573E; *\/ */
+/* } */
+
+/* h2,h3,h4{ */
+/*     font-family:sans-serif; */
+/* } */
+/* h2 code, h3 code, h4 code, h5 code, td code { */
+/*     font-family: inherit !important; */
+/*     font-size: inherit !important; */
+/* } */
+
+td code {
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: gainsboro;
+    text-decoration: underline;
+}
+
+.todo {
+	color: #CA0000;
+}
+
+.done {
+	color: #006666;
+}
+
+.timestamp-kwd {
+	color: #444;
+}
+
+.tag {
+    color: #DDD;
+    font-weight: 500;
+    font-size: 70%;
+}
+
+li {
+	margin: .4em;
+}
+
+/* 表格 */
+table {
+    text-align: center;
+    caption-side: bottom;
+    /* make table in page center */
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* 表格斑马线 */
+tbody tr:nth-child(even){
+    background-color: #eee;
+}
+/* 表头 */
+th {
+    font-weight: bold;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+}
+
+/* 等宽字 */
+code {
+    display: inline-block;
+    font-family: "Droid Sans Mono";
+	font-size: 85%;
+    background-color: #e1e3e5;
+	padding: .1em .2em;
+    margin: 0.1em;
+    line-height: 1.4;
+    color: #242729;
+    text-shadow: 0 1px 0 #FFF;
+    border: 1px solid #adb3b9;
+    border-radius: 3px;
+
+    box-shadow: 0 1px 0 rgba(12,13,14,0.2),0 0 0 2px #FFF inset;
+    white-space: nowrap;
+}
+
+/* org-src-block */
+pre {
+    border-radius: 10px;
+    font-family: Hack, monospace;
+    font-size: 1.0em;
+
+}
+pre.src{
+    text-shadow: 2px 2px 15px;
+    box-shadow: 1px 1px 5px #7a378b;
+    color: #39375b;
+    background-color: #ffffd2;
+    display: block;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    padding-top: 0.3em;
+}
+pre.src:before{
+    background-color: transparent;
+    top:-10px;
+    right: 10px;
+    padding: 1px;
+    border: transparent;
+    border-radius: 5px;
+    color: #1e3436;
+    text-shadow: 0.2ex 0.2ex 0.2ex gray;
+}
+/* src results face */
+pre.example{
+    background: transparent;
+    color: gray;
+    height: min-content;
+}
+/* line number */
+.linenr{
+    font-size: 1.0em;
+}
+/* Set the colors in <pre> blocks from the Leuven theme */
+/* pre                                      {background-color:#FFFFFF;} */
+pre span.org-builtin                     {color:#006FE0;font-weight:bold;}
+pre span.org-string                      {color:#008000;}
+pre span.org-doc                         {color:#008000;}
+pre span.org-keyword                     {color:#0000FF;}
+pre span.org-variable-name               {color:#BA36A5;}
+pre span.org-function-name               {color:#006699;}
+pre span.org-type                        {color:#6434A3;}
+pre span.org-preprocessor                {color:#808080;font-weight:bold;}
+pre span.org-constant                    {color:#D0372D;}
+pre span.org-comment-delimiter           {color:#8D8D84;}
+pre span.org-comment                     {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-1            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-2            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-3            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-4            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-5            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-6            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-7            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-8            {color:#8D8D84;font-style:italic}
+pre span.org-outshine-level-9            {color:#8D8D84;font-style:italic}
+pre span.org-rainbow-delimiters-depth-1  {color:#707183;}
+pre span.org-rainbow-delimiters-depth-2  {color:#7388d6;}
+pre span.org-rainbow-delimiters-depth-3  {color:#909183;}
+pre span.org-rainbow-delimiters-depth-4  {color:#709870;}
+pre span.org-rainbow-delimiters-depth-5  {color:#907373;}
+pre span.org-rainbow-delimiters-depth-6  {color:#6276ba;}
+pre span.org-rainbow-delimiters-depth-7  {color:#858580;}
+pre span.org-rainbow-delimiters-depth-8  {color:#80a880;}
+pre span.org-rainbow-delimiters-depth-9  {color:#887070;}
+pre span.org-sh-quoted-exec              {color:#FF1493;}
+pre span.org-diff-added                  {color:#008000;}
+pre span.org-diff-changed                {color:#0000FF;}
+pre span.org-diff-header                 {color:#800000;}
+pre span.org-diff-hunk-header            {color:#990099;}
+pre span.org-diff-none                   {color:#545454;}
+pre span.org-diff-removed                {color:#A60000;}
+
+/* code, pre > code { */
+/*     font-family: Hack, monospace; */
+/*     /\* font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; *\/ */
+/*     font-size: 1.0rem; */
+/*     line-height: 1.42; */
+/*     -webkit-text-size-adjust: 100%; /\* Prevent adjustments of font size after orientation changes in iOS. See https://github.com/edwardtufte/tufte-css/issues/81#issuecomment-261953409 *\/ */
+/* } */
+
+.sans > code {
+    font-size: 1.2rem;
+}
+
+h1 > code,
+h2 > code,
+h3 > code {
+    font-size: 0.80em;
+}
+
+.marginnote > code,
+.sidenote > code {
+    font-size: 1rem;
+}
+
+/* pre > code { */
+/*     font-size: 0.9rem; */
+/*     width: 52.5%; */
+/*     margin-left: 2.5%; */
+/*     overflow-x: auto; */
+/*     display: block; */
+/* } */
+
+/* pre.fullwidth > code { */
+/*     width: 90%; */
+/* } */
+
+.fullwidth {
+    max-width: 90%;
+    clear:both;
+}
+
+span.newthought {
+    font-variant: small-caps;
+    font-size: 1.2em;
+}
+
+input.margin-toggle {
+    display: none;
+}
+
+label.sidenote-number {
+    display: inline;
+}
+
+label.margin-toggle:not(.sidenote-number) {
+    display: none;
+}
+
+.iframe-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+
+.iframe-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 760px) {
+    body {
+        width: 84%;
+        padding-left: 8%;
+        padding-right: 8%;
+    }
+
+    hr,
+    section > p,
+    section > footer,
+    section > table {
+        width: 100%;
+    }
+
+    /* pre > code { */
+    /*     width: 97%; */
+    /* } */
+
+    section > ol {
+        width: 90%;
+    }
+
+    section > ul {
+        width: 90%;
+    }
+
+    figure {
+        max-width: 90%;
+    }
+
+    figcaption,
+    figure.fullwidth figcaption {
+        margin-right: 0%;
+        max-width: none;
+    }
+
+    blockquote {
+        margin-left: 1.5em;
+        margin-right: 0em;
+    }
+
+    blockquote p,
+    blockquote footer {
+        width: 100%;
+    }
+
+    label.margin-toggle:not(.sidenote-number) {
+        display: inline;
+    }
+
+    .sidenote,
+    .marginnote {
+        display: none;
+    }
+
+    .margin-toggle:checked + .sidenote,
+    .margin-toggle:checked + .marginnote {
+        display: block;
+        float: left;
+        left: 1rem;
+        clear: both;
+        width: 95%;
+        margin: 1rem 2.5%;
+        vertical-align: baseline;
+        position: relative;
+    }
+
+    label {
+        cursor: pointer;
+    }
+
+    div.table-wrapper,
+    table {
+        width: 85%;
+    }
+
+    img {
+        width: 100%;
+    }
+}

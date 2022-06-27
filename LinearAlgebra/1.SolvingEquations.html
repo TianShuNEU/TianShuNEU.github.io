@@ -3,13 +3,34 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-28 一 15:14 -->
+<!-- 2022-06-27 一 12:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>消去法求解线性方程组</title>
 <meta name="author" content="Tian tongtong" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" type="text/css" href="../css/org.css"/>
+<link rel="stylesheet" type="text/css" href="../styles/font.css"/>
+<link rel="stylesheet" type="text/css" href="../styles/styleNew.css"/>
+
+<script src="../scripts/org-info.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "../index.html");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+// @license-end
+</script>
 
 <script>
 window.MathJax = {
@@ -42,12 +63,8 @@ window.MathJax = {
 <script type="text/javascript" src="../MathJax/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-<div id="org-div-home-and-up">
- <a accesskey="h" href="sitemap.html"> UP </a>
- |
- <a accesskey="H" href="../index.html"> HOME </a>
-</div><div id="preamble" class="status">
-By Tian tongtong. Date: 2022-02-18. Last modified 2022-02-26 六 15:22
+<div id="preamble" class="status">
+Created: 2022-02-18. Modified 2022-06-27 一 12:57
 </div>
 <div id="content" class="content">
 <h1 class="title">消去法求解线性方程组
@@ -58,15 +75,15 @@ By Tian tongtong. Date: 2022-02-18. Last modified 2022-02-26 六 15:22
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1d7e5c4">1. n元线性方程组</a></li>
-<li><a href="#orga4efb0e">2. Gauss-Jordan Elimination</a></li>
-<li><a href="#org641f37a">3. 线性方程组解的个数与判别准则</a></li>
+<li><a href="#org1149010">1. n元线性方程组</a></li>
+<li><a href="#orgeb56dea">2. Gauss-Jordan Elimination</a></li>
+<li><a href="#org976517b">3. 线性方程组解的个数与判别准则</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1d7e5c4" class="outline-2">
-<h2 id="org1d7e5c4"><span class="section-number-2">1.</span> n元线性方程组</h2>
+<div id="outline-container-org1149010" class="outline-2">
+<h2 id="org1149010"><span class="section-number-2">1.</span> n元线性方程组</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 具有n个未知量的多个一次方程构成了n元线性方程组，形式如下：
@@ -81,26 +98,34 @@ By Tian tongtong. Date: 2022-02-18. Last modified 2022-02-26 六 15:22
 \end{flalign}
 
 <p>
-线性代数由n元线性方程组出发，逐步引出了矩阵，行列式等概念，本节主要介绍n元线性方程组的Gauss-Jordan解法和引入矩阵。
+线性代数由n元线性方程组出发，逐步引出了矩阵，行列式等概念，本节主要介绍n元线性方
+程组的Gauss-Jordan解法和引入矩阵。
 </p>
 
 <p>
-在n元线性方程组等号右边的叫常数项，在未知量前的是系数，如果常数项全为0,则称为齐次线性方程组了，否则是非齐次线性方程组。
+在n元线性方程组等号右边的叫常数项，在未知量前的是系数，如果常数项全为0,则称为齐
+次线性方程组了，否则是非齐次线性方程组。
 </p>
 
 <p>
-解n元线性方程组最常用的是消元法，将未知量的个数逐渐减少，直到方程组得解或者无解，方程组有解又分为有唯一解和有无穷多解。回忆中学阶段的消去过程：交换两个方程的位置；在某一个方程上乘一个非零数；在一个方程上加上另一个方程。这3个步骤称为方程组的<b>初等行变换</b>. 在这个消去的过程中，实际上只有未知量的系数与常数项在参与运算，未知量本身并没参与任何运算，所以我们现在把系数和常数项分别从方程组中取出来，组成一张<b>表格</b>  ,这个表格称为一个矩阵，包含系数和常数项的矩阵称为增广炬阵（augmented  matrix
+解n元线性方程组最常用的是消元法，将未知量的个数逐渐减少，直到方程组得解或者无解，
+方程组有解又分为有唯一解和有无穷多解。回忆中学阶段的消去过程：交换两个方程的位置；
+在某一个方程上乘一个非零数；在一个方程上加上另一个方程。这3个步骤称为方程组的 <b>初
+等行变换</b>. 在这个消去的过程中，实际上只有未知量的系数与常数项在参与运算，未知量本
+身并没参与任何运算，所以我们现在把系数和常数项分别从方程组中取出来，组成一张  <b>表
+格</b>  ,这个表格称为一个矩阵，包含系数和常数项的矩阵称为增广炬阵（augmented  matrix
 ），而只包含系数的矩阵称为系数矩阵，下面我们用矩阵的方法再做消元处理，我们介绍
 <b>Gauss-jordan</b> 消元法。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orga4efb0e" class="outline-2">
-<h2 id="orga4efb0e"><span class="section-number-2">2.</span> Gauss-Jordan Elimination</h2>
+<div id="outline-container-orgeb56dea" class="outline-2">
+<h2 id="orgeb56dea"><span class="section-number-2">2.</span> Gauss-Jordan Elimination</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-目的是通过3个初等行变换（elementary row operations）把矩阵转换为阶梯形矩阵（echelon form），阶梯形矩阵满足如下条件：
+目的是通过3个初等行变换（elementary row operations）把矩阵转换为阶梯形矩阵
+（echelon form），阶梯形矩阵满足如下条件：
 </p>
 
 <ol class="org-ol">
@@ -180,7 +205,10 @@ To perform Gauss-Jordan Elimination:
 </p>
 
 <p>
-以上手动计算过程需要用矩阵乘法表示出来，每一步变换对应一个变换矩阵，变换矩阵可以从单位矩阵开示构造，而且我们是逐行改变增广矩阵，所以变换矩阵应该放在增广矩阵的左边，我们的主要目的是通过消元法不断消去未知量的个数，也就是不断的让未知量的系数变为0.
+以上手动计算过程需要用矩阵乘法表示出来，每一步变换对应一个变换矩阵，变换矩阵可以
+从单位矩阵开示构造，而且我们是逐行改变增广矩阵，所以变换矩阵应该放在增广矩阵的左
+边，我们的主要目的是通过消元法不断消去未知量的个数，也就是不断的让未知量的系数变
+为0.
 </p>
 
 <p>
@@ -189,7 +217,8 @@ To perform Gauss-Jordan Elimination:
 </p>
 
 <p>
-第一次变换需要把第二行和第三行的第一列变为0(如果有n行则要一直把第n行的第一列也变为0),所以包含两个矩阵 \(E_{21}\quad E_{31}\),其中 \(\ell_{21}=-2 \quad \ell_{31}=1\).
+第一次变换需要把第二行和第三行的第一列变为0(如果有n行则要一直把第n行的第一列也变
+为0),所以包含两个矩阵 \(E_{21}\quad E_{31}\),其中 \(\ell_{21}=-2 \quad \ell_{31}=1\).
 </p>
 \begin{equation*}
 E_{21}=
@@ -218,7 +247,8 @@ E_{21}E_{31}=E_{31}E_{21}=
 <p>
 记第一次变换后的矩阵 \(U^{'}=E_{31}E_{21}A=\big(\begin{smallmatrix} 2 & 4 &
 -2\\ 0 & 1 & 1\\0 & 1 & 5\end{smallmatrix}\big)\)
-第二次变换要把第三行的第二列变为0(如果有n行则要一直把第n行的第二列也变为0), \(\ell_{32}=-1\) ,
+第二次变换要把第三行的第二列变为0(如果有n行则要一直把第n行的第二列也变
+为0), \(\ell_{32}=-1\) ,
 </p>
 \begin{equation*}
 E_{32}=
@@ -247,19 +277,25 @@ E_{32}E_{31}E_{21}=
 \end{equation*}
 <p>
 注意观察总变换矩阵第三行第一列元素3,可以这样理解（顺序很重要）：首先第三行加上1
-倍的第一行，第二行减去第1行的2倍，然后第三行减去新的第二行，所以第三行与第一行的关系应该是：先加1倍，再减去(-2）倍，也就是加3倍的第一行。
+倍的第一行，第二行减去第1行的2倍，然后第三行减去新的第二行，所以第三行与第一行的
+关系应该是：先加1倍，再减去(-2）倍，也就是加3倍的第一行。
 </p>
 
 <p>
-<b>在这个顺序下第一行对第三行有额外的影响。</b>元素被矩阵乘法弄乱了，下面看更加优美的矩阵A的LU分解
+<b>在这个顺序下第一行对第三行有额外的影响。</b> 元素被矩阵乘法弄乱了，下面看更加优美的
+矩阵A的LU分解
 </p>
 <hr />
 <p>
-最后的结果矩阵 \(U\) 称为上三角矩阵，以上过程是正向变换，从 <i>A</i> 变换到 <i>U</i>,那么现在研究一下反向变换，从 <i>U</i> 变换到 <i>A</i>,也就是把 <i>A</i> 分解为一个下三角矩阵和一个上三角矩阵的乘积 \(A=LU\),很明显 \(L=E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}\).
+最后的结果矩阵 \(U\) 称为上三角矩阵，以上过程是正向变换，从 <i>A</i> 变换到 <i>U</i>,那么现在研
+究一下反向变换，从 <i>U</i> 变换到 <i>A</i>,也就是把 <i>A</i> 分解为一个下三角矩阵和一个上三角矩阵的
+乘积 \(A=LU\),很明显 \(L=E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}\).
 </p>
 
 <p>
-以上的变换矩阵都是为了在某一行减去另一行的 \(\ell\) 倍获得新行，在反变换的时候，应该是在新行加上另一行的 \(\ell\) 倍。因此反变换矩阵的各元素应该是变换矩阵相应元素的反数。即
+以上的变换矩阵都是为了在某一行减去另一行的 \(\ell\) 倍获得新行，在反变换的时候，应
+该是在新行加上另一行的 \(\ell\) 倍。因此反变换矩阵的各元素应该是变换矩阵相应元素的
+反数。即
 </p>
 \begin{equation*}
 (E_{31}E_{21})^{-1}=
@@ -288,12 +324,17 @@ E_{32}^{-1}=
 \end{equation*}
 
 <p>
-可以看到这时候的反变换矩阵很整洁漂亮，因为 \(\ell_{ij}\) 都在总的反变换矩阵相应的位置上，矩阵的乘法并没有弄乱这些数据。这也是为什么下一节选择 <b>A=LU</b> 从上三角矩阵U还原矩阵A的原因：每个乘数完美的落在下三角矩阵L相应的位置上，
+可以看到这时候的反变换矩阵很整洁漂亮，因为 \(\ell_{ij}\) 都在总的反变换矩阵相应的
+位置上，矩阵的乘法并没有弄乱这些数据。这也是为什么下一节选择 <b>A=LU</b> 从上三角矩阵U还
+原矩阵A的原因：每个乘数完美的落在下三角矩阵L相应的位置上，
 </p>
 
 
 <p>
-以上手动计算过程也可以通过矩阵计算获得，因为改变的是增广炬阵的行，所以需要在增广矩阵的左边乘变换矩阵（左乘），以上每一次变换都对应一个变换矩阵，所以共有5个变换矩阵，它们的顺序是有严格要求的，第一次的变换写在增广矩阵的左边，第二次变换写在第一次的左边，第三次的变换写在第二次的左边，以此类推。因此变换矩阵应该是
+以上手动计算过程也可以通过矩阵计算获得，因为改变的是增广炬阵的行，所以需要在增广
+矩阵的左边乘变换矩阵（左乘），以上每一次变换都对应一个变换矩阵，所以共有5个变换
+矩阵，它们的顺序是有严格要求的，第一次的变换写在增广矩阵的左边，第二次变换写在第
+一次的左边，第三次的变换写在第二次的左边，以此类推。因此变换矩阵应该是
 </p>
 
 \begin{equation*}
@@ -409,11 +450,12 @@ To obtain the inverse of a n × n matrix A :
 </div>
 </div>
 
-<div id="outline-container-org641f37a" class="outline-2">
-<h2 id="org641f37a"><span class="section-number-2">3.</span> 线性方程组解的个数与判别准则</h2>
+<div id="outline-container-org976517b" class="outline-2">
+<h2 id="org976517b"><span class="section-number-2">3.</span> 线性方程组解的个数与判别准则</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-当增广矩阵经过初等行变换后，观察最终的阶梯形矩阵，如果系数矩阵存在零行，且相应的常数矩阵的元素不为0,则原方程组无解；如果系数矩阵存在零行且相应的常数矩阵元素为0,
+当增广矩阵经过初等行变换后，观察最终的阶梯形矩阵，如果系数矩阵存在零行，且相应的
+常数矩阵的元素不为0,则原方程组无解；如果系数矩阵存在零行且相应的常数矩阵元素为0,
 则有解，有解的时候又可分为两种情况：
 </p>
 <ol class="org-ol">
@@ -428,7 +470,7 @@ To obtain the inverse of a n × n matrix A :
 </div>
 </div>
 <div id="postamble" class="status">
-This blog is generated by: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.0.50 (<a href="https://orgmode.org">Org</a> mode 9.5.2)
+Generated by: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.0.50 (<a href="https://orgmode.org">Org</a> mode 9.5.2)
 </div>
 </body>
 </html>
