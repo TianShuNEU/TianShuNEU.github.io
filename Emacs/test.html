@@ -3,13 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-06-28 二 13:43 -->
+<!-- 2022-06-28 二 16:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Test</title>
 <meta name="author" content="Tian tongtong" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="../styles/font.css"/>
+<link rel="stylesheet" type="text/css" href="../styles/highlight.css"/>
 <link rel="stylesheet" media="screen and (max-width: 1200px)" type="text/css" href="../styles/post_mobile.css"/>
 <link rel="stylesheet" media="screen and (min-width: 1200px)" type="text/css" href="../styles/post.css"/>
 
@@ -65,7 +66,7 @@ window.MathJax = {
 </head>
 <body>
 <div id="preamble" class="status">
-Created: 2022-02-21. Modified 2022-06-28 二 10:07
+Created: 2022-02-21. Modified 2022-06-28 二 16:49
 </div>
 <div id="content" class="content">
 <h1 class="title">Test</h1>
@@ -276,12 +277,61 @@ nb  sqr  noise
 
 
 <div class="org-src-container">
-<pre class="src src-C++"><span class="linenr">1: </span>#<span class="org-tree-sitter-hl-faceXfunctionXmacro">#include</span> <span class="org-tree-sitter-hl-faceXstring">&lt;iostream&gt;</span>
-<span class="linenr">2: </span><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span> <span class="org-tree-sitter-hl-faceXfunction">main</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">argc</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">,</span> <span class="org-tree-sitter-hl-faceXtypeXbuiltin">char</span><span class="org-tree-sitter-hl-faceXoperator">**</span> argv<span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
-<span class="linenr">3: </span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">{</span>
-<span class="linenr">4: </span>    <span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span> <span class="org-tree-sitter-hl-faceXvariable">i</span><span class="org-tree-sitter-hl-faceXoperator">=</span><span class="org-tree-sitter-hl-faceXnumber">0</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span>
-<span class="linenr">5: </span>    <span class="org-tree-sitter-hl-faceXkeyword">return</span> <span class="org-tree-sitter-hl-faceXnumber">0</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span>
-<span class="linenr">6: </span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">}</span>
+<pre class="src src-C++"><span class="linenr"> 1: </span><span class="org-tree-sitter-hl-faceXcomment">//Copyright (C) 2020 Ultimaker B.V.</span>
+<span class="linenr"> 2: </span><span class="org-tree-sitter-hl-faceXcomment">//CuraEngine is released under the terms of the AGPLv3 or higher.</span>
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span class="org-tree-sitter-hl-faceXfunctionXmacro">#ifndef</span> <span class="org-tree-sitter-hl-faceXconstant">MESH_GROUP_H</span>
+<span class="linenr"> 5: </span><span class="org-tree-sitter-hl-faceXfunctionXmacro">#define</span> <span class="org-tree-sitter-hl-faceXconstant"><span class="org-tree-sitter-hl-faceXvariableXspecial">MESH_GROUP_H</span></span>
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span class="org-tree-sitter-hl-faceXfunctionXmacro">#include</span> <span class="org-tree-sitter-hl-faceXstring">"mesh.h"</span>
+<span class="linenr"> 8: </span><span class="org-tree-sitter-hl-faceXfunctionXmacro">#include</span> <span class="org-tree-sitter-hl-faceXstring">"utils/NoCopy.h"</span>
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span class="org-tree-sitter-hl-faceXkeyword">namespace</span> <span class="org-tree-sitter-hl-faceXtype">cura</span>
+<span class="linenr">11: </span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">{</span>
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span class="org-tree-sitter-hl-faceXkeyword">class</span> <span class="org-tree-sitter-hl-faceXtype">FMatrix4x3</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span>
+<span class="linenr">14: </span>
+<span class="linenr">15: </span><span class="org-tree-sitter-hl-faceXcomment">/*!</span>
+<span class="linenr">16: </span><span class="org-tree-sitter-hl-faceXcomment"> * A MeshGroup is a collection with 1 or more 3D meshes.</span>
+<span class="linenr">17: </span><span class="org-tree-sitter-hl-faceXcomment"> *</span>
+<span class="linenr">18: </span><span class="org-tree-sitter-hl-faceXcomment"> * One MeshGroup is a whole which is printed at once.</span>
+<span class="linenr">19: </span><span class="org-tree-sitter-hl-faceXcomment"> * Generally there is one single MeshGroup, though when using one-at-a-time prin</span><span class="org-tree-sitter-hl-faceXcomment"><span class="org-whitespace-line">ting, multiple MeshGroups are processed consecutively.</span></span>
+<span class="linenr">20: </span><span class="org-tree-sitter-hl-faceXcomment"> */</span>
+<span class="linenr">21: </span><span class="org-tree-sitter-hl-faceXkeyword">class</span> <span class="org-tree-sitter-hl-faceXtype">MeshGroup</span> : <span class="org-tree-sitter-hl-faceXkeyword">public</span> <span class="org-tree-sitter-hl-faceXtype">NoCopy</span>
+<span class="linenr">22: </span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">{</span>
+<span class="linenr">23: </span><span class="org-tree-sitter-hl-faceXkeyword">public</span>:
+<span class="linenr">24: </span>    <span class="org-tree-sitter-hl-faceXtype">std</span>::<span class="org-tree-sitter-hl-faceXtype">vector</span><span class="org-tree-sitter-hl-faceXoperator">&lt;</span><span class="org-tree-sitter-hl-faceXtype">Mesh</span><span class="org-tree-sitter-hl-faceXoperator">&gt;</span> <span class="org-tree-sitter-hl-faceXproperty"><span class="org-tree-sitter-hl-faceXpropertyXdefinition">meshes</span></span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span>
+<span class="linenr">25: </span>    <span class="org-tree-sitter-hl-faceXtype">Settings</span> <span class="org-tree-sitter-hl-faceXproperty"><span class="org-tree-sitter-hl-faceXpropertyXdefinition">settings</span></span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span>
+<span class="linenr">26: </span>
+<span class="linenr">27: </span>    <span class="org-tree-sitter-hl-faceXtype">Point3</span> <span class="org-tree-sitter-hl-faceXproperty"><span class="org-tree-sitter-hl-faceXfunction">min</span></span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">()</span> <span class="org-tree-sitter-hl-faceXkeyword">const</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span> <span class="org-tree-sitter-hl-faceXcomment">//! minimal corner of bounding box</span>
+<span class="linenr">28: </span>    <span class="org-tree-sitter-hl-faceXtype">Point3</span> <span class="org-tree-sitter-hl-faceXproperty"><span class="org-tree-sitter-hl-faceXfunction">max</span></span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">()</span> <span class="org-tree-sitter-hl-faceXkeyword">const</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span> <span class="org-tree-sitter-hl-faceXcomment">//! maximal corner of bounding box</span>
+<span class="linenr">29: </span>
+<span class="linenr">30: </span>    <span class="org-tree-sitter-hl-faceXtypeXbuiltin">void</span> <span class="org-tree-sitter-hl-faceXproperty"><span class="org-tree-sitter-hl-faceXfunction">clear</span></span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">()</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span>
+<span class="linenr">31: </span>
+<span class="linenr">32: </span>    <span class="org-tree-sitter-hl-faceXtypeXbuiltin">void</span> <span class="org-tree-sitter-hl-faceXproperty"><span class="org-tree-sitter-hl-faceXfunction">finalize</span></span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">()</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span>
+<span class="linenr">33: </span>
+<span class="linenr">34: </span>    <span class="org-tree-sitter-hl-faceXcomment">/*!</span>
+<span class="linenr">35: </span><span class="org-tree-sitter-hl-faceXcomment">     * Scale the entire mesh group, with the bottom center as origin point.</span>
+<span class="linenr">36: </span><span class="org-tree-sitter-hl-faceXcomment">     *</span>
+<span class="linenr">37: </span><span class="org-tree-sitter-hl-faceXcomment">     * The mesh group is scaled around the bottom center of its bounding box. So</span>
+<span class="linenr">38: </span><span class="org-tree-sitter-hl-faceXcomment">     * that's the center in the X and Y directions, but Z=0. This simulates the</span>
+<span class="linenr">39: </span><span class="org-tree-sitter-hl-faceXcomment">     * shrinkage while sticking to the build plate.</span>
+<span class="linenr">40: </span><span class="org-tree-sitter-hl-faceXcomment">     */</span>
+<span class="linenr">41: </span>    <span class="org-tree-sitter-hl-faceXtypeXbuiltin">void</span> <span class="org-tree-sitter-hl-faceXproperty"><span class="org-tree-sitter-hl-faceXfunction">scaleFromBottom</span></span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXkeyword">const</span> <span class="org-tree-sitter-hl-faceXtype">Ratio</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">factor_xy</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">,</span> <span class="org-tree-sitter-hl-faceXkeyword">const</span> <span class="org-tree-sitter-hl-faceXtype">Ratio</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">factor_z</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span>
+<span class="linenr">42: </span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">}</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span>
+<span class="linenr">43: </span>
+<span class="linenr">44: </span><span class="org-tree-sitter-hl-faceXcomment">/*!</span>
+<span class="linenr">45: </span><span class="org-tree-sitter-hl-faceXcomment"> * Load a Mesh from file and store it in the \p meshgroup.</span>
+<span class="linenr">46: </span><span class="org-tree-sitter-hl-faceXcomment"> *</span>
+<span class="linenr">47: </span><span class="org-tree-sitter-hl-faceXcomment"> * \param meshgroup The meshgroup where to store the mesh</span>
+<span class="linenr">48: </span><span class="org-tree-sitter-hl-faceXcomment"> * \param filename The filename of the mesh file</span>
+<span class="linenr">49: </span><span class="org-tree-sitter-hl-faceXcomment"> * \param transformation The transformation applied to all vertices</span>
+<span class="linenr">50: </span><span class="org-tree-sitter-hl-faceXcomment"> * \param object_parent_settings (optional) The parent settings object of the ne</span><span class="org-tree-sitter-hl-faceXcomment"><span class="org-whitespace-line">w mesh. Defaults to \p meshgroup if none is given.</span></span>
+<span class="linenr">51: </span><span class="org-tree-sitter-hl-faceXcomment"> * \return whether the file could be loaded</span>
+<span class="linenr">52: </span><span class="org-tree-sitter-hl-faceXcomment"> */</span>
+<span class="linenr">53: </span><span class="org-tree-sitter-hl-faceXtypeXbuiltin">bool</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">loadMeshIntoMeshGroup</span></span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXtype">MeshGroup</span><span class="org-tree-sitter-hl-faceXoperator">*</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">meshgroup</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">,</span> <span class="org-tree-sitter-hl-faceXkeyword">const</span> <span class="org-tree-sitter-hl-faceXtypeXbuiltin">char</span><span class="org-tree-sitter-hl-faceXoperator">*</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">filename</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">,</span> <span class="org-tree-sitter-hl-faceXkeyword">const</span> <span class="org-tree-sitter-hl-faceXtype">FMa</span><span class="org-tree-sitter-hl-faceXtype"><span class="org-whitespace-line">trix4x3</span></span><span class="org-tree-sitter-hl-faceXoperator"><span class="org-whitespace-line">&amp;</span></span><span class="org-whitespace-line"> </span><span class="org-tree-sitter-hl-faceXvariableXparameter"><span class="org-whitespace-line">transformation</span></span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter"><span class="org-whitespace-line">,</span></span><span class="org-whitespace-line"> </span><span class="org-tree-sitter-hl-faceXtype"><span class="org-whitespace-line">Settings</span></span><span class="org-tree-sitter-hl-faceXoperator"><span class="org-whitespace-line">&amp;</span></span><span class="org-whitespace-line"> </span><span class="org-tree-sitter-hl-faceXvariableXparameter"><span class="org-whitespace-line">object_parent_settings</span></span><span class="org-tree-sitter-hl-faceXpunctuationXbracket"><span class="org-whitespace-line">)</span></span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter"><span class="org-whitespace-line">;</span></span>
+<span class="linenr">54: </span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">}</span> <span class="org-tree-sitter-hl-faceXcomment">//namespace cura</span>
+<span class="linenr">55: </span><span class="org-tree-sitter-hl-faceXfunctionXmacro">#endif</span> <span class="org-tree-sitter-hl-faceXcomment">//MESH_GROUP_H</span>
 </pre>
 </div>
 </div>
@@ -513,7 +563,7 @@ This is a html
 <p>
 <b>bold text</b>       <b>Org_mode</b>
 </p>
-<div class="note" id="org8a97b29">
+<div class="note" id="orgb0efaf8">
 <p>
 <b>NOTE</b>:By learning OpenGL, you've decided that you want to do all of the hard work yourself. That inevitably means that you'll be thrown in the deep, but once you understand the essentials, you'll see that doing things the hard way doesn't have to be so difficult after all. To top that all, the exercises at the end of this chapter will show you the sheer amount of control you have over the rendering process by doing things the modern way!This is a note
 </p>
@@ -608,7 +658,7 @@ another line quote
 </pre>
 </div>
 
-<div class="note" id="orgc68cf2b">
+<div class="note" id="orgf60c539">
 <p>
 By learning OpenGL, you've decided that you want to do all of the hard work yourself. That inevitably means that you'll be thrown in the deep, but once you understand the essentials, you'll see that doing things the hard way doesn't have to be so difficult after all. To top that all, the exercises at the end of this chapter will show you the sheer amount of control you have over the rendering process by doing things the modern way!
 </p>
