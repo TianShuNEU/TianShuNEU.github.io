@@ -3,14 +3,15 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-06-27 一 12:59 -->
+<!-- 2022-06-28 二 13:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>向量空间和子空间</title>
 <meta name="author" content="Tian tongtong" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="../styles/font.css"/>
-<link rel="stylesheet" type="text/css" href="../styles/styleNew.css"/>
+<link rel="stylesheet" media="screen and (max-width: 1200px)" type="text/css" href="../styles/post_mobile.css"/>
+<link rel="stylesheet" media="screen and (min-width: 1200px)" type="text/css" href="../styles/post.css"/>
 
 <script src="../scripts/org-info.js">
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -64,7 +65,7 @@ window.MathJax = {
 </head>
 <body>
 <div id="preamble" class="status">
-Created: 2022-02-26. Modified 2022-06-27 一 12:58
+Created: 2022-02-26. Modified 2022-06-28 二 13:42
 </div>
 <div id="content" class="content">
 <h1 class="title">向量空间和子空间</h1>
@@ -72,32 +73,33 @@ Created: 2022-02-26. Modified 2022-06-27 一 12:58
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf3e7e76">1. 向量空间</a></li>
-<li><a href="#orgfae70cd">2. 求解齐次线性方程组</a>
+<li><a href="#org544dc1c">向量空间</a></li>
+<li><a href="#orgb2b8b9e">求解齐次线性方程组</a>
 <ul>
-<li><a href="#org3e2e455">2.1. 矩阵的秩</a></li>
+<li><a href="#org8286f9a">矩阵的秩</a></li>
 </ul>
 </li>
-<li><a href="#org1cffbcc">3. \(Ax=b\) 的全解</a>
+<li><a href="#org42bedfb">\(Ax=b\) 的全解</a>
 <ul>
-<li><a href="#orga25d025">3.1. One particular solution \(Ax_{p}=b\)</a></li>
+<li><a href="#orgebbc09f">One particular solution \(Ax_{p}=b\)</a></li>
 </ul>
 </li>
-<li><a href="#org6e4ea0f">4. Four Subspaces</a>
+<li><a href="#org3f1322a">Four Subspaces</a>
 <ul>
-<li><a href="#org81b06b4">4.1. 线性独立（Linear Independence）</a></li>
-<li><a href="#org2446fe1">4.2. Vectors span a subspace</a></li>
-<li><a href="#org2c51da9">4.3. Basis (基)</a></li>
-<li><a href="#orge140a4c">4.4. Dimension (纬度)</a></li>
-<li><a href="#orgf1fc42e">4.5. Dimension of Four Subspaces</a></li>
+<li><a href="#orgc5622c3">线性独立（Linear Independence）</a></li>
+<li><a href="#org246e88c">Vectors span a subspace</a></li>
+<li><a href="#orgb2e42f3">Basis (基)</a></li>
+<li><a href="#org8c82b18">Dimension (纬度)</a></li>
+<li><a href="#org7dd111a">Dimension of Four Subspaces</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf3e7e76" class="outline-2">
-<h2 id="orgf3e7e76"><span class="section-number-2">1.</span> 向量空间</h2>
-<div class="outline-text-2" id="text-1">
+
+<div id="outline-container-org544dc1c" class="outline-2">
+<h2 id="org544dc1c">向量空间</h2>
+<div class="outline-text-2" id="text-org544dc1c">
 <p>
 之前的学习我们对矩阵与向量和矩阵与矩阵的乘法看作是很多数的乘法或者向量的线性组合，
 这还不够，本章要更深入的理解这两者的乘法。
@@ -155,9 +157,9 @@ the subspace</b>
 </p>
 </div>
 </div>
-<div id="outline-container-orgfae70cd" class="outline-2">
-<h2 id="orgfae70cd"><span class="section-number-2">2.</span> 求解齐次线性方程组</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgb2b8b9e" class="outline-2">
+<h2 id="orgb2b8b9e">求解齐次线性方程组</h2>
+<div class="outline-text-2" id="text-orgb2b8b9e">
 <p>
 Null Space(零空间) 指的是齐次线性方程组 \(Ax= 0\) 的所有解，组成的向量空间。对于一
 个 <i>m</i> 行 <i>n</i>  列的参数矩阵 \(A\),齐次线性方程组的每个解都包含 <i>n</i> 个元素，属于 \(R^{n}\),
@@ -300,9 +302,9 @@ The nullspace is a subspace,It's dimension is the number of variables.
 </p>
 </blockquote>
 </div>
-<div id="outline-container-org3e2e455" class="outline-3">
-<h3 id="org3e2e455"><span class="section-number-3">2.1.</span> 矩阵的秩</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-org8286f9a" class="outline-3">
+<h3 id="org8286f9a">矩阵的秩</h3>
+<div class="outline-text-3" id="text-org8286f9a">
 <p>
 一个线性系统（linear system）的真正大小并不能由其参数矩阵的大小（m行n列）真实反
 应出来，比如矩阵中的某一行是其它若干行的线性组合，在消元的过程中这一行会变成零行，
@@ -433,9 +435,9 @@ I
 </div>
 </div>
 </div>
-<div id="outline-container-org1cffbcc" class="outline-2">
-<h2 id="org1cffbcc"><span class="section-number-2">3.</span> \(Ax=b\) 的全解</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org42bedfb" class="outline-2">
+<h2 id="org42bedfb">\(Ax=b\) 的全解</h2>
+<div class="outline-text-2" id="text-org42bedfb">
 <p>
 在上一节解决了齐次线性方程组的解的问题， 将 \(Ax=0\) 转化到 \(Rx=0\),自由变量（free variable)被赋予
 特殊值（0或1），主元变量（pivot variable）可以采用回代的方式解算，这个过程中并没
@@ -452,9 +454,9 @@ I
 </p>
 </div>
 
-<div id="outline-container-orga25d025" class="outline-3">
-<h3 id="orga25d025"><span class="section-number-3">3.1.</span> One particular solution \(Ax_{p}=b\)</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-orgebbc09f" class="outline-3">
+<h3 id="orgebbc09f">One particular solution \(Ax_{p}=b\)</h3>
+<div class="outline-text-3" id="text-orgebbc09f">
 <p>
 要找到particular solution,需要先将增广矩阵和以前一样转换到 <b>[R d]</b> 也就是
 A-&gt;D,b-&gt;d,然后将R中的自由变量全都赋值0,主元变量从d中获得。
@@ -573,13 +575,13 @@ m-n \quad rows \: of \: zeros
 </div>
 
 
-<div id="outline-container-org6e4ea0f" class="outline-2">
-<h2 id="org6e4ea0f"><span class="section-number-2">4.</span> Four Subspaces</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org3f1322a" class="outline-2">
+<h2 id="org3f1322a">Four Subspaces</h2>
+<div class="outline-text-2" id="text-org3f1322a">
 </div>
-<div id="outline-container-org81b06b4" class="outline-3">
-<h3 id="org81b06b4"><span class="section-number-3">4.1.</span> 线性独立（Linear Independence）</h3>
-<div class="outline-text-3" id="text-4-1">
+<div id="outline-container-orgc5622c3" class="outline-3">
+<h3 id="orgc5622c3">线性独立（Linear Independence）</h3>
+<div class="outline-text-3" id="text-orgc5622c3">
 <p>
 矩阵 \(A\) 的列空间的真正大小并不一定是 <i>n</i>,而是 rank <i>r</i>,
 </p>
@@ -617,9 +619,9 @@ vector</b>
 </p>
 </div>
 </div>
-<div id="outline-container-org2446fe1" class="outline-3">
-<h3 id="org2446fe1"><span class="section-number-3">4.2.</span> Vectors span a subspace</h3>
-<div class="outline-text-3" id="text-4-2">
+<div id="outline-container-org246e88c" class="outline-3">
+<h3 id="org246e88c">Vectors span a subspace</h3>
+<div class="outline-text-3" id="text-org246e88c">
 <p>
 回忆之前列空间的定义：矩阵的列空间是它所有列向量线性组合所充满的子空间。现在我们引
 入 <b>生成（span）</b> 来重新定义子空间：
@@ -650,9 +652,9 @@ space)的基（basis）的概念
 </p>
 </div>
 </div>
-<div id="outline-container-org2c51da9" class="outline-3">
-<h3 id="org2c51da9"><span class="section-number-3">4.3.</span> Basis (基)</h3>
-<div class="outline-text-3" id="text-4-3">
+<div id="outline-container-orgb2e42f3" class="outline-3">
+<h3 id="orgb2e42f3">Basis (基)</h3>
+<div class="outline-text-3" id="text-orgb2e42f3">
 <blockquote>
 <p>
 DEFINITION: A basis for a vector space is a sequence of vectors with two properties: The basis vectors are linearty independent and they span the space
@@ -677,9 +679,9 @@ The pivot columns of A are a basis for its column space.The pivot rows of A are 
 </p>
 </div>
 </div>
-<div id="outline-container-orge140a4c" class="outline-3">
-<h3 id="orge140a4c"><span class="section-number-3">4.4.</span> Dimension (纬度)</h3>
-<div class="outline-text-3" id="text-4-4">
+<div id="outline-container-org8c82b18" class="outline-3">
+<h3 id="org8c82b18">Dimension (纬度)</h3>
+<div class="outline-text-3" id="text-org8c82b18">
 <p>
 一个空间的dimension，是其一组基向量内向量的个数。
 </p>
@@ -697,9 +699,9 @@ DEFINITION: The dimension of a space is the number of vectors in every basis.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf1fc42e" class="outline-3">
-<h3 id="orgf1fc42e"><span class="section-number-3">4.5.</span> Dimension of Four Subspaces</h3>
-<div class="outline-text-3" id="text-4-5">
+<div id="outline-container-org7dd111a" class="outline-3">
+<h3 id="org7dd111a">Dimension of Four Subspaces</h3>
+<div class="outline-text-3" id="text-org7dd111a">
 <p>
 本节主要讨论秩（rank）和维度（dimension）关系。
 </p>
@@ -770,7 +772,7 @@ The nullspaces have dimensions of <i>n-r</i> and <i>m-r</i>.
  N(A^{T})=n\)
 </p>
 
-<div id="org7427a4b" class="figure">
+<div id="orgf71a20e" class="figure">
 <p><img src="figures/2022-03-04_15-51-43_screenshot.png" alt="2022-03-04_15-51-43_screenshot.png" width="80%" align="center" />
 </p>
 </div>

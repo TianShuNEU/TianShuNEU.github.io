@@ -130,3 +130,8 @@
     font-family: jinkaiFont;
     src: url("../fonts/jinkai.ttf") format("TrueType");
 }
+
+@font-face {
+    font-family: TahomaFont;
+    src: url("../fonts/Tahoma.ttf") format("TrueType");
+}

@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-06-28 二 13:43 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Test</title>
+<meta name="author" content="Tian tongtong" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="../styles/font.css"/>
+<link rel="stylesheet" media="screen and (max-width: 1200px)" type="text/css" href="../styles/post_mobile.css"/>
+<link rel="stylesheet" media="screen and (min-width: 1200px)" type="text/css" href="../styles/post.css"/>
+
+<script src="../scripts/org-info.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script>
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "../index.html");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+// @license-end
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+   inlineMath: [ ["\\(","\\)"] ],
+   displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+    processEscapes: false,
+    processEnvironments: true,
+    processRefs: true,
+    autoload: {
+      color: [],
+      colorv2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    skipHtmlTags: [ "script ", "noscript ", "style ", "textarea ", "pre ", "code "],
+    ignoreHtmlClass: "tex2jax_ignore ",
+    processHtmlClass: 'tex2jax_process'
+  },
+  chtml: {
+    displayAlign: 'left',
+    displayIndent: "5em"
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  }
+};
+</script>
+<script type="text/javascript" src="../MathJax/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+Created: 2022-02-21. Modified 2022-06-28 二 10:07
+</div>
+<div id="content" class="content">
+<h1 class="title">Test</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org09c3156">Text Markup</a></li>
+<li><a href="#orgb5d1ebf">Lists</a></li>
+<li><a href="#org895b50c">Blocks</a>
+<ul>
+<li><a href="#org8a37dd1">lisp</a></li>
+<li><a href="#org7c801f8">passing a table</a></li>
+<li><a href="#org181f315">gnuplot</a></li>
+</ul>
+</li>
+<li><a href="#org7507242">Images</a></li>
+<li><a href="#org63a1b94">Tables</a></li>
+<li><a href="#org31ca62f">Nine</a>
+<ul>
+<li><a href="#org31a41c9">Dot product</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org09c3156" class="outline-2">
+<h2 id="org09c3156"><a href="https://orgmode.org/worg/dev/org-syntax.html#Emphasis_Markers">Text Markup</a></h2>
+<div class="outline-text-2" id="text-org09c3156">
+<p>
+To markup text in Org, simply surround it with one or more marker characters.
+<b>Bold</b>, <i>italic</i> and <span class="underline">underline</span> are fairly intuitive, and the ability to use
+<del>strikethrough</del> is a plus.  You can <span class="underline"><i><b>combine</b></i></span> the basic markup in any
+order, however <code>code</code> and <code>verbatim</code> need to be the <b><span class="underline"><code>inner-most</code></span></b> markers
+if they are present since their contents are interpreted <code>_literally_</code>.
+</p>
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue tortor eget pulvinar lobortis.
+    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam ac dolor augue.
+    Pellentesque mi mi, laoreet et dolor sit amet, ultrices varius risus. Nam vitae iaculis elit.
+    Aliquam mollis interdum libero. Sed sodales placerat egestas. Vestibulum ut arcu aliquam purus viverra dictum vel sit amet mi.
+    Duis nisl mauris, aliquam sit amet luctus eget, dapibus in enim. Sed velit augue, pretium a sem aliquam, congue porttitor tortor.
+    Sed tempor nisl a lorem consequat, id maximus erat aliquet. Sed sagittis porta libero sed condimentum.
+    Aliquam finibus lectus nec ante congue rutrum. Curabitur quam quam, accumsan
+    id ultrices ultrices, tempor et tellus.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue tortor eget pulvinar lobortis.
+    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam ac dolor augue.
+    Pellentesque mi mi, laoreet et dolor sit amet, ultrices varius risus. Nam vitae iaculis elit.
+    Aliquam mollis interdum libero. Sed sodales placerat egestas. Vestibulum ut arcu aliquam purus viverra dictum vel sit amet mi.
+    Duis nisl mauris, aliquam sit amet luctus eget, dapibus in enim. Sed velit augue, pretium a sem aliquam, congue porttitor tortor.
+    Sed tempor nisl a lorem consequat, id maximus erat aliquet. Sed sagittis porta libero sed condimentum.
+    Aliquam finibus lectus nec ante congue rutrum. Curabitur quam quam, accumsan id ultrices ultrices, tempor et tellus.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb5d1ebf" class="outline-2">
+<h2 id="orgb5d1ebf">Lists</h2>
+<div class="outline-text-2" id="text-orgb5d1ebf">
+<p>
+Unordered lists start with +, -, or *1. Ordered lists start with 1., 1), A., or
+A). Ordered and unordered bullets can be nested in any order.
+</p>
+
+<p>
+To buy:
+</p>
+<ol class="org-ol">
+<li>Milk</li>
+<li>Eggs
+<ul class="org-ul">
+<li>Organic</li>
+</ul></li>
+<li>Cheese
+<ul class="org-ul">
+<li>Parmesan</li>
+<li>Mozzarella</li>
+</ul></li>
+
+<li class="off"><code>[&#xa0;]</code> not started</li>
+<li class="trans"><code>[-]</code> in progress</li>
+<li class="on"><code>[X]</code> complete</li>
+
+<li class="off" value="fruits"><code>[&#xa0;]</code> get apples</li>
+<li class="on" value="veggies"><code>[X]</code> get carrots</li>
+
+<li value="Grigoriev">inear lower bound on degrees of Positivstellensatz calculus proofs
+for the parity. Theoretical Computer Science 259, 613 (2001).</li>
+<li value="Schoenebeck">Linear level Lasserre lower bounds for certain k-CSPs.
+Foundations of Computer Science (2008).</li>
+<li value="Grigoriev">Complexity of Positivstellensatz proofs for the knapsack.
+Computational complexity 10, 139 (2001).</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org895b50c" class="outline-2">
+<h2 id="org895b50c">Blocks</h2>
+<div class="outline-text-2" id="text-org895b50c">
+</div>
+<div id="outline-container-org8a37dd1" class="outline-3">
+<h3 id="org8a37dd1">lisp</h3>
+<div class="outline-text-3" id="text-org8a37dd1">
+<div class="org-src-container">
+<pre class="src src-elisp">(pp (<span class="org-keyword">save-excursion</span>
+  (goto-char (point-min))
+  (<span class="org-keyword">unless</span> (search-forward-regexp (concat  <span class="org-string">"#\\</span><span class="org-string"><span class="org-warning">\</span></span><span class="org-string">+NAME: .*"</span> lname) nil t)
+    (<span class="org-warning">error</span> <span class="org-string">"No list of this name found: %s"</span> lname))
+  (forward-line 1)
+  (org-list-to-lisp)))
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">The command used to get your emails (adapt this line, see section 2.3):</span>
+(<span class="org-keyword">setq</span> mu4e-get-mail-command <span class="org-string">"mbsync --config ~/.emacs.d/.mbsyncrc nameaccount"</span>)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Further customization:</span>
+(<span class="org-keyword">setq</span> mu4e-html2text-command <span class="org-string">"w3m -T text/html"</span> <span class="org-comment-delimiter">; </span><span class="org-comment">how to hanfle html-formatted e</span><span class="org-comment"><span class="org-whitespace-line">mails</span></span>
+      mu4e-update-interval 300                  <span class="org-comment-delimiter">; </span><span class="org-comment">seconds between each mail retr</span><span class="org-comment"><span class="org-whitespace-line">ieval</span></span>
+      mu4e-headers-auto-update t                <span class="org-comment-delimiter">; </span><span class="org-comment">avoid to type `</span><span class="org-comment"><span class="org-constant">g</span></span><span class="org-comment">' to update</span>
+      mu4e-view-show-images t                   <span class="org-comment-delimiter">; </span><span class="org-comment">show images in the view buffer</span>
+      mu4e-compose-signature-auto-include nil   <span class="org-comment-delimiter">; </span><span class="org-comment">I don't want a message signatu</span><span class="org-comment"><span class="org-whitespace-line">re</span></span>
+      mu4e-use-fancy-chars t)                   <span class="org-comment-delimiter">; </span><span class="org-comment">allow fancy icons for mail thr</span><span class="org-comment"><span class="org-whitespace-line">eads</span></span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7c801f8" class="outline-3">
+<h3 id="org7c801f8">passing a table</h3>
+<div class="outline-text-3" id="text-org7c801f8">
+<table id="org72d4745" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">nb</th>
+<th scope="col" class="org-right">sqr</th>
+<th scope="col" class="org-right">noise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">zero</td>
+<td class="org-right">0</td>
+<td class="org-right">0.23</td>
+</tr>
+
+<tr>
+<td class="org-left">one</td>
+<td class="org-right">1</td>
+<td class="org-right">1.31</td>
+</tr>
+
+<tr>
+<td class="org-left">two</td>
+<td class="org-right">4</td>
+<td class="org-right">4.61</td>
+</tr>
+
+<tr>
+<td class="org-left">three</td>
+<td class="org-right">9</td>
+<td class="org-right">9.05</td>
+</tr>
+
+<tr>
+<td class="org-left">four</td>
+<td class="org-right">16</td>
+<td class="org-right">16.55</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<textarea cols="80" rows="14">
+int main()
+ {
+   for(int j=0; j<somedata_cols; j++) { printf("%s  ", somedata_header[j]); };
+   printf("\n");
+   for (int i=0; i<somedata_rows; i++) {
+     printf ("%2d %7s ", i, somedata_h(i,"nb"));
+     for (int j=1; j<somedata_cols; j++) {
+       const char* cell = somedata[i][j];
+       printf ("%5s %5g ", cell, 1000*atof(cell));
+     }
+     printf("\n");
+   }
+   return 0;
+ }</textarea>
+</p>
+
+<pre class="example">
+nb  sqr  noise
+ 0    zero     0     0  0.23   230
+ 1     one     1  1000  1.31  1310
+ 2     two     4  4000  4.61  4610
+ 3   three     9  9000  9.05  9050
+ 4    four    16 16000 16.55 16550
+</pre>
+
+
+
+<div class="org-src-container">
+<pre class="src src-C++"><span class="linenr">1: </span>#<span class="org-tree-sitter-hl-faceXfunctionXmacro">#include</span> <span class="org-tree-sitter-hl-faceXstring">&lt;iostream&gt;</span>
+<span class="linenr">2: </span><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span> <span class="org-tree-sitter-hl-faceXfunction">main</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">argc</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">,</span> <span class="org-tree-sitter-hl-faceXtypeXbuiltin">char</span><span class="org-tree-sitter-hl-faceXoperator">**</span> argv<span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
+<span class="linenr">3: </span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">{</span>
+<span class="linenr">4: </span>    <span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span> <span class="org-tree-sitter-hl-faceXvariable">i</span><span class="org-tree-sitter-hl-faceXoperator">=</span><span class="org-tree-sitter-hl-faceXnumber">0</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span>
+<span class="linenr">5: </span>    <span class="org-tree-sitter-hl-faceXkeyword">return</span> <span class="org-tree-sitter-hl-faceXnumber">0</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span>
+<span class="linenr">6: </span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org181f315" class="outline-3">
+<h3 id="org181f315">gnuplot</h3>
+<div class="outline-text-3" id="text-org181f315">
+<div class="org-src-container">
+<pre class="src src-gnuplot"><span class="org-constant">reset</span>
+
+<span class="org-constant">set</span> <span class="org-type">title</span> <span class="org-string">"Putting it All Together"</span>
+
+<span class="org-constant">set</span> xlabel <span class="org-string">"X"</span>
+<span class="org-constant">set</span> xrange [<span class="org-constant">-8:8</span>]
+<span class="org-constant">set</span> xtics -8,2,8
+
+
+<span class="org-constant">set</span> ylabel <span class="org-string">"Y"</span>
+<span class="org-constant">set</span> yrange [<span class="org-constant">-20:70</span>]
+<span class="org-constant">set</span> ytics -20,10,70
+
+<span class="org-variable-name">f(x) =</span> x**2
+<span class="org-variable-name">g(x) =</span> x**3
+<span class="org-variable-name">h(x) =</span> 10*<span class="org-function-name">sqrt</span>(<span class="org-function-name">abs</span>(x))
+
+<span class="org-keyword">plot</span> f(x) w lp <span class="org-type">lw</span> 1, g(x) w p <span class="org-type">lw</span> 2, h(x) w l <span class="org-type">lw</span> 3
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7507242" class="outline-2">
+<h2 id="org7507242">Images</h2>
+<div class="outline-text-2" id="text-org7507242">
+
+<div id="org6fb7e8e" class="figure">
+<p><img src="figures/file.png" alt="cat/spider image" title="Action!" align="right" />
+</p>
+<p><span class="figure-number">Figure 1: </span>This is the caption for the next figure link (or table)</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org63a1b94" class="outline-2">
+<h2 id="org63a1b94">Tables</h2>
+<div class="outline-text-2" id="text-org63a1b94">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> A test data</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">the</th>
+<th scope="col" class="org-left">one</th>
+<th scope="col" class="org-left">we</th>
+<th scope="col" class="org-left">are</th>
+<th scope="col" class="org-left">not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">hh</td>
+<td class="org-left">this</td>
+<td class="org-left">is</td>
+<td class="org-left">a</td>
+<td class="org-left">test</td>
+</tr>
+
+<tr>
+<td class="org-left">hh</td>
+<td class="org-left">this</td>
+<td class="org-left">is</td>
+<td class="org-left">a</td>
+<td class="org-left">test</td>
+</tr>
+
+<tr>
+<td class="org-left">Yhis</td>
+<td class="org-left">is</td>
+<td class="org-left">justify</td>
+<td class="org-left">a</td>
+<td class="org-left">test</td>
+</tr>
+
+<tr>
+<td class="org-left">hh</td>
+<td class="org-left">this</td>
+<td class="org-left">is</td>
+<td class="org-left">a</td>
+<td class="org-left">test</td>
+</tr>
+
+<tr>
+<td class="org-left">hh</td>
+<td class="org-left">this</td>
+<td class="org-left">is</td>
+<td class="org-left">a</td>
+<td class="org-left">test</td>
+</tr>
+
+<tr>
+<td class="org-left">Yhis</td>
+<td class="org-left">is</td>
+<td class="org-left">justify</td>
+<td class="org-left">a</td>
+<td class="org-left">test</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> Program</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Tool</th>
+<th scope="col" class="org-left">Literate programming?</th>
+<th scope="col" class="org-left">Reproducible Research?</th>
+<th scope="col" class="org-left">Languages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Javadoc</td>
+<td class="org-left">partial</td>
+<td class="org-left">no</td>
+<td class="org-left">Java</td>
+</tr>
+
+<tr>
+<td class="org-left">Haskell .lhs</td>
+<td class="org-left">partial</td>
+<td class="org-left">no</td>
+<td class="org-left">Haskell</td>
+</tr>
+
+<tr>
+<td class="org-left">noweb</td>
+<td class="org-left">yes</td>
+<td class="org-left">no</td>
+<td class="org-left">any</td>
+</tr>
+
+<tr>
+<td class="org-left">Sweave</td>
+<td class="org-left">partial</td>
+<td class="org-left">yes</td>
+<td class="org-left">R</td>
+</tr>
+
+<tr>
+<td class="org-left">Org-mode</td>
+<td class="org-left">yes</td>
+<td class="org-left">yes</td>
+<td class="org-left">any</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org31ca62f" class="outline-2">
+<h2 id="org31ca62f">Nine</h2>
+<div class="outline-text-2" id="text-org31ca62f">
+</div>
+<div id="outline-container-org31a41c9" class="outline-3">
+<h3 id="org31a41c9">Dot product</h3>
+<div class="outline-text-3" id="text-org31a41c9">
+<p>
+This is usual way,the entry in row <i>i</i> and column <i>j</i> of  <b>C</b> is C<sub>i,j</sub> = (row <i>i</i> of
+<b>A</b>) * (column <i>j</i> of <b>B</b>)
+</p>
+
+<p>
+If <b>A</b> and <b>B</b> are <i>n</i> by <i>n</i>,it takes n<sup>2</sup> dot production,and n<sup>3</sup> separate
+multiplications,
+</p>
+
+<p>
+A row times a column is an inner product&#x2013;that is another name for dot product,a
+column times a row is an outer product,these are extream cases of matrix
+multiplication.
+</p>
+
+\begin{equation*}
+A =
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{pmatrix}_{3 \times 3}
+\times
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{pmatrix}_{3 \times 3}
+\end{equation*}
+<hr />
+<blockquote>
+<p>
+<b>Note:</b>  This is a block quote! &#x2014;ajkdvnjv
+</p>
+</blockquote>
+
+This is a html
+
+<p>
+<b>bold text</b>       <b>Org_mode</b>
+</p>
+<div class="note" id="org8a97b29">
+<p>
+<b>NOTE</b>:By learning OpenGL, you've decided that you want to do all of the hard work yourself. That inevitably means that you'll be thrown in the deep, but once you understand the essentials, you'll see that doing things the hard way doesn't have to be so difficult after all. To top that all, the exercises at the end of this chapter will show you the sheer amount of control you have over the rendering process by doing things the modern way!This is a note
+</p>
+
+</div>
+Literal HTML code for export
+<p>
+&lt;&gt;
+</p>
+
+<p>
+&amp;lt;
+</p>
+All lines between these markers are exported literally
+
+<pre class="example">
+this is a line
+another line quote
+</pre>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 3:</span> This is a wide table</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">A</th>
+<th scope="col" class="org-left">B</th>
+<th scope="col" class="org-left">C</th>
+<th scope="col" class="org-left">D</th>
+<th scope="col" class="org-left">E</th>
+<th scope="col" class="org-left">F</th>
+<th scope="col" class="org-left">G</th>
+<th scope="col" class="org-left">H</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">foo bar</td>
+<td class="org-left">baz boggle</td>
+<td class="org-left">foo bar</td>
+<td class="org-left">baz boggle</td>
+<td class="org-left">foo bar</td>
+<td class="org-left">baz boggle</td>
+<td class="org-left">foo bar</td>
+<td class="org-left">baz boggle</td>
+</tr>
+
+<tr>
+<td class="org-left">foo bar</td>
+<td class="org-left">baz boggle</td>
+<td class="org-left">foo bar</td>
+<td class="org-left">baz boggle</td>
+<td class="org-left">foo bar</td>
+<td class="org-left">baz boggle</td>
+<td class="org-left">foo bar</td>
+<td class="org-left">baz boggle</td>
+</tr>
+
+<tr>
+<td class="org-left">foo bar</td>
+<td class="org-left">baz boggle</td>
+<td class="org-left">foo bar</td>
+<td class="org-left">baz boggle</td>
+<td class="org-left">foo bar</td>
+<td class="org-left">baz boggle</td>
+<td class="org-left">foo bar</td>
+<td class="org-left">baz boggle</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 1: </span>Here is my python code.</label><pre class="src src-python"><span class="org-tree-sitter-hl-faceXkeyword">print</span> <span class="org-tree-sitter-hl-faceXstring">"This is a longish line of code that needs to span multiple columns in a l</span><span class="org-tree-sitter-hl-faceXstring"><span class="org-whitespace-line">atex export"</span></span>
+</pre>
+</div>
+
+<div class="note" id="orgc68cf2b">
+<p>
+By learning OpenGL, you've decided that you want to do all of the hard work yourself. That inevitably means that you'll be thrown in the deep, but once you understand the essentials, you'll see that doing things the hard way doesn't have to be so difficult after all. To top that all, the exercises at the end of this chapter will show you the sheer amount of control you have over the rendering process by doing things the modern way!
+</p>
+
+</div>
+
+<p>
+Some rich texts <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
+</p>
+<p class="verse">
+Great clouds overhead<br />
+Tiny black birds rise and fall<br />
+Snow covers Emacs<br />
+<br />
+&#xa0;&#xa0;&#xa0;&#x2014;AlexSchroeder<br />
+</p>
+<blockquote>
+<p>
+Everything should be made as simple as possible,
+but not any simpler &#x2014;Albert Einstein
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+The link is: <a href="https://orgmode.org">https://orgmode.org</a>
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+Generated by: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.0.50 (<a href="https://orgmode.org">Org</a> mode 9.5.2)
+</div>
+</body>
+</html>

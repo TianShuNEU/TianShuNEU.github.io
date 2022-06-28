@@ -3,14 +3,15 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-06-27 一 12:59 -->
+<!-- 2022-06-28 二 13:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>正交</title>
 <meta name="author" content="Tian tongtong" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="../styles/font.css"/>
-<link rel="stylesheet" type="text/css" href="../styles/styleNew.css"/>
+<link rel="stylesheet" media="screen and (max-width: 1200px)" type="text/css" href="../styles/post_mobile.css"/>
+<link rel="stylesheet" media="screen and (min-width: 1200px)" type="text/css" href="../styles/post.css"/>
 
 <script src="../scripts/org-info.js">
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -64,7 +65,7 @@ window.MathJax = {
 </head>
 <body>
 <div id="preamble" class="status">
-Created: 2022-03-04. Modified 2022-06-27 一 12:58
+Created: 2022-03-04. Modified 2022-06-28 二 13:35
 </div>
 <div id="content" class="content">
 <h1 class="title">正交</h1>
@@ -72,21 +73,22 @@ Created: 2022-03-04. Modified 2022-06-27 一 12:58
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga687d51">1. 四个子空间的正交</a></li>
-<li><a href="#orgc7800c7">2. Projection</a>
+<li><a href="#orgb9dab60">四个子空间的正交</a></li>
+<li><a href="#org2d82733">Projection</a>
 <ul>
-<li><a href="#org5d35969">2.1. Projection onto a line</a></li>
-<li><a href="#org1ad9c95">2.2. Projection onto a subspace</a></li>
+<li><a href="#org1e2736e">Projection onto a line</a></li>
+<li><a href="#orgc921e98">Projection onto a subspace</a></li>
 </ul>
 </li>
-<li><a href="#orgb284e48">3. 最小二乘近似(Least Squares Approximations)</a></li>
-<li><a href="#orgf2c3e28">4. 正交基和Gram算法(Orthogonal Bases and Gram-Schmidt)</a></li>
+<li><a href="#org50383e5">最小二乘近似(Least Squares Approximations)</a></li>
+<li><a href="#org02f78cd">正交基和Gram算法(Orthogonal Bases and Gram-Schmidt)</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga687d51" class="outline-2">
-<h2 id="orga687d51"><span class="section-number-2">1.</span> 四个子空间的正交</h2>
-<div class="outline-text-2" id="text-1">
+
+<div id="outline-container-orgb9dab60" class="outline-2">
+<h2 id="orgb9dab60">四个子空间的正交</h2>
+<div class="outline-text-2" id="text-orgb9dab60">
 <p>
 之前学习了用点乘的方法判断两个向量是否正交（垂直），现在我们要更加伸入的学习正交，
 把它扩展到正交子空间、正交基和正交矩阵。两个字空间中的向量、一组基中的向量、矩阵
@@ -164,7 +166,7 @@ particular solution 和 special solutions,再将它们相加，这两个部分�
 </p>
 
 
-<div id="orgb92ad30" class="figure">
+<div id="orga3b7626" class="figure">
 <p><img src="figures/2022-03-04_16-37-16_screenshot.png" alt="2022-03-04_16-37-16_screenshot.png" width="80%" align="center" />
 </p>
 </div>
@@ -175,7 +177,7 @@ to column space，并没有其他什么更高级的功能。
 </p>
 
 
-<div id="org10465ec" class="figure">
+<div id="org4314240" class="figure">
 <p><img src="figures/2022-03-07_13-47-58_screenshot.png" alt="2022-03-07_13-47-58_screenshot.png" width="80%" align="center" />
 </p>
 </div>
@@ -190,9 +192,9 @@ A 映射到m维列空间。
 </p>
 </div>
 </div>
-<div id="outline-container-orgc7800c7" class="outline-2">
-<h2 id="orgc7800c7"><span class="section-number-2">2.</span> Projection</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org2d82733" class="outline-2">
+<h2 id="org2d82733">Projection</h2>
+<div class="outline-text-2" id="text-org2d82733">
 <p>
 本节主要讲向量的映射（投影），先讲映射到直线，重点是映射到子空间。
 </p>
@@ -207,16 +209,16 @@ A 映射到m维列空间。
 我们先从最简单的映射到直线开始。
 </p>
 </div>
-<div id="outline-container-org5d35969" class="outline-3">
-<h3 id="org5d35969"><span class="section-number-3">2.1.</span> Projection onto a line</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-org1e2736e" class="outline-3">
+<h3 id="org1e2736e">Projection onto a line</h3>
+<div class="outline-text-3" id="text-org1e2736e">
 <p>
 目标子空间是一条直线，其维度为1,直线可以用一个列向量表示，我们把它称作 \(a\) ,我们
 要投影的向量是 \(b\) ,那么向量 \(p\) 就是我们要求的向量，如下图。
 </p>
 
 
-<div id="org35111a3" class="figure">
+<div id="org4754d63" class="figure">
 <p><img src="figures/2022-03-07_15-03-37_screenshot.png" alt="2022-03-07_15-03-37_screenshot.png" width="80%" align="center" />
 </p>
 </div>
@@ -242,9 +244,9 @@ When \(P\) projects onto one subspace, \(I-p\) projects onto the orthogonal subs
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org1ad9c95" class="outline-3">
-<h3 id="org1ad9c95"><span class="section-number-3">2.2.</span> Projection onto a subspace</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-orgc921e98" class="outline-3">
+<h3 id="orgc921e98">Projection onto a subspace</h3>
+<div class="outline-text-3" id="text-orgc921e98">
 <p>
 现在需要再向前迈进一步，把向量映射到一个子空间上，维数大于1.要映射到子空间上，必
 须要把这个子空间表示出来，最好的方法就是通过基。如果已知 \(R^{m}\) 的基（列向量） \(a_{1},
@@ -258,7 +260,7 @@ When \(P\) projects onto one subspace, \(I-p\) projects onto the orthogonal subs
 </p>
 
 
-<div id="orgdb3b0ab" class="figure">
+<div id="org948452f" class="figure">
 <p><img src="figures/2022-03-07_16-26-17_screenshot.png" alt="2022-03-07_16-26-17_screenshot.png" width="80%" align="center" />
 </p>
 </div>
@@ -268,7 +270,7 @@ When \(P\) projects onto one subspace, \(I-p\) projects onto the orthogonal subs
 </p>
 
 
-<div id="orgb530aef" class="figure">
+<div id="org98d39c8" class="figure">
 <p><img src="figures/2022-03-07_16-38-42_screenshot.png" alt="2022-03-07_16-38-42_screenshot.png" width="80%" align="center" />
 </p>
 </div>
@@ -298,12 +300,12 @@ When \(P\) projects onto one subspace, \(I-p\) projects onto the orthogonal subs
 </div>
 </div>
 </div>
-<div id="outline-container-orgb284e48" class="outline-2">
-<h2 id="orgb284e48"><span class="section-number-2">3.</span> 最小二乘近似(Least Squares Approximations)</h2>
+<div id="outline-container-org50383e5" class="outline-2">
+<h2 id="org50383e5">最小二乘近似(Least Squares Approximations)</h2>
 </div>
 
-<div id="outline-container-orgf2c3e28" class="outline-2">
-<h2 id="orgf2c3e28"><span class="section-number-2">4.</span> 正交基和Gram算法(Orthogonal Bases and Gram-Schmidt)</h2>
+<div id="outline-container-org02f78cd" class="outline-2">
+<h2 id="org02f78cd">正交基和Gram算法(Orthogonal Bases and Gram-Schmidt)</h2>
 </div>
 </div>
 <div id="postamble" class="status">

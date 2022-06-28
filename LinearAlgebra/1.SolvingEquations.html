@@ -3,14 +3,15 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-06-27 一 12:59 -->
+<!-- 2022-06-28 二 13:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>消去法求解线性方程组</title>
 <meta name="author" content="Tian tongtong" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="../styles/font.css"/>
-<link rel="stylesheet" type="text/css" href="../styles/styleNew.css"/>
+<link rel="stylesheet" media="screen and (max-width: 1200px)" type="text/css" href="../styles/post_mobile.css"/>
+<link rel="stylesheet" media="screen and (min-width: 1200px)" type="text/css" href="../styles/post.css"/>
 
 <script src="../scripts/org-info.js">
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
@@ -64,7 +65,7 @@ window.MathJax = {
 </head>
 <body>
 <div id="preamble" class="status">
-Created: 2022-02-18. Modified 2022-06-27 一 12:57
+Created: 2022-02-18. Modified 2022-06-28 二 13:35
 </div>
 <div id="content" class="content">
 <h1 class="title">消去法求解线性方程组
@@ -75,16 +76,16 @@ Created: 2022-02-18. Modified 2022-06-27 一 12:57
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1149010">1. n元线性方程组</a></li>
-<li><a href="#orgeb56dea">2. Gauss-Jordan Elimination</a></li>
-<li><a href="#org976517b">3. 线性方程组解的个数与判别准则</a></li>
+<li><a href="#org2d768e3">n元线性方程组</a></li>
+<li><a href="#orgaa7577d">Gauss-Jordan Elimination</a></li>
+<li><a href="#org13634c4">线性方程组解的个数与判别准则</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1149010" class="outline-2">
-<h2 id="org1149010"><span class="section-number-2">1.</span> n元线性方程组</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-org2d768e3" class="outline-2">
+<h2 id="org2d768e3">n元线性方程组</h2>
+<div class="outline-text-2" id="text-org2d768e3">
 <p>
 具有n个未知量的多个一次方程构成了n元线性方程组，形式如下：
 </p>
@@ -120,9 +121,9 @@ Created: 2022-02-18. Modified 2022-06-27 一 12:57
 </div>
 </div>
 
-<div id="outline-container-orgeb56dea" class="outline-2">
-<h2 id="orgeb56dea"><span class="section-number-2">2.</span> Gauss-Jordan Elimination</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgaa7577d" class="outline-2">
+<h2 id="orgaa7577d">Gauss-Jordan Elimination</h2>
+<div class="outline-text-2" id="text-orgaa7577d">
 <p>
 目的是通过3个初等行变换（elementary row operations）把矩阵转换为阶梯形矩阵
 （echelon form），阶梯形矩阵满足如下条件：
@@ -450,9 +451,9 @@ To obtain the inverse of a n × n matrix A :
 </div>
 </div>
 
-<div id="outline-container-org976517b" class="outline-2">
-<h2 id="org976517b"><span class="section-number-2">3.</span> 线性方程组解的个数与判别准则</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org13634c4" class="outline-2">
+<h2 id="org13634c4">线性方程组解的个数与判别准则</h2>
+<div class="outline-text-2" id="text-org13634c4">
 <p>
 当增广矩阵经过初等行变换后，观察最终的阶梯形矩阵，如果系数矩阵存在零行，且相应的
 常数矩阵的元素不为0,则原方程组无解；如果系数矩阵存在零行且相应的常数矩阵元素为0,
