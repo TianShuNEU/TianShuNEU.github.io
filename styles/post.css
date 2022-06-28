@@ -1,7 +1,6 @@
 body {
     font-family:'TahomaFont','Droid Serif','jinkaiFont', sans-serif;
     font-weight: 400;
-    /* font-size:20px; */
 }
 #org-info-js_console-container {
     bottom:                    0;
@@ -79,6 +78,7 @@ a:before { content: "["; color: black; background-color: white;}
 a:after { content: "]"; color: black; background-color: white;}
 
 b{font-weight:700;} /* bold */
+
 /* Ugh, we have to be SUPER specific to reset the content on .pagination li */
 #content .pagination li:before {
     content: none;

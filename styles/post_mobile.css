@@ -1,6 +1,15 @@
 body {
     font-family:'TahomaFont','Droid Serif','jinkaiFont', sans-serif;
     font-weight: 400;
+    font-size: 26px;
+    line-height: 1.5;
+    text-align: justify;
+    margin: 1rem auto 4rem auto;
+    width: 60rem; //! ju zhong
+}
+.org-info-js_info-navigation{
+    font-size: 20px;
+    color: red;
 }
 #org-info-js_console-container {
     bottom:                    0;
@@ -28,14 +37,6 @@ body {
 #postamble  {
     border-top: 1px solid #ccc;
 }
-
-#content {
-    line-height: 1.9;
-    text-align: justify;
-    margin: 1rem auto 4rem auto;
-    width: 60rem; //! ju zhong
-}
-
 li>img,
 p>img {
     max-width: 100%;
